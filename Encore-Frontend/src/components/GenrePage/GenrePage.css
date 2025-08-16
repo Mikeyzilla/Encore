@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Ewert&family=Fredoka:wght@300..700&family=Honk&family=Lobster&family=Metal+Mania&family=Monoton&family=Rock+Salt&family=Special+Elite&family=Staatliches&display=swap');
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;    
+}
+
+.GenrePage {
+    background-image: url("../../assets/GenreBackground.png");
+    width: 100vw;
+    background-position: center;
+}
+
+.BrandTitle {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bolder;
+    font-family: "Monoton", sans-serif;
+    color: gold;
+}
+
+.GenreGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 220px);                   
+  justify-content: space-evenly;           
+  width: min(90vw, 1200px);              
+  height: min(90vh, 800px);        
+  justify-items: center;
+  align-items: center;     
+  margin-left: 11%;  
+}
+
+.genre {
+  width: 150px;
+  height: 150px;
+  background: silver;
+  border-radius: 20px;      
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;     
+  align-items: center;
+  justify-content: flex-start;  
+  padding-top: 15px;
+  font-family: sans-serif;
+  color: white;
+  overflow: hidden;            
+}
+
+.rock {
+    position: relative;
+    font-family: "Honk", system-ui;
+    font-size: 32px;
+    background-image: url("../../assets/Rock.png");
+    background-size: 100%;
+    background-position: center 10%; 
+    background-repeat: no-repeat;  
+}
+
+.rock span {
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.metal {
+  position: relative;
+  background-image: url("../../assets/MetalLogo.png");
+  background-repeat: no-repeat;
+  background-position: center 65%; 
+  background-size: 90%;
+  background-color: black;
+
+  color: crimson;
+  font-family: "Metal Mania", system-ui;
+  font-size: 30px;
+}
+
+.metal span {
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.country {
+    position: relative;
+    font-family: "Ewert", serif;
+    color: silver;
+    font-size: 28px;
+    background-image: url("../../assets/Country.png");
+    background-repeat: no-repeat;
+    background-position: center 65%; 
+    background-size: 120%;
+}
+
+.country span {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.grunge {
+    position: relative;
+    font-family: "Special Elite", system-ui;
+    color: #C19A00;
+    background-image: url("../../assets/Grunge.png");
+    background-repeat: no-repeat;
+    background-position: center 65%; 
+    background-size: 120%;
+}
+
+.grunge span {
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.pop {
+    position: relative;
+    color: #FF69B4;
+    font-family: "Fredoka", sans-serif;
+    font-size: 30px;
+    background-image: url("../../assets/Pop.png");
+    background-repeat: no-repeat;
+    background-position: center 65%; 
+    background-size: 120%;
+}
+
+.pop span {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.alternative {
+    font-family: "Staatliches", sans-serif;
+    color: teal;
+    font-size: 32px;
+    background-image: url("../../assets/Alternative.png");
+    background-repeat: no-repeat;
+    background-position: center 65%; 
+    background-size: 120%;
+    position: relative;
+}
+
+.alternative span {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.gospel {
+    font-family: "Cinzel Decorative", serif;
+    color: #FFD700;
+    font-size: 32px;
+    background-image: url("../../assets/Gospel.png");
+    background-repeat: no-repeat;
+    background-position: center 65%; 
+    background-size: 120%;
+    position: relative;
+}
+
+.latin {
+    font-family: "Lobster", sans-serif;
+    color: white;
+    background-image: url("../../assets/Tropical.png");
+    background-repeat: no-repeat;
+    background-position: center 65%; 
+    background-size: 120%;
+    position: relative;
+}
+
+.latin span {
+    font-size: 36px;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.punk {
+    font-family: "Rock Salt", cursive;
+    color: black;
+    font-size: 36px;
+    background-image: url("../../assets/Punk.png");
+    background-repeat: no-repeat;
+    background-position: center 65%; 
+    background-size: 120%;
+    position: relative;
+}
+
