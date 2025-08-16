@@ -1,0 +1,1 @@
+export const centralizeURL = (s: string) => s.toLowerCase().trim().replace(/\s+/g, "-");

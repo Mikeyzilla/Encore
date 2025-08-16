@@ -1,24 +1,22 @@
+import { useNavigate } from "react-router-dom";
 import "./GenrePage.css";
+import { centralizeURL } from "../../utils/centralizeURL";
+import { Music_Genres } from "../../utils/BandGenres";
 
 export default function GenrePage() {
-  let musicGenreArray: string[] = [
-    "Rock",
-    "Metal",
-    "Country",
-    "Grunge",
-    "Pop",
-    "Alternative",
-    "Gospel",
-    "Latin",
-    "Punk"
-  ];
+
+  const navigate = useNavigate();
 
   return (
     <div className="GenrePage">
       <div className="BrandTitle">Encore</div>
       <div className="GenreGrid">
-        {musicGenreArray.map((genre) => (
-          <div key={genre} className={`genre ${genre.toLowerCase().replace(/\s+/g, "-")}`}>
+        {Music_Genres.map((genre) => (
+          <div
+            key={genre}
+            className={`genre ${genre.toLowerCase().replace(/\s+/g, "-")}`}
+            onClick={() => navigate(`/${centralizeURL(genre)}`)}
+          >
             <span>{genre}</span>
           </div>
         ))}
@@ -26,3 +24,4 @@ export default function GenrePage() {
     </div>
   );
 }
+
