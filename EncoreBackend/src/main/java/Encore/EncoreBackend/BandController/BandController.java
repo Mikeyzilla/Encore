@@ -13,7 +13,7 @@ import Encore.EncoreBackend.Repositories.BandRepository;
 
 @RestController
 @RequestMapping("/api/bands")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:5173")
 public class BandController {
     private final BandRepository bandRepository;
 
@@ -21,7 +21,7 @@ public class BandController {
         this.bandRepository = bandRepository;
     }
 
-    @GetMapping("/{genre}")
+    @GetMapping("/genre/{genre}")
     public List<Band> getAllBandsByGenre(@PathVariable String genre) {
         String genreName = genre.replace("-", " ");
         return bandRepository.findByGenreOfMusicIgnoreCase(genreName);

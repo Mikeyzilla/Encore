@@ -12,7 +12,7 @@ export default function BandList() {
 
   const retrieveBandsByGenre = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/api/bands/${genre}`);
+      const response = await axios.get(`http://localhost:8080/api/bands/genre/${genre}`);
       setBands(response.data);
     } catch (err) {
       console.log("Error retreiving bands: ", err)
