@@ -1,4 +1,4 @@
-CURRENT GOAL: Check to see if clicking on a genre actually renders the band data for that genre. (Metal, Rock, and Punk are only ones populated right now)
+CURRENT GOAL: After styling BandList and BandSneakPeek, make it so that each BandSneakPeek, takes you to the band specific profile.
 
 To run frontend:
 cd into Encore-Frontend and run npm run dev
