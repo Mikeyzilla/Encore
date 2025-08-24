@@ -20,14 +20,14 @@ export default function BandList() {
   }
 
   useEffect(() => {
-    retrieveBandsByGenre;
+    retrieveBandsByGenre();
   }, [genre]);
 
   return (
     <div className="BandGrid">
       {bands.length > 0 && (
         bands.map((band) => {
-          return <BandSneakPeek nameOfBand={band.bandName} bandGenre={band.genreOfMusic} originLocation={band.origin} famousSong={band.mostPlayedSong}></BandSneakPeek>
+          return <BandSneakPeek key={band.id} bandName={band.bandName} genreOfMusic={band.genreOfMusic} origin={band.origin} mostPlayedSong={band.mostPlayedSong}></BandSneakPeek>
         })
       )}
     </div>

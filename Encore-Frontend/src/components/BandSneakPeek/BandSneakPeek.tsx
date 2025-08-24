@@ -1,7 +1,9 @@
 import type { Band } from "../../utils/BandGenres";
 import "./BandSneakPeek.css"
 
-export default function BandSneakPeek({ bandName, genreOfMusic, origin, mostPlayedSong }: Band) {
+type BandInformation = Omit<Band, "id">;
+
+export default function BandSneakPeek({ bandName, genreOfMusic, origin, mostPlayedSong }: BandInformation) {
 
 
   return (
