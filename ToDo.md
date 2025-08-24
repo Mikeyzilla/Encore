@@ -1,13 +1,9 @@
-CURRENT GOAL: Create DB - Just create a Band Table for now. Populate with Band Data, and then on each genre click, render the specific bands that fall within that genre's names.
-
-
-
-
-
+CURRENT GOAL: Populate with Band Table with Band Data in MySQL DB.
 
 
 To run frontend:
 cd into Encore-Frontend and run npm run dev
 
 To run backend:
-cd into EncoreSpring and run .\mvnw spring-boot:run
+first open up MySQL workbench and connect to the DB. 
+Then, cd into EncoreSpring and run .\mvnw spring-boot:run

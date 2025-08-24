@@ -1,13 +1,35 @@
 import { Navigate, useParams } from "react-router-dom";
-import { centralizeURL } from "../../utils/centralizeURL";
-import { Music_Genres } from "../../utils/BandGenres";
 import BandSneakPeek from "../BandSneakPeek/BandSneakPeek";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import type { Band } from "../../utils/BandGenres";
 
 export default function BandList() {
+  const [bands, setBands] = useState<Band[]>([]);
+
+
+  const { genre } = useParams();
+
+  const retrieveBandsByGenre = async () => {
+    try {
+      const response = await axios.get(`http://localhost:8080/api/bands/${genre}`);
+      setBands(response.data);
+    } catch (err) {
+      console.log("Error retreiving bands: ", err)
+    }
+  }
+
+  useEffect(() => {
+    retrieveBandsByGenre;
+  }, [genre]);
 
   return (
     <div className="BandGrid">
-        <BandSneakPeek></BandSneakPeek>
+      {bands.length > 0 && (
+        bands.map((band) => {
+          return <BandSneakPeek nameOfBand={band.bandName} bandGenre={band.genreOfMusic} originLocation={band.origin} famousSong={band.mostPlayedSong}></BandSneakPeek>
+        })
+      )}
     </div>
   );
 }

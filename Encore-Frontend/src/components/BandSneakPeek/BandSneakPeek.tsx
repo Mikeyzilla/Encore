@@ -1,12 +1,15 @@
-import { Navigate, useParams } from "react-router-dom";
-import { centralizeURL } from "../../utils/centralizeURL";
-import { Music_Genres } from "../../utils/BandGenres";
+import type { Band } from "../../utils/BandGenres";
+import "./BandSneakPeek.css"
 
-export default function BandSneakPeek() {
+export default function BandSneakPeek({ bandName, genreOfMusic, origin, mostPlayedSong }: Band) {
+
 
   return (
     <div className="BandCard">
-        Lazy Days
+      <h1>{bandName}</h1>
+      <div>{genreOfMusic}</div>
+      <div>{origin}</div>
+      <div>{mostPlayedSong}</div>
     </div>
   );
 }
