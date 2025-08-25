@@ -3,6 +3,7 @@ import BandSneakPeek from "../BandSneakPeek/BandSneakPeek";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import type { Band } from "../../utils/BandGenres";
+import "./BandList.css";
 
 export default function BandList() {
   const [bands, setBands] = useState<Band[]>([]);
@@ -25,9 +26,11 @@ export default function BandList() {
 
   return (
     <div className="BandGrid">
+      <BandSneakPeek bandName="Crystallica" origin="Arlington, Texas" mostPlayedSong="Welcome to Nevermore"></BandSneakPeek>
+      <BandSneakPeek bandName="Good Predictions" origin="Miami, Florida" mostPlayedSong="Inside the Paranoia"></BandSneakPeek>
       {bands.length > 0 && (
         bands.map((band) => {
-          return <BandSneakPeek key={band.id} bandName={band.bandName} genreOfMusic={band.genreOfMusic} origin={band.origin} mostPlayedSong={band.mostPlayedSong}></BandSneakPeek>
+          return <BandSneakPeek key={band.id} bandName={band.bandName} origin={band.origin} mostPlayedSong={band.mostPlayedSong}></BandSneakPeek>
         })
       )}
     </div>

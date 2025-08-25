@@ -1,4 +1,6 @@
-CURRENT GOAL: After styling BandList and BandSneakPeek, make it so that each BandSneakPeek, takes you to the band specific profile.
+CURRENT GOAL: Make it so that depending on the route / genre of the band, different band ticket background images, fonts, colors, and webkit text strokes are used. 
+- Add in band logos to each band ticket - so add in a new column in the DB for that.
+
 
 To run frontend:
 cd into Encore-Frontend and run npm run dev

@@ -1,17 +1,26 @@
 import type { Band } from "../../utils/BandGenres";
 import "./BandSneakPeek.css"
 
-type BandInformation = Omit<Band, "id">;
+type BandInformation = Omit<Band, "id" | "genreOfMusic">;
 
-export default function BandSneakPeek({ bandName, genreOfMusic, origin, mostPlayedSong }: BandInformation) {
+export default function BandSneakPeek({ bandName, origin, mostPlayedSong }: BandInformation) {
 
 
   return (
-    <div className="BandCard">
-      <h1>{bandName}</h1>
-      <div>{genreOfMusic}</div>
-      <div>{origin}</div>
-      <div>{mostPlayedSong}</div>
+    <div className="BandTicket">
+      <div className="BandCard">
+        <h1 className="nameOfBand">{bandName}</h1>
+        <div className="bandOriginations">{origin}</div>
+        <div className="BottomOfTicket">
+          <div className="SocialProfilesArea">
+            <div className="SocialHandle">Gooze</div>
+          </div>
+          <div className="famousSong">{mostPlayedSong}</div>
+        </div>
+      </div>
+      <div className="Lanyard-Hole">
+        <div className="Lanyard"></div>
+      </div>
     </div>
   );
 }
