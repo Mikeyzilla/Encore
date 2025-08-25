@@ -13,7 +13,8 @@ export default function BandSneakPeek({ bandName, origin, mostPlayedSong }: Band
         <div className="bandOriginations">{origin}</div>
         <div className="BottomOfTicket">
           <div className="SocialProfilesArea">
-            <div className="SocialHandle">Gooze</div>
+            <label className="SocialHandleName">Gooze</label>
+            <div className="SocialHandle"></div>
           </div>
           <div className="famousSong">{mostPlayedSong}</div>
         </div>
