@@ -26,11 +26,11 @@ export default function BandList() {
 
   return (
     <div className="BandGrid">
-      <BandSneakPeek bandName="Crystallica" origin="Arlington, Texas" mostPlayedSong="Welcome to Nevermore"></BandSneakPeek>
-      <BandSneakPeek bandName="Good Predictions" origin="Miami, Florida" mostPlayedSong="Inside the Paranoia"></BandSneakPeek>
+      <BandSneakPeek bandName="Crystallica" origin="Arlington, Texas" mostPlayedSong="Welcome to Nevermore" genreOfMusic="pop"></BandSneakPeek>
+      <BandSneakPeek bandName="Good Predictions" origin="Miami, Florida" mostPlayedSong="Inside the Paranoia" genreOfMusic="metal"></BandSneakPeek>
       {bands.length > 0 && (
         bands.map((band) => {
-          return <BandSneakPeek key={band.id} bandName={band.bandName} origin={band.origin} mostPlayedSong={band.mostPlayedSong}></BandSneakPeek>
+          return <BandSneakPeek key={band.id} bandName={band.bandName} origin={band.origin} mostPlayedSong={band.mostPlayedSong} genreOfMusic={band.genreOfMusic}></BandSneakPeek>
         })
       )}
     </div>

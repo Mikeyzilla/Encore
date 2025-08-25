@@ -1,5 +1,5 @@
-CURRENT GOAL: Make it so that depending on the route / genre of the band, different band ticket background images, fonts, colors, and webkit text strokes are used. 
-    - To do this, pass in the genreOfMusic param to the sneak peek component as a prop from either useParams or band.genreOfMusic, and inside bandsneakpeek, use that prop to set the specific styles.
+CURRENT GOAL: Make it so that depending on the route / genre of the band, different band ticket fonts, colors, and webkit text strokes are used. Need to normalize the prop string and the genre string.
+    - Inside bandsneakpeek, use that prop to set the specific styles.
 - Add in band logos to each band ticket - so add in a new column in the DB for that.
 
 
