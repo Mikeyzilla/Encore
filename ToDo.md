@@ -1,6 +1,5 @@
-CURRENT GOAL: Add in onClick -> each band specific page visited.
-Get rid of horizontal scrolling in each band list.
- 
+CURRENT GOAL: Implement bandprofile.
+
 Future Plans: 
 - Add in a logo column to the band DB to make each band sneak peek have the band-specific logo.
 

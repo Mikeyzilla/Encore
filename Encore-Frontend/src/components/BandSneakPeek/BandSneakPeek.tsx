@@ -10,7 +10,9 @@ import gospelFestival from "../../assets/GospelFestival.png"
 import latinFestival from "../../assets/LatinFestival.png"
 import punkFestival from "../../assets/PunkFestival.png"
 
-type BandInformation = Omit<Band, "id">;
+type BandInformation = Omit<Band, "id"> & {
+  onClick?: () => void;
+};
 
 type bandStyles = {
   backgroundImage: string;
@@ -76,7 +78,7 @@ const musicMap = {
   }
 } satisfies Record<musicGenres, bandStyles>
 
-export default function BandSneakPeek({ bandName, origin, mostPlayedSong, genreOfMusic }: BandInformation) {
+export default function BandSneakPeek({ onClick, bandName, origin, mostPlayedSong, genreOfMusic }: BandInformation) {
   let musicType = genreOfMusic.toLowerCase().trim();
   const genreKey = musicType as musicGenres;
 
@@ -87,7 +89,7 @@ export default function BandSneakPeek({ bandName, origin, mostPlayedSong, genreO
       color: musicMap[genreKey].color,
       WebkitTextStroke: musicMap[genreKey].WebkitTextStroke
     }}>
-      <div className="BandCard">
+      <div className="BandCard" onClick={onClick}>
         <h1 className="nameOfBand">{bandName}</h1>
         <div className="bandOriginations">{origin}</div>
         <div className="BottomOfTicket">
