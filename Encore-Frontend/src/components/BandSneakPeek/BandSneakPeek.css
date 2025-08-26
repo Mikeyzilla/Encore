@@ -1,18 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Metal+Mania&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Ewert&family=Fredoka:wght@300..700&family=Honk&family=Lobster&family=Metal+Mania&family=Monoton&family=Rock+Salt&family=Special+Elite&family=Staatliches&display=swap');
 
 .BandTicket {
-    background-image: url("../../assets/MetalFestival.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     width: 600px;
     height: 300px;
-    -webkit-text-stroke: 2px black;
     paint-order: stroke fill;  
     align-items: center;
     display: flex;
-    color: crimson;
-    font-family: "Metal Mania", system-ui;
     border: 20px solid rgba(255,255,255,0.5);
     position: relative;
 }

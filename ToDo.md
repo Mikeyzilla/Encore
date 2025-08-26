@@ -1,7 +1,8 @@
-CURRENT GOAL: Make it so that depending on the route / genre of the band, different band ticket fonts, colors, and webkit text strokes are used. Need to normalize the prop string and the genre string.
-    - Inside bandsneakpeek, use that prop to set the specific styles.
-- Add in band logos to each band ticket - so add in a new column in the DB for that.
-
+CURRENT GOAL: Add in onClick -> each band specific page visited.
+Get rid of horizontal scrolling in each band list.
+ 
+Future Plans: 
+- Add in a logo column to the band DB to make each band sneak peek have the band-specific logo.
 
 To run frontend:
 cd into Encore-Frontend and run npm run dev
