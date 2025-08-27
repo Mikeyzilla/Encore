@@ -7,6 +7,15 @@ import altFestival from "../assets/AlternativeFestival.png"
 import gospelFestival from "../assets/GospelFestival.png"
 import latinFestival from "../assets/LatinFestival.png"
 import punkFestival from "../assets/PunkFestival.png"
+import rockProfile from "../assets/RockProfile.png"
+import metalProfile from "../assets/MetalProfile.png"
+import countryProfile from "../assets/CountryProfile.png"
+import grungeProfile from "../assets/GrungeProfile.png"
+import popProfile from "../assets/PopProfile.png"
+import altProfile from "../assets/AlternativeProfile.png"
+import gospelProfile from "../assets/GospelProfile.png"
+import latinProfile from "../assets/LatinProfile.png"
+import punkProfile from "../assets/PunkProfile.png"
 
 export const Music_Genres = [
     "Rock","Metal","Country","Grunge","Pop","Alternative","Gospel","Latin","Punk"
@@ -50,6 +59,64 @@ export type bandStyles = {
   color: string,
   WebkitTextStroke: string; 
 };
+
+export const musicProfileMap = {
+  "rock": {
+    backgroundImage: rockProfile,
+    fontFamily: "Honk, system-ui",
+    color: "hotpink",
+    WebkitTextStroke: "gold",
+  },
+  "metal": {
+    backgroundImage: metalProfile,
+    fontFamily: "Metal Mania, system-ui",
+    color: "red",
+    WebkitTextStroke: "white"
+  },
+  "country": {
+    backgroundImage: countryProfile,
+    fontFamily: "Ewert, serif",
+    color: "silver",
+    WebkitTextStroke: "gold"
+  },
+  "grunge": {
+    backgroundImage: grungeProfile,
+    fontFamily: "Special Elite, system-ui",
+    color: "#886f0aff",
+    WebkitTextStroke: "black"
+  },
+  "pop": {
+    backgroundImage: popProfile,
+    fontFamily: "Fredoka, sans-serif",
+    color: "white",
+    WebkitTextStroke: "aqua"
+  },
+  "alternative": {
+    backgroundImage: altProfile,
+    fontFamily: "Staatliches, sans-serif",
+    color: "purple",
+    WebkitTextStroke: "black"
+  },
+  "gospel": {
+    backgroundImage: gospelProfile,
+    fontFamily: "Cinzel Decorative, serif",
+    color: "gold",
+    WebkitTextStroke: "white"
+  },
+  "latin": {
+    backgroundImage: latinProfile,
+    fontFamily: "Lobster, sans-serif",
+    color: "white",
+    WebkitTextStroke: "black"
+  },
+  "punk": {
+    backgroundImage: punkProfile,
+    fontFamily: "Rock Salt, cursive",
+    color: "black",
+    WebkitTextStroke: "hotpink"
+  }
+} satisfies Record<musicGenres, bandStyles>
+
 
 export const musicMap = {
   "rock": {

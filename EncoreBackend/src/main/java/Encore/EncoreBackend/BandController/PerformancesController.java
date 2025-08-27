@@ -2,13 +2,11 @@ package Encore.EncoreBackend.BandController;
 
 import java.util.List;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
 import Encore.EncoreBackend.Entities.Performances;
 import Encore.EncoreBackend.Repositories.PerformancesRepository;
@@ -28,13 +26,9 @@ public class PerformancesController {
         return performancesRepository.findByBand_BandNameIgnoreCase(band);
     }
 
-    @GetMapping("/bands/{band}/performance")
-    public Performances getOnePerformanceByBand(@PathVariable String band) {
-        return performancesRepository.findByBand_BandNameIgnoreCase(band)
-                .stream()
-                .findFirst()
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.NOT_FOUND, "No performances for band: " + band));
+    @GetMapping("/bands/{bandId}/performance")
+    public Performances getOnePerformanceByBand(@PathVariable Long bandId) {
+        return performancesRepository.findFirstByBand_Id(bandId);
     }
 
 }

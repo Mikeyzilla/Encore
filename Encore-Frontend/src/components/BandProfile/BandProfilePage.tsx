@@ -19,16 +19,18 @@ export default function BandProfilePage() {
         chart_ranking: null,
         revenue_generated: 0,
     });
-    
+
+    const bandIdentification = sessionStorage.getItem("bandId");
+    const bandId = bandIdentification ? parseInt(bandIdentification, 10) : null;
     const nameOfTheBand = sessionStorage.getItem("theSpecificBandName");
     const whereTheyAreFrom = sessionStorage.getItem("specificOrigin");
     const theirHitSong = sessionStorage.getItem("theirSong");
     const descriptionOfBand = sessionStorage.getItem("aboutThem");
-    const { musicStyle, bandInfo } = useParams();
+    const { musicStyle } = useParams();
 
     const retrieveAlbumsByBand = async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/api/albums/bands/${bandInfo}/album`);
+            const response = await axios.get(`http://localhost:8080/api/albums/bands/${bandId}/album`);
             setAlbum(response.data);
         } catch (err) {
             console.log("Error retreiving albums: ", err)
@@ -37,7 +39,7 @@ export default function BandProfilePage() {
 
     const retrievePerformancesByBand = async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/api/performances/bands/${bandInfo}/performance`);
+            const response = await axios.get(`http://localhost:8080/api/performances/bands/${bandId}/performance`);
             setPerformances(response.data);
         } catch (err) {
             console.log("Error retreiving performances: ", err)
@@ -45,9 +47,11 @@ export default function BandProfilePage() {
     }
 
     useEffect(() => {
-        retrieveAlbumsByBand();
-        retrievePerformancesByBand();
-    }, [bandInfo]);
+        if (bandId !== null && !Number.isNaN(bandId)) {
+            retrieveAlbumsByBand();
+            retrievePerformancesByBand();
+        }
+    }, [bandId]);
 
     return (
         <BandProfile bandName={nameOfTheBand ?? ""} origin={whereTheyAreFrom ?? "no data"} mostPlayedSong={theirHitSong ?? ""} genreOfMusic={musicStyle ?? ""} aboutUs={descriptionOfBand ?? ""}

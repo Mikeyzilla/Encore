@@ -1,0 +1,32 @@
+.bandProfile {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.bandHeader {
+    text-align: center;
+}
+
+.Origin {
+    font-size: 24px;
+    margin-top: -20px;
+}
+
+.middleProfile {
+    text-align: center;
+}
+
+.aboutTheBand {
+    font-size: 32px;
+}
+
+.recentPerformanceArea {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    margin-right: 50px;
+}

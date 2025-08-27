@@ -31,6 +31,7 @@ export default function BandList() {
     sessionStorage.setItem("specificOrigin", band.origin);
     sessionStorage.setItem("theirSong", band.mostPlayedSong);
     sessionStorage.setItem("aboutThem", band.aboutUs);
+    sessionStorage.setItem("bandId", band.id.toString());
     navigate(`/${centralizeURL(band.genreOfMusic)}/${centralizeURL(band.bandName)}`);
   };
 
