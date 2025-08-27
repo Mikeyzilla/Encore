@@ -10,6 +10,7 @@ As a band, your flow will be as follows: Create your band profile -> view the ca
 who the manager is, and how much they're offering) -> if you like an offer, you can send out a message to the manager saying you're interested. If not interested, just keep searching. As bands, you can also go into your inbox to see messages sent to you by managers, who are looking to start that negotiation process.
 
 Right now, I have it so that each genre takes you to a specific genre page, with bands filtered by that genre and when you click on each band, it takes you to their band-specific profile. However, the band profile details aren't complete (past albums and performances don't show, and the page itself needs to be styled), so I'll be working on that soon.
+
 There are a ton of features I'm going to implement for this, like JWT, having there be a manager budget system so that each manager knows how much they have to spend, and updates real time depending on the bands they want to hire (how much they cost to hire), location filtering (only show bands within X miles of the venue), a band-specific analytics dashboard that shows up on their profile (tells how the band's sales have gone within the past year), overlap functionality for events, account creation, an inbox messaging system, role based auth, and so much more. I'm going to try and make this as real of an app as possible. 
 
 Thanks for reading,
