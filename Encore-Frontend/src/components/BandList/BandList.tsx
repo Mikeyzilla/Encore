@@ -1,4 +1,4 @@
-import { Navigate, Outlet, useNavigate, useParams } from "react-router-dom";
+import {useNavigate, useParams } from "react-router-dom";
 import BandSneakPeek from "../BandSneakPeek/BandSneakPeek";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -27,6 +27,10 @@ export default function BandList() {
   }, [genre]);
 
   const visitBand = (band: Band) => {
+    sessionStorage.setItem("theSpecificBandName", band.bandName);
+    sessionStorage.setItem("specificOrigin", band.origin);
+    sessionStorage.setItem("theirSong", band.mostPlayedSong);
+    sessionStorage.setItem("aboutThem", band.aboutUs);
     navigate(`/${centralizeURL(band.genreOfMusic)}/${centralizeURL(band.bandName)}`);
   };
 
@@ -34,7 +38,7 @@ export default function BandList() {
     <div className="BandGrid">
       {bands.length > 0 && (
         bands.map((band) => {
-          return <BandSneakPeek key={band.id} onClick={() => visitBand(band)} bandName={band.bandName} origin={band.origin} mostPlayedSong={band.mostPlayedSong} genreOfMusic={band.genreOfMusic}></BandSneakPeek>
+          return <BandSneakPeek key={band.id} aboutUs="" onClick={() => visitBand(band)} bandName={band.bandName} origin={band.origin} mostPlayedSong={band.mostPlayedSong} genreOfMusic={band.genreOfMusic}></BandSneakPeek>
         })
       )}
     </div>

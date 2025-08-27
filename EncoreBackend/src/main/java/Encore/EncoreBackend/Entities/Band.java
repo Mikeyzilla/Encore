@@ -1,5 +1,7 @@
 package Encore.EncoreBackend.Entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,6 +30,11 @@ public class Band {
     @Column(nullable = false)
     @NotBlank
     private String genreOfMusic;
+
+    @NotBlank
+    @Column(name = "about_us", nullable = false)
+    @JsonProperty("aboutUs")
+    private String aboutUs;
 
     public long getId() {
         return id;
@@ -67,5 +74,13 @@ public class Band {
 
     public void setGenreOfMusic(String genreOfMusic) {
         this.genreOfMusic = genreOfMusic;
+    }
+
+    public String getAboutUs() {
+        return aboutUs;
+    }
+
+    public void setAboutUs(String aboutUs) {
+        this.aboutUs = aboutUs;
     }
 }
