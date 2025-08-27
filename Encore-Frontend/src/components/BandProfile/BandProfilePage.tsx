@@ -26,7 +26,7 @@ export default function BandProfilePage() {
     const whereTheyAreFrom = sessionStorage.getItem("specificOrigin");
     const theirHitSong = sessionStorage.getItem("theirSong");
     const descriptionOfBand = sessionStorage.getItem("aboutThem");
-    const { musicStyle } = useParams();
+    const { genre, name } = useParams<{ genre: string; name: string }>();
 
     const retrieveAlbumsByBand = async () => {
         try {
@@ -54,7 +54,7 @@ export default function BandProfilePage() {
     }, [bandId]);
 
     return (
-        <BandProfile bandName={nameOfTheBand ?? ""} origin={whereTheyAreFrom ?? "no data"} mostPlayedSong={theirHitSong ?? ""} genreOfMusic={musicStyle ?? ""} aboutUs={descriptionOfBand ?? ""}
+        <BandProfile bandName={nameOfTheBand ?? ""} origin={whereTheyAreFrom ?? "no data"} mostPlayedSong={theirHitSong ?? ""} genreOfMusic={genre ?? ""} aboutUs={descriptionOfBand ?? ""}
             mostRecentPerformance={{
                 date: performances.date,
                 description: performances.description,

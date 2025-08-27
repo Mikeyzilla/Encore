@@ -1,5 +1,6 @@
 CURRENT GOAL: A) Style BandProfile and BandProfilePage. 
                 - (Format date in Band Profile Page to human-readable format).
+                All data displays, but coming up with the UI layout first before showing the information, as I don't know where it'll go yet.
               B) Go back in and change the two routes to one /getProfileInfo route by using a DTO.
               C) Remove the passed prop values (The session storage) since /getProfileInfo will have all the info necessary.
               D) Change the JPA repository methods to sort by most recent / latest / highest grossing.

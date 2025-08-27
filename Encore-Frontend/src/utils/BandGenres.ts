@@ -16,6 +16,15 @@ import altProfile from "../assets/AlternativeProfile.png"
 import gospelProfile from "../assets/GospelProfile.png"
 import latinProfile from "../assets/LatinProfile.png"
 import punkProfile from "../assets/PunkProfile.png"
+import rockContract from "../assets/RockstarContract.png"
+import metalContract from "../assets/MetalContract.png"
+import countryContract from "../assets/CountryContract.png"
+import grungeContract from "../assets/GrungeContract.png"
+import popContract from "../assets/PopContract.png"
+import altContract from "../assets/AlternativeContract.png"
+import gospelContract from "../assets/GospelContract.png"
+import latinContract from "../assets/LatinContract.png"
+import punkContract from "../assets/PunkContract.png"
 
 export const Music_Genres = [
     "Rock","Metal","Country","Grunge","Pop","Alternative","Gospel","Latin","Punk"
@@ -82,7 +91,7 @@ export const musicProfileMap = {
   "grunge": {
     backgroundImage: grungeProfile,
     fontFamily: "Special Elite, system-ui",
-    color: "#886f0aff",
+    color: "black",
     WebkitTextStroke: "black"
   },
   "pop": {
@@ -94,13 +103,13 @@ export const musicProfileMap = {
   "alternative": {
     backgroundImage: altProfile,
     fontFamily: "Staatliches, sans-serif",
-    color: "purple",
+    color: "white",
     WebkitTextStroke: "black"
   },
   "gospel": {
     backgroundImage: gospelProfile,
     fontFamily: "Cinzel Decorative, serif",
-    color: "gold",
+    color: "white",
     WebkitTextStroke: "white"
   },
   "latin": {
