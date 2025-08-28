@@ -53,10 +53,34 @@ export default function BandProfilePage() {
             retrievePerformancesByBand();
         }
     }, [bandId]);
-    
+
     const hasPerf = !!(performances && (performances.date || performances.venue_name));
     const hasAlbum = !!(album && (album.album_name || (album.songs?.length ?? 0) > 0));
     const isNewBand = !hasPerf && !hasAlbum;
+
+    const numberToCorrespondingMonthMap: { [key: number]: string } = {
+        1: "January",
+        2: "February",
+        3: "March",
+        4: "April",
+        5: "May",
+        6: "June",
+        7: "July",
+        8: "August",
+        9: "September",
+        10: "October",
+        11: "November",
+        12: "December"
+    };
+
+    const formatDate = (nonReadableDate: string) => {
+        const dateInNumberFormat = nonReadableDate.slice(0, 10);          
+        const [year, month, day] = dateInNumberFormat.split("-");
+        const monthIndex = parseInt(month, 10);
+        const monthName = numberToCorrespondingMonthMap[monthIndex];
+        const dayNum = String(Number(day));                               
+        return `${monthName} ${dayNum}, ${year}`;
+    };
 
     return (
         <BandProfile
@@ -69,7 +93,7 @@ export default function BandProfilePage() {
             mostRecentPerformance={
                 performances
                     ? {
-                        date: performances.date,
+                        date: performances.date ? formatDate(performances.date) : "",
                         description: performances.description,
                         venue_name: performances.venue_name,
                         guest_count: performances.guest_count,

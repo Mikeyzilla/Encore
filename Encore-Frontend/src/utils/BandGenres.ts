@@ -77,13 +77,13 @@ export const musicProfileMap = {
   "country": {
     backgroundImage: countryProfile,
     fontFamily: "Ewert, serif",
-    color: "silver",
-    WebkitTextStroke: "gold"
+    color: "gold",
+    WebkitTextStroke: "silver"
   },
   "grunge": {
     backgroundImage: grungeProfile,
     fontFamily: "Special Elite, system-ui",
-    color: "black",
+    color: "yellow",
     WebkitTextStroke: "black"
   },
   "pop": {
@@ -113,7 +113,7 @@ export const musicProfileMap = {
   "punk": {
     backgroundImage: punkProfile,
     fontFamily: "Rock Salt, cursive",
-    color: "black",
+    color: "hotpink",
     WebkitTextStroke: "hotpink"
   }
 } satisfies Record<musicGenres, bandStyles>
@@ -180,7 +180,7 @@ export const defaultBand = {
   bandName: "Mockers",
   origin: "Atlantis",
   mostPlayedSong: "Ocean Blues",
-  genreOfMusic: "metal",
+  genreOfMusic: "country",
   aboutUs: "We are a test band, here only for styling.",
   newBand: true, 
 } as const;
