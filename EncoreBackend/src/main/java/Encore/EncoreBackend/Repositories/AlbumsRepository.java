@@ -9,5 +9,7 @@ import Encore.EncoreBackend.Entities.Albums;
 public interface AlbumsRepository extends JpaRepository<Albums, Long> {
     List<Albums> findByBand_BandNameIgnoreCase(String bandName);
 
+    List<Albums> findByBand_Id(Long bandId);
+
     Albums findFirstByBand_Id(Long bandId);
 }

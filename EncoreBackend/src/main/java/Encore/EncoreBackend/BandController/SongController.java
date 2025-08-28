@@ -21,9 +21,9 @@ public class SongController {
         this.songRepository = songRepository;
     }
 
-    @GetMapping("/bands/{band}/songs")
-    public List<Song> getAllSongsByBand(@PathVariable String band) {
-        return songRepository.findByBand_BandNameIgnoreCase(band);
+    @GetMapping("/bands/{bandId}/songs")
+    public List<Song> getAllSongsByBand(@PathVariable Long bandId) {
+        return songRepository.findByBand_Id(bandId);
     }
 
 }

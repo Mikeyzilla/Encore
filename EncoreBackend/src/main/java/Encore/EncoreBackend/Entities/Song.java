@@ -23,6 +23,7 @@ public class Song {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "band_id", nullable = false)
+    @com.fasterxml.jackson.annotation.JsonIgnore
     private Band band;
 
     public Long getId() {
@@ -41,6 +42,7 @@ public class Song {
         this.song_name = song_name;
     }
 
+    @com.fasterxml.jackson.annotation.JsonIgnore
     public Band getBand() {
         return band;
     }

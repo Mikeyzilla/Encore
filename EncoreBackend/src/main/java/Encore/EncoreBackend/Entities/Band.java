@@ -33,6 +33,10 @@ public class Band {
     @Column(nullable = false)
     private String aboutUs;
 
+    private String why_choose_us;
+
+    private String elevator_pitch;
+
     public long getId() {
         return id;
     }
@@ -79,5 +83,21 @@ public class Band {
 
     public void setAboutUs(String aboutUs) {
         this.aboutUs = aboutUs;
+    }
+
+    public String getWhy_choose_us() {
+        return why_choose_us;
+    }
+
+    public void setWhy_choose_us(String why_choose_us) {
+        this.why_choose_us = why_choose_us;
+    }
+
+    public String getElevator_pitch() {
+        return elevator_pitch;
+    }
+
+    public void setElevator_pitch(String elevator_pitch) {
+        this.elevator_pitch = elevator_pitch;
     }
 }

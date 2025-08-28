@@ -18,10 +18,10 @@ import latinProfile from "../assets/LatinProfile.png"
 import punkProfile from "../assets/PunkProfile.png"
 
 export const Music_Genres = [
-    "Rock","Metal","Country","Grunge","Pop","Alternative","Gospel","Latin","Punk"
+  "Rock", "Metal", "Country", "Grunge", "Pop", "Alternative", "Gospel", "Latin", "Punk"
 ];
 
-export type musicGenres = "rock" | "metal" | "country" | "grunge" | "pop" | "alternative" | "gospel" | "latin" | "punk" 
+export type musicGenres = "rock" | "metal" | "country" | "grunge" | "pop" | "alternative" | "gospel" | "latin" | "punk"
 
 export type Band = {
   id: number;
@@ -29,36 +29,57 @@ export type Band = {
   origin: string;
   mostPlayedSong: string;
   genreOfMusic: string;
-  aboutUs: string
-}
+  aboutUs: string;
+};
+
+export type Song = {
+  id?: number;
+  song_name: string;
+};
 
 export type Album = {
-    songs?: string[];
-    album_name: string,
-    chart_ranking?: number | null;
-    revenue_generated: number;
-}
+  songs?: string[];
+  album_name: string;
+  chart_ranking?: number | null;
+  revenue_generated: number;
+};
 
 export type PastEvents = {
-    date: string,
-    description: string,
-    venue_name: string,
-    guest_count: number;
-}
+  date: string;
+  description: string;
+  venue_name: string;
+  guest_count: number;
+};
 
-export type ProfileInformation = Omit<Band, "id"> & {
-    mostRecentPerformance?: PastEvents,
-    aboutUs: string,
-    latestAlbum?: Album,
-    newBand: boolean
-}
+type BaseProfileInfo = {
+  bandName: string;
+  origin: string;
+  mostPlayedSong: string;
+  genreOfMusic: string;
+  aboutUs: string;
+  mostRecentPerformance?: PastEvents;
+  latestAlbum?: Album;
+};
+
+export type NewProfileInfo = BaseProfileInfo & {
+  profileType: "new";
+  elevatorPitch: string;
+  whyChooseUs: string;
+  newBandSongs?: string[];   
+};
+
+export type ExperiencedProfileInfo = BaseProfileInfo & {
+  profileType: "experienced";
+};
+
+export type ProfileInformation = NewProfileInfo | ExperiencedProfileInfo;
 
 
 export type bandStyles = {
   backgroundImage: string;
   fontFamily: string;
   color: string,
-  WebkitTextStroke: string; 
+  WebkitTextStroke: string;
 };
 
 export const musicProfileMap = {
@@ -182,6 +203,30 @@ export const defaultBand = {
   mostPlayedSong: "Ocean Blues",
   genreOfMusic: "country",
   aboutUs: "We are a test band, here only for styling.",
-  newBand: true, 
+  newBand: true,
 } as const;
 
+type PerformanceDTO = {
+  date: string | null;
+  description: string | null;
+  venueName: string | null;
+  guestCount: number | null;
+};
+type AlbumDTO = {
+  albumName: string | null;
+  chartRanking: number | null;
+  revenueGenerated: number | null;
+};
+export type ProfileDTO = {
+  bandName: string;
+  origin: string;
+  mostPlayedSong: string;
+  genreOfMusic: string;
+  aboutUs: string;
+  elevatorPitch?: string | null;
+  whyChooseUs?: string | null;
+  songs: string[];
+  performances: PerformanceDTO[];
+  albums: AlbumDTO[];
+  profileType: "new" | "experienced";
+};
