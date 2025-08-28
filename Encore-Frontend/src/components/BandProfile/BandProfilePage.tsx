@@ -4,6 +4,7 @@ import "./BandProfilePage.css"
 import { useEffect, useState } from "react";
 import axios from "axios";
 import type { Album, PastEvents } from "../../utils/BandGenres";
+import { defaultBand } from "../../utils/BandGenres";
 
 export default function BandProfilePage() {
     const [performances, setPerformances] = useState<PastEvents>({
@@ -52,20 +53,38 @@ export default function BandProfilePage() {
             retrievePerformancesByBand();
         }
     }, [bandId]);
+    
+    const hasPerf = !!(performances && (performances.date || performances.venue_name));
+    const hasAlbum = !!(album && (album.album_name || (album.songs?.length ?? 0) > 0));
+    const isNewBand = !hasPerf && !hasAlbum;
 
     return (
-        <BandProfile bandName={nameOfTheBand ?? ""} origin={whereTheyAreFrom ?? "no data"} mostPlayedSong={theirHitSong ?? ""} genreOfMusic={genre ?? ""} aboutUs={descriptionOfBand ?? ""}
-            mostRecentPerformance={{
-                date: performances.date,
-                description: performances.description,
-                venue_name: performances.venue_name,
-                guest_count: performances.guest_count,
-            }}
-            latestAlbum={{
-                album_name: album.album_name,
-                chart_ranking: album.chart_ranking,
-                revenue_generated: album.revenue_generated,
-            }}
-        ></BandProfile>
-    )
+        <BandProfile
+            newBand={isNewBand}
+            bandName={nameOfTheBand ?? defaultBand.bandName}
+            origin={whereTheyAreFrom ?? defaultBand.origin}
+            mostPlayedSong={theirHitSong ?? defaultBand.mostPlayedSong}
+            genreOfMusic={genre ?? defaultBand.genreOfMusic}
+            aboutUs={descriptionOfBand ?? defaultBand.aboutUs}
+            mostRecentPerformance={
+                performances
+                    ? {
+                        date: performances.date,
+                        description: performances.description,
+                        venue_name: performances.venue_name,
+                        guest_count: performances.guest_count,
+                    }
+                    : undefined
+            }
+            latestAlbum={
+                album
+                    ? {
+                        album_name: album.album_name,
+                        chart_ranking: album.chart_ranking ?? undefined,
+                        revenue_generated: album.revenue_generated ?? 0,
+                    }
+                    : undefined
+            }
+        />
+    );
 }

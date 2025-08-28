@@ -12,8 +12,8 @@
 }
 
 .Origin {
-    font-size: 24px;
-    margin-top: -20px;
+    font-size: 32px;
+    margin-top: -40px;
 }
 
 .middleProfile {
@@ -24,12 +24,193 @@
     font-size: 32px;
 }
 
-.recentPerformanceArea {
+.SocialsLine {
     display: flex;
-    flex-direction: column;
-    align-items: end;
-    margin-right: 50px;
-    background-size: contain;
-    background-repeat: no-repeat;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    margin-top: -30px;
+    margin-right: 40px;
 }
 
+.Social {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-right: 30px;
+}
+
+.SocialLogo {
+    background-image: url("../../assets/SocialHandle.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+}
+
+.HitSongArea {
+    background-color: black;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 10%;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.PlayableSongLogo {
+    background-image: url("../../assets/SocialHandle.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+}
+
+.DescriptionArea {
+    font-size: 32px;
+    text-align: center;
+}
+
+.Wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0 40px;
+    box-sizing: border-box;
+    margin-top: 50px;
+}
+
+.PerformancesSection {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.PerformanceEntry {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.TourPicture {
+    background-image: url("../../assets/RockProfile.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    flex: 0 0 auto;
+    margin-top: -30px;
+}
+
+.PerformanceInformation {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: 24px;
+    margin-top: -25px;
+}
+
+.TourDescription {
+    margin-top: -30px;
+    max-width: 500px;
+}
+
+.AlbumsSection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    font-size: 20px;
+}
+
+.AlbumArt {
+    background-image: url("../../assets/RockFestival.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 300px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 8px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.AlbumInformation {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+}
+
+.NewUserMiddleSections {
+    margin-top: -40px;
+}
+
+.SongsSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.GroupPhoto {
+    background-image: url("../../assets/CountryFestival.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 175px;
+    height: 175px;
+    margin-left: 50px;
+}
+
+.NewUserFooter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.DescriptorArea {
+    margin-top: -30px;
+    text-align: center;
+}
+
+.DescriptionSection {
+    text-align: center;
+    margin-top: 5px;
+}
+
+.ElevatorPitch {
+    margin-top: -30px;
+}
+
+.WhyChooseUs {
+    margin-top: -15px;
+}
+
+.MostFamous {
+    margin-top: -30px;
+    font-size: 32px;
+}
+
+.AboutContent {
+    font-size: 32px;
+    margin-top: -30px;
+}
+
+.NewUserMiddleSections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}

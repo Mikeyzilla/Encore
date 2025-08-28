@@ -16,15 +16,6 @@ import altProfile from "../assets/AlternativeProfile.png"
 import gospelProfile from "../assets/GospelProfile.png"
 import latinProfile from "../assets/LatinProfile.png"
 import punkProfile from "../assets/PunkProfile.png"
-import rockContract from "../assets/RockstarContract.png"
-import metalContract from "../assets/MetalContract.png"
-import countryContract from "../assets/CountryContract.png"
-import grungeContract from "../assets/GrungeContract.png"
-import popContract from "../assets/PopContract.png"
-import altContract from "../assets/AlternativeContract.png"
-import gospelContract from "../assets/GospelContract.png"
-import latinContract from "../assets/LatinContract.png"
-import punkContract from "../assets/PunkContract.png"
 
 export const Music_Genres = [
     "Rock","Metal","Country","Grunge","Pop","Alternative","Gospel","Latin","Punk"
@@ -44,7 +35,7 @@ export type Band = {
 export type Album = {
     songs?: string[];
     album_name: string,
-    chart_ranking: number | null;
+    chart_ranking?: number | null;
     revenue_generated: number;
 }
 
@@ -56,9 +47,10 @@ export type PastEvents = {
 }
 
 export type ProfileInformation = Omit<Band, "id"> & {
-    mostRecentPerformance: PastEvents,
+    mostRecentPerformance?: PastEvents,
     aboutUs: string,
-    latestAlbum: Album;
+    latestAlbum?: Album,
+    newBand: boolean
 }
 
 
@@ -183,3 +175,13 @@ export const musicMap = {
     WebkitTextStroke: "black"
   }
 } satisfies Record<musicGenres, bandStyles>
+
+export const defaultBand = {
+  bandName: "Mockers",
+  origin: "Atlantis",
+  mostPlayedSong: "Ocean Blues",
+  genreOfMusic: "metal",
+  aboutUs: "We are a test band, here only for styling.",
+  newBand: true, 
+} as const;
+
