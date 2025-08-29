@@ -14,7 +14,8 @@ export default function CreateAccount() {
   const [password, setPassword] = useState<string>("");
   const [nameOfTheBand, setNameOfTheBand] = useState<string>("");
   const [whatIsShown, setWhatIsShown] = useState<UIType>("normal");
-
+  const [isUserShowing, setIsUserShowing] = useState(true);
+  const [nameOfInformationArea, setNameOfInformationArea] = useState("RequiredInformationArea");
   const showBand = () => setWhatIsShown("band");
   const showManager = () => setWhatIsShown("manager");
   const showNormal = () => setWhatIsShown("normal");
@@ -53,7 +54,7 @@ export default function CreateAccount() {
       {whatIsShown === "band" && (
         <div>
           <div onClick={showNormal} style={{ cursor: "pointer" }}>← Back</div>
-          <h1>A</h1>
+          <h1 className="NameOfBrand">Encore</h1>
           <input type="text" placeholder="Your username goes here"></input>
           <input type="text" placeholder="Please enter the name of your band"></input>
           <input type="text" placeholder="Your password goes here"></input>
@@ -63,18 +64,30 @@ export default function CreateAccount() {
 
       {whatIsShown === "manager" && (
         <div className="ManagerArea">
-           <div className="ManagerHeader">
-            <h1 className="ManagerNameOfBrand">Encore</h1>
-              <div onClick={showNormal} style={{ cursor: "pointer" }}>← Back</div>
-              </div>
+          <div className="ManagerHeader">
+            <h1 className="ManagerNameOfBrand">Encore VIP</h1>
+            <div className="BackBtn" onClick={showNormal} style={{ cursor: "pointer" }}>← Back</div>
+          </div>
           <div className="ManagerHeader">
             <h2 className="ManagerInfo">Managers, you now have the opportunity to enter in all venue information for the shows you want to have filled!</h2>
           </div>
           <h4 className="TidBit">Don't worry if you don't get to it - you'll have the opporunity to update them through our Management Dashboard.</h4>
-          <div className="RequiredInformationArea">
-          <input className="ManagerName" type="text" placeholder="Your username goes here" required></input>
-          <input className="ManagerPass" type="password" placeholder="Your password goes here" required></input>
-          <input type="submit"></input>
+          <div className={nameOfInformationArea}>
+            {isUserShowing && (
+              <div>
+                <input className="ManagerName" type="text" placeholder="Your username goes here" required></input>
+                <input className="ManagerPass" type="password" placeholder="Your password goes here" required></input>
+              </div>
+            )}
+            {!isUserShowing && (
+              <div>
+                <input type="text"></input>
+                <input type="text"></input>
+                <input type="text"></input>
+                <input type="text"></input>
+              </div>
+            )}
+            <input type="submit" className="ManagerSubmit"></input>
           </div>
         </div>
       )}
