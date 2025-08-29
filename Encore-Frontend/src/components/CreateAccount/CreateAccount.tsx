@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import "./CreateAccount.css";
+import bandProfileImage from "../../assets/RockProfile.png";
+import managerBackground from "../../assets/ManagerCreate.png";
 
 type UIType = "normal" | "band" | "manager";
 
@@ -30,18 +32,23 @@ export default function CreateAccount() {
 
   const entryViewHandler = useSwipeable({
     onSwipedRight: () => {
-      showVenueEntries();   // swipe right → show venue info
+      showVenueEntries();
     },
     onSwipedLeft: () => {
-      showAccountEntries(); // swipe left → show account info
+      showAccountEntries();
     },
-    delta: 50,                  // require ~50px swipe
-    preventScrollOnSwipe: true, // avoids conflict with scrolling
-    trackMouse: true            // allow desktop swipes
+    delta: 50,
+    preventScrollOnSwipe: true,
+    trackMouse: true
   });
 
   return (
-    <div className="AccountCreationPage">
+    <div
+      className="AccountCreationPage"
+      style={{
+        backgroundImage: `url(${whatIsShown === "band" ? bandProfileImage : managerBackground})`,
+      }}
+    >
       {whatIsShown === "normal" && (
         <div className="OpeningHeader">
           <h1 className="NameOfBrand">Encore</h1>
@@ -95,17 +102,18 @@ export default function CreateAccount() {
           <h5>Swipe left to add your venue information. Swipe right to go back to the username view.</h5>
           <div className={nameOfInformationArea} {...entryViewHandler}>
             {isUserShowing && (
-              <div>
+              <div className="AccountView">
                 <input className="ManagerName" type="text" placeholder="Your username goes here" required></input>
                 <input className="ManagerPass" type="password" placeholder="Your password goes here" required></input>
               </div>
             )}
             {!isUserShowing && (
-              <div>
-                <input type="text"></input>
-                <input type="text"></input>
-                <input type="text"></input>
-                <input type="text"></input>
+              <div className="VenueView">
+                <input className="VenueEntry" type="text" placeholder="What type of event is it?"></input>
+                <input className="VenueEntry" type="text" placeholder="Where is the venue?"></input>
+                <input className="VenueEntry" type="text" placeholder="What timeslot is it for?"></input>
+                <input className="VenueEntry" type="text" placeholder="What date is it for?"></input>
+                <input className="VenueEntry" type="text" placeholder="What's the band's fee for the gig?"></input>
               </div>
             )}
             <input type="submit" className="ManagerSubmit"></input>

@@ -82,11 +82,10 @@
   align-items: center;
   gap: 80px;
   margin-top: 60px;
-  margin-left: 40px;
+  margin-left: 20px;
 }
 
 .ManagerArea {
-  background-image: url("../../assets/ManagerCreate.png");
   background-repeat: no-repeat;
   background-size: calc(100% + 180px) auto; 
   height: 100%;
@@ -122,6 +121,27 @@
   margin-top: 50px;
 }
 
+.VenueView {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: -50px;
+}
+
+.VenueEntry {
+ font-family: "Oleo Script", system-ui;
+  font-size: 32px;
+  text-align: center;
+  border: none;
+  outline: none;
+  background: transparent;
+  border-bottom: 2px solid gold;
+  color: white;
+  padding: 4px 0;
+  width: 420px;
+}
+
 .ManagerSubmit {
   background: none;              
   border: 2px solid #bb00ff;      
@@ -132,6 +152,7 @@
   border-radius: 8px;             
   text-transform: uppercase;      
   transition: all 0.3s ease-in-out; 
+  margin-top: -50px;
 }
 
 .ManagerSubmit:hover {
