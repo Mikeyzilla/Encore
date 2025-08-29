@@ -31,6 +31,7 @@ export default function CreateAccount() {
   const showManager = () => setWhatIsShown("manager");
   const showNormal = () => setWhatIsShown("normal");
   const genreKey = (genre?.toLowerCase().trim() as musicGenres) || "rock";
+  const [songCounter, setSongCounter] = useState(0);
 
   const showVenueEntries = () => {
     setIsUserShowing(false);
@@ -51,6 +52,14 @@ export default function CreateAccount() {
     preventScrollOnSwipe: true,
     trackMouse: true
   });
+
+  function addSong() {
+    setSongCounter(prev => prev + 1);
+  }
+
+  function deleteSong() {
+    setSongCounter(prev => Math.max(prev - 1, 0));
+  }
 
   return (
     <div
@@ -91,17 +100,17 @@ export default function CreateAccount() {
       {whatIsShown === "band" && (
         <div className="BandView">
           <div className="FillableTitleArea">
-              <select className="GenreSelector" value={genre} onChange={(e) => setGenre(e.target.value as musicGenres)}>
-                <option value="rock">rock</option>
-                <option value="punk">punk</option>
-                <option value="pop">pop</option>
-                <option value="grunge">grunge</option>
-                <option value="metal">metal</option>
-                <option value="country">country</option>
-                <option value="alternative">alternative</option>
-                <option value="gospel">gospel</option>
-                <option value="latin">latin</option>
-              </select>
+            <select className="GenreSelector" value={genre} onChange={(e) => setGenre(e.target.value as musicGenres)}>
+              <option value="rock">rock</option>
+              <option value="punk">punk</option>
+              <option value="pop">pop</option>
+              <option value="grunge">grunge</option>
+              <option value="metal">metal</option>
+              <option value="country">country</option>
+              <option value="alternative">alternative</option>
+              <option value="gospel">gospel</option>
+              <option value="latin">latin</option>
+            </select>
             <h1 className="NameOfBrandTitle">Encore</h1>
             <div className="BackClick" onClick={showNormal} style={{ cursor: "pointer" }}>← Back</div>
           </div>
@@ -110,19 +119,21 @@ export default function CreateAccount() {
             <input type="checkbox" className="NewBandCheckbox" onChange={(e) => setNewBand(e.target.checked)} />
           </div>
           <div
-            className="fillOutableBandProfile"
+            className={`fillOutableBandProfile genre-${genreKey}`}
             style={{
               fontFamily: musicProfileMap[genreKey].fontFamily,
               color: musicProfileMap[genreKey].color,
             }}
           >
             <div className="TopOfBandArea">
-              <input type="text" placeholder="Name of your Band" className="BandNameGoesHere"></input>
-              <p className="BandOrigin">{origin}</p>
+              <div className="StyleDiv">
+                <input type="text" placeholder="Name of your Band" className="BandNameGoesHere"></input>
+                <input type="text" placeholder="Where is your band from?" className="OriginGoesHere"></input>
+              </div>
               <div className="LineOfSocials">
                 <div className="SocialInfo">
                   <div className="SocialImage"></div>
-                  <span>Social Media Brand</span>
+                  <input type="text" className="SocialEntry" placeholder="What's your name on Z?"></input>
                 </div>
                 <div className="HitSongPart">
                   <div className="SongLogo"></div>
@@ -136,11 +147,19 @@ export default function CreateAccount() {
                 <div className="EarlyBandSection">
                   <div className="SongLand">
                     <h1 className="SongsSoFarTitle">Our Songs so far:</h1>
-                    <input type="text"></input>
+                    <div className="Column">
+                      <input type="text" placeholder="Enter a song here!" className="SongEntry"></input>
+                      <div className="ButtonRow">
+                        <button type="button" className="SongBtn" onClick={addSong}>Add Song</button>
+                        {songCounter > 1 && (
+                          <button type="button" className="SongBtn" onClick={deleteSong}>Delete Song</button>
+                        )}
+                      </div>
+                    </div>
                   </div>
                   <div className="DescriptionLand">
                     <h1 className="AboutUsLand">A little about us</h1>
-                    <span className="AboutDescriptions">{aboutUs}</span>
+                    <input type="text" placeholder="Tell us about your band!" className="AboutEntry"></input>
                   </div>
                 </div>
               )}
@@ -179,12 +198,15 @@ export default function CreateAccount() {
                     <div className="PhotoOfTheGroup"></div>
                     <div className="DescriptorAreaLand">
                       <h1 className="GoalsOfWe">Our Goals</h1>
-                      <input type="text" placeholder="Give us a brief description of your future goals as a band"></input>
-                      <input type="text" placeholder="Why should a manager choose to hire you?"></input>
+                      <div className="Column">
+                        <input type="text" placeholder="What are your goals?" className="GoalsOfEntry"></input>
+                        <input type="text" placeholder="Give us your elevator pitch" className="GoalsOfEntryTwo"></input>
+                      </div>
                     </div>
                   </div>
                 </div>
               )}
+              <input type="submit" className="BandSubmit"></input>
             </div>
           </div>
         </div>
