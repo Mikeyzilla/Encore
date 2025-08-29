@@ -1,5 +1,5 @@
 CURRENT GOAL: Implement account creation and role based auth.
-                A) Add in a way on the Manager's end in Account Creation for the user to click on an arrow to go from username and password view to venue entry field view.
+                A) Style the venue entry view.
                 B) Add in necessary Band UI fields and styles (styles switch on genre selection) to make it feel like you're building your band profile. 
                 C) Fix the position of the group photo, and generate one per genre type.
                 D) Populate DB with Data. (Make all bands that have performances have albums, all bands that have albums have performances, and all bands that don't have either have the elevator pitch and why choose us filled out)
@@ -18,7 +18,10 @@ CURRENT GOAL: Implement account creation and role based auth.
                 Q) Hook those services up to the frontend pages.
                 R) Protect routes using role-based auth. In app.routes, make sure only managers can use the three routes that currently exist which are not account creation nor login by the use of JWTs.
                 S) Test it out.
-                T) Move on to Band Calendar view.
+                T) Once a Manager logs in, they should be taken to the genre view.
+                U) Make account create the default route (otherwise known as / )
+                V) Once a Band logs in, take them to their profile page.
+                W) Move on to Band Calendar view.
 
 Future Goals:  
 A) Change the JPA repository methods to sort by most recent / latest / highest grossing.

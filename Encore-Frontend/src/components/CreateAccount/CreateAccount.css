@@ -138,3 +138,7 @@
   box-shadow: 0 0 10px #bb00ff, 0 0 20px #bb00ff; 
   color: white;  
 }
+
+.SwipeZone {
+  touch-action: pan-y;
+}

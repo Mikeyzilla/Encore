@@ -1,6 +1,6 @@
 import { useState } from "react";
+import { useSwipeable } from "react-swipeable";
 import "./CreateAccount.css";
-import accountCreationBackground from "../../assets/EncoreCreationOutPaint.jpg"
 
 type UIType = "normal" | "band" | "manager";
 
@@ -15,10 +15,30 @@ export default function CreateAccount() {
   const [nameOfTheBand, setNameOfTheBand] = useState<string>("");
   const [whatIsShown, setWhatIsShown] = useState<UIType>("normal");
   const [isUserShowing, setIsUserShowing] = useState(true);
-  const [nameOfInformationArea, setNameOfInformationArea] = useState("RequiredInformationArea");
+  const [nameOfInformationArea, setNameOfInformationArea] = useState("RequiredInformationArea SwipeZone");
   const showBand = () => setWhatIsShown("band");
   const showManager = () => setWhatIsShown("manager");
   const showNormal = () => setWhatIsShown("normal");
+
+  const showVenueEntries = () => {
+    setIsUserShowing(false);
+  }
+
+  const showAccountEntries = () => {
+    setIsUserShowing(true);
+  }
+
+  const entryViewHandler = useSwipeable({
+    onSwipedRight: () => {
+      showVenueEntries();   // swipe right → show venue info
+    },
+    onSwipedLeft: () => {
+      showAccountEntries(); // swipe left → show account info
+    },
+    delta: 50,                  // require ~50px swipe
+    preventScrollOnSwipe: true, // avoids conflict with scrolling
+    trackMouse: true            // allow desktop swipes
+  });
 
   return (
     <div className="AccountCreationPage">
@@ -72,7 +92,8 @@ export default function CreateAccount() {
             <h2 className="ManagerInfo">Managers, you now have the opportunity to enter in all venue information for the shows you want to have filled!</h2>
           </div>
           <h4 className="TidBit">Don't worry if you don't get to it - you'll have the opporunity to update them through our Management Dashboard.</h4>
-          <div className={nameOfInformationArea}>
+          <h5>Swipe left to add your venue information. Swipe right to go back to the username view.</h5>
+          <div className={nameOfInformationArea} {...entryViewHandler}>
             {isUserShowing && (
               <div>
                 <input className="ManagerName" type="text" placeholder="Your username goes here" required></input>
