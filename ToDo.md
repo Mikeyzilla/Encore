@@ -18,13 +18,23 @@ CURRENT GOAL: Implement account creation and role based auth.
                 Q) Hook those services up to the frontend pages.
                 R) Protect routes using role-based auth. In app.routes, make sure only managers can use the three routes that currently exist which are not account creation nor login by the use of JWTs.
                 S) Test it out.
-                T) Once a Manager logs in, they should be taken to the genre view.
-                U) Make account create the default route (otherwise known as / )
-                V) Once a Band logs in, take them to their profile page.
-                W) Move on to Band Calendar view.
-
-Future Goals:  
-A) Change the JPA repository methods to sort by most recent / latest / highest grossing.
+                T) Make account create the default route (otherwise known as / )
+                U) Once a Band logs in, take them to their profile page.
+                V) Create the manager dashboard page where managers can look at their venue statuses (This one is still incomplete, this one got complete) and can add in new venue information.
+                W) add in overlap logic (If manager A posts an event of any type at 6pm on a friday at the location Y, manager B should not also be able to make an event at 6pm on a friday at location Y. They can make an event at 6pm on a friday at a different location, but not the same one.)
+                X) Once a Manager logs in, they should be taken to the manager dashboard.
+                Y) Add a way to go from the dashboard to the genre page.
+                Z) Add in the band calendar view. (simple calendar for now)
+                a) Make a way to go from the band profile view after login to the calendar view.
+                b) For each day, render a simple, empty list with 3 categories / tabs - Venues, Concerts, Festivals.
+                c) Change the empty list to one that renders all event information (what the managers posted to the DB in their dashboard or in account creation) regardless of the currently selected tab.
+                d) Change the "all data everywhere" list in each tab to one that correctly filters by selected tab. 
+                e) add in a way for the bands to accept the requests (denial is ignorance) that are posted.
+                f) Have each band only able to accept one event per day. 
+                g) Add in the inbox messaging system using web sockets.
+                h) if a band accepts a request, they start a chat with the manager who posted the event using web sockets.
+                i) In addition to the genre filters, also add in filters for how many miles away from one of the manager's closest venues a band is. (If a band is 500 miles away from the manager's festival in tennessee, but only 4 miles away from the manager's florida venue, the filter will show how far away the band is from one of the manager's closest venues possible)
+                j) Change the JPA repository methods to sort by most recent / latest / highest grossing.
 
 
 To run frontend:
