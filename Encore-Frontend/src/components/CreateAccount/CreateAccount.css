@@ -396,3 +396,227 @@
   font-style: normal;
   opacity: 0.7;   
 }
+
+.genre-punk .SongLand,
+.genre-punk .FutureGoalsLand,
+.genre-punk .DescriptionLand {
+  margin-top: -120px;
+  transform: scale(0.75);
+}
+
+.genre-punk .DescriptorAreaLand {
+  transform: scale(.9);
+  margin-top: 20px;
+}
+
+.genre-punk .PhotoOfTheGroup,
+.genre-pop .PhotoOfTheGroup {
+  transform: scale(2.5);
+  margin-top: 20px;
+}
+
+.genre-pop .TopOfBandArea {
+  margin-top: -20px;
+}
+
+.genre-punk .StyleDiv,
+.genre-punk .LineOfSocials {
+   transform: scale(0.65);
+}
+
+.genre-pop .SocialEntry {
+  width: 300px;
+}
+
+.genre-grunge .SocialEntry {
+  width: 320px;
+}
+
+.genre-grunge .GoalsOfEntry {
+  width: 375px;
+}
+
+.genre-grunge .GoalsOfEntryTwo,
+.genre-grunge .AboutEntry  {
+  width: 460px;
+}
+
+.genre-grunge .FutureGoalsLand {
+  margin-top: 50px;
+}
+
+.genre-grunge .PhotoOfTheGroup {
+  transform: scale(2.5);
+  margin-bottom: 20px;
+}
+
+.genre-pop .SongBtn,
+.genre-pop .BandSubmit {
+  background: aqua;
+}
+
+.genre-punk .BandNameGoesHere,
+.genre-punk .OriginGoesHere,
+.genre-punk .SocialEntry {
+  width: 400px;
+}
+
+.genre-punk .AboutEntry,
+.genre-punk .GoalsOfEntry {
+  width: 500px;
+}
+
+.genre-punk .GoalsOfEntryTwo {
+  width: 600px;
+}
+
+.genre-punk .BandSubmit {
+  margin-top: -30px;
+}
+
+.genre-punk .TopOfBandArea {
+  margin-top: -60px;
+}
+
+.genre-punk .LineOfSocials {
+  margin-top: -30px;
+}
+
+.genre-punk .SongEntry {
+  width: 400px;
+}
+
+.genre-metal input {
+  border-bottom: 2px solid black;
+}
+
+.genre-metal .FutureGoalsLand {
+  margin-top: 30px;
+}
+
+.genre-metal .PhotoOfTheGroup,
+.genre-country .PhotoOfTheGroup {
+  transform: scale(2.7);
+}
+
+.genre-rock .PhotoOfTheGroup {
+  transform: scale(2.7);
+}
+
+.genre-country .PhotoOfTheGroup {
+  margin-top: -10px;
+}
+
+.genre-country .SongEntry {
+  width: 450px;
+}
+
+.genre-country .BandNameGoesHere,
+.genre-country .OriginGoesHere,
+.genre-country .SocialEntry,
+.genre-country .GoalsOfEntry {
+  width: 450px;
+}
+
+.genre-country .AboutEntry {
+  width: 520px;
+}
+
+.genre-country .GoalsOfEntryTwo {
+  width: 580px;
+}
+
+.genre-rock .FutureGoalsLand,
+.genre-country .FutureGoalsLand {
+  margin-top: 40px;
+}
+
+.genre-alternative .PhotoOfTheGroup {
+  transform: scale(2.3);
+}
+
+.genre-alternative .FutureGoalsLand {
+  margin-top: 30px;
+}
+
+.genre-gospel .BandNameGoesHere, 
+.genre-gospel .OriginGoesHere,
+.genre-gospel .SocialEntry,
+.genre-gospel .AboutEntry,
+.genre-gospel .SongEntry,
+.genre-gospel .GoalsOfEntry {
+  width: 450px;
+}
+
+.genre-gospel .GoalsOfEntryTwo {
+  width: 520px;
+}
+
+.genre-gospel .PhotoOfTheGroup {
+  transform: scale(2.3);
+}
+
+.genre-gospel .SongBtn,
+.genre-gospel .BandSubmit,
+.genre-latin .SongBtn,
+.genre-latin .BandSubmit {
+  background: transparent;
+  border: 2px solid gold;
+}
+
+.genre-punk * {
+  color: red !important;
+}
+
+.genre-punk .SongBtn,
+.genre-punk .BandSubmit {
+  background: black;
+}
+
+.Glue {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.PerformancesLand {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.PerformanceInformationLand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.PerformanceInformationLand input {
+  text-align: center;
+  border: none;
+  outline: none;
+  background: transparent;
+  border-bottom: 2px solid gold;
+  font-size: 24px;
+  padding: 4px 0;
+  width: 240px;
+}
+
+.PerformanceTidBit {
+  font-size: 35px;
+  max-width: 400px;
+}
+
+
+.AlbumsLand {
+
+}
+
+.AlbumTidBit {
+  font-size: 35px;
+  max-width: 400px;
+}

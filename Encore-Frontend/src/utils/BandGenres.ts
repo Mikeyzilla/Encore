@@ -16,12 +16,34 @@ import altProfile from "../assets/AlternativeProfile.png"
 import gospelProfile from "../assets/GospelProfile.png"
 import latinProfile from "../assets/LatinProfile.png"
 import punkProfile from "../assets/PunkProfile.png"
+import rockPhoto from "../assets/80sRockGroup.png"
+import metalPhoto from "../assets/GroupPhoto-Metal.png"
+import countryPhoto from "../assets/CountryPhoto.png"
+import grungePhoto from "../assets/GrungePhoto.png"
+import popPhoto from "../assets/PopPhoto.png"
+import altPhoto from "../assets/AlternativePhoto.png"
+import gospelPhoto from "../assets/GospelPhoto.png"
+import latinPhoto from "../assets/LatinPhoto.png"
+import punkPhoto from "../assets/PunkPhoto.png"
 
 export const Music_Genres = [
   "Rock", "Metal", "Country", "Grunge", "Pop", "Alternative", "Gospel", "Latin", "Punk"
 ];
 
 export type musicGenres = "rock" | "metal" | "country" | "grunge" | "pop" | "alternative" | "gospel" | "latin" | "punk"
+
+export const albumCoverMap = {
+    "rock": {
+      backgroundImage: rockFestival
+    },
+    "metal": {
+      backgroundImage: metalFestival
+    },
+    "country": {
+      backgroundImage: countryFestival
+    }
+}
+
 
 export type Band = {
   id: number;
@@ -81,6 +103,36 @@ export type bandStyles = {
   color: string,
   WebkitTextStroke: string;
 };
+
+export const groupPhotoMap = {
+ "rock": {
+  backgroundImage: rockPhoto
+ },
+ "metal": {
+  backgroundImage: metalPhoto
+ },
+ "country": {
+  backgroundImage: countryPhoto
+ },
+ "grunge": {
+  backgroundImage: grungePhoto
+ },
+ "pop": {
+  backgroundImage: popPhoto
+ },
+ "alternative": {
+  backgroundImage: altPhoto
+ },
+ "gospel": {
+  backgroundImage: gospelPhoto
+ },
+ "latin": {
+  backgroundImage: latinPhoto
+ },
+ "punk": {
+  backgroundImage: punkPhoto
+ }
+}
 
 export const musicProfileMap = {
   "rock": {

@@ -3,7 +3,7 @@ import { useSwipeable } from "react-swipeable";
 import "./CreateAccount.css";
 import bandProfileImage from "../../assets/RockProfile.png";
 import managerBackground from "../../assets/ManagerCreate.png";
-import { musicMap, musicProfileMap } from "../../utils/BandGenres";
+import { albumCoverMap, groupPhotoMap, musicMap, musicProfileMap } from "../../utils/BandGenres";
 import type { musicGenres } from "../../utils/BandGenres";
 type UIType = "normal" | "band" | "manager";
 
@@ -128,7 +128,7 @@ export default function CreateAccount() {
             <div className="TopOfBandArea">
               <div className="StyleDiv">
                 <input type="text" placeholder="Name of your Band" className="BandNameGoesHere"></input>
-                <input type="text" placeholder="Where is your band from?" className="OriginGoesHere"></input>
+                <input type="text" placeholder="Where are you from?" className="OriginGoesHere"></input>
               </div>
               <div className="LineOfSocials">
                 <div className="SocialInfo">
@@ -170,24 +170,28 @@ export default function CreateAccount() {
                   </div>
                   <div className="Glue">
                     <div className="PerformancesLand">
+                      <h1 className="PerformanceTidBit">Any past gigs? You can enter them here!</h1>
                       <div className="PerformanceAddition">
                         <div className="PictureOfTour"></div>
                         <div className="PerformanceInformationLand">
                           <input type="text" placeholder="Where did you play?"></input>
                           <input type="text" placeholder="When did you play?"></input>
-                          <input type="text" placeholder="Describe how the event went"></input>
-                          <input type="text" placeholder="How many people showed up?"></input>
+                          <input type="text" placeholder="How'd it go?"></input>
+                          <input type="text" placeholder="Number of People there?"></input>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="AlbumsLand">
-                    <div className="AlbumCoverImage">
-                      <input type="text" placeholder="What was the name of your album?"></input>
-                    </div>
-                    <div className="AlbumInformationLand">
-                      <input type="text" placeholder="Where did your album rank on the charts?"></input>
-                      <input type="text" placeholder="How much money did you make off your album?"></input>
+                    <div className="AlbumsLand">
+                      <h1 className="AlbumTidBit">If you have any albums, you can enter them here!</h1>
+                      <div className="AlbumCoverImage" style={{
+                      backgroundImage: `url(${albumCoverMap[genreKey].backgroundImage})`,
+                    }}>
+                        <input type="text" placeholder="What was the name of your album?"></input>
+                      </div>
+                      <div className="AlbumInformationLand">
+                        <input type="text" placeholder="Where did your album rank on the charts?"></input>
+                        <input type="text" placeholder="How much money did you make off your album?"></input>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -195,7 +199,9 @@ export default function CreateAccount() {
               {newBand && (
                 <div className="NewUserBottom">
                   <div className="FutureGoalsLand">
-                    <div className="PhotoOfTheGroup"></div>
+                    <div className="PhotoOfTheGroup" style={{
+                      backgroundImage: `url(${groupPhotoMap[genreKey].backgroundImage})`,
+                    }}></div>
                     <div className="DescriptorAreaLand">
                       <h1 className="GoalsOfWe">Our Goals</h1>
                       <div className="Column">
