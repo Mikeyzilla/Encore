@@ -41,6 +41,24 @@ export const albumCoverMap = {
     },
     "country": {
       backgroundImage: countryFestival
+    },
+    "grunge": {
+      backgroundImage: grungeFestival
+    },
+    "pop": {
+      backgroundImage: popFestival
+    },
+    "alternative": {
+      backgroundImage: altFestival
+    },
+    "gospel": {
+      backgroundImage: gospelFestival
+    },
+    "latin": {
+      backgroundImage: latinFestival
+    },
+    "punk": {
+      backgroundImage: punkFestival
     }
 }
 

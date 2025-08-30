@@ -143,7 +143,8 @@
   width: 420px;
 }
 
-.ManagerSubmit, .BandSubmit {
+.ManagerSubmit,
+.BandSubmit {
   background: none;
   border: 2px solid #bb00ff;
   color: gold;
@@ -165,7 +166,8 @@
   margin-top: 20px;
 }
 
-.ManagerSubmit:hover, .BandSubmit:hover {
+.ManagerSubmit:hover,
+.BandSubmit:hover {
   box-shadow: 0 0 10px #bb00ff, 0 0 20px #bb00ff;
   color: white;
 }
@@ -232,7 +234,7 @@
   width: 300px;
 }
 
-.OriginGoesHere { 
+.OriginGoesHere {
   width: 350px;
 }
 
@@ -246,7 +248,8 @@
 }
 
 
-.SongEntry, .AboutEntry {
+.SongEntry,
+.AboutEntry {
   margin-top: -30px;
   margin-bottom: 30px;
 }
@@ -394,7 +397,7 @@
   font-family: inherit;
   color: inherit;
   font-style: normal;
-  opacity: 0.7;   
+  opacity: 0.7;
 }
 
 .genre-punk .SongLand,
@@ -421,7 +424,7 @@
 
 .genre-punk .StyleDiv,
 .genre-punk .LineOfSocials {
-   transform: scale(0.65);
+  transform: scale(0.65);
 }
 
 .genre-pop .SocialEntry {
@@ -437,7 +440,7 @@
 }
 
 .genre-grunge .GoalsOfEntryTwo,
-.genre-grunge .AboutEntry  {
+.genre-grunge .AboutEntry {
   width: 460px;
 }
 
@@ -539,7 +542,7 @@
   margin-top: 30px;
 }
 
-.genre-gospel .BandNameGoesHere, 
+.genre-gospel .BandNameGoesHere,
 .genre-gospel .OriginGoesHere,
 .genre-gospel .SocialEntry,
 .genre-gospel .AboutEntry,
@@ -565,7 +568,7 @@
 }
 
 .genre-punk * {
-  color: red !important;
+  color: white !important;
 }
 
 .genre-punk .SongBtn,
@@ -611,12 +614,82 @@
   max-width: 400px;
 }
 
-
 .AlbumsLand {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
 
+.AlbumCoverImage {
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 200px;
+  height: 200px;
+}
+
+.AlbumInformationLand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.AlbumsLand input {
+  text-align: center;
+  border: none;
+  outline: none;
+  background: transparent;
+  border-bottom: 2px solid gold;
+  padding: 4px 0;
+  width: 240px;
+}
+
+.genre-rock .AlbumsLand input {
+  font-size: 24px;
 }
 
 .AlbumTidBit {
   font-size: 35px;
   max-width: 400px;
+}
+
+.AlbumEntryInfo {
+  max-width: 150px;
+  margin-right: 60px;
+}
+
+.genre-punk .PerformancesLand {
+  margin-top: -120px;
+  margin-left: -40px;
+  transform: scale(.85);
+}
+
+.genre-punk .PerformancesLand input {
+  width: 400px;
+}
+
+.genre-punk .AlbumLand {
+  margin-top: -300px;
+  margin-right: -120px;
+}
+
+.genre-punk .AlbumEntryInfo {
+  width: 400px;
+}
+
+.genre-grunge .EntryPeople {
+  width: 400px;
+}
+
+.genre-metal input {
+  border-bottom: 2px solid black;
+}
+
+.genre-country .BandSubmit {
+  margin-top: -40px;
+}
+
+.genre-gospel .BandSubmit {
+  margin-top: -80px;
 }

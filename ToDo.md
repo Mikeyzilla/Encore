@@ -1,12 +1,12 @@
 CURRENT GOAL: Implement account creation and role based auth.
-                A) Style the experienced band's account creation page.
-                B) use value + onChange for inputs inside of Band Account Creation.
+                A) Style username, password, and everything around them to make them fit.
+                B) Move Gospel and Country's new band (new band only!) submit button's down.
                 C) Bring the Our Goals section on BandProfile higher up.
-                D) Push the performance information section slightly to the right.
-                E) Make the Ranked + Generated Album data's font sizes larger.
-                F) Add in an album cover per band, and use the tour photo map (and the album cover map) to add in each band's tour photo.
-                G) Have the spotify section expand for long song titles.
-                H) Make the songs in our songs so far larger in font size, as well as aligned better.
+                D) Push the performance information section slightly to the right in BandProfile.
+                E) Make the Ranked + Generated Album data's font sizes larger in BandProfile.
+                F) Use the tour photo map to add in each band's tour photo in BandProfile.
+                G) Have the spotify section expand for long song titles in BandProfile.
+                H) Make the songs in our songs so far larger in font size, as well as aligned better in BandProfile.
                 I) Try to make font colors consistent from genre -> band sneak -> band profile.
                 J) Make a login page on the frontend.
                 K) Create a users table in the DB.
