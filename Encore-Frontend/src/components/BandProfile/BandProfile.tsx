@@ -1,4 +1,4 @@
-import { musicProfileMap, type ExperiencedProfileInfo, type musicGenres, type NewProfileInfo, type ProfileInformation } from "../../utils/BandGenres"
+import { groupPhotoMap, musicProfileMap, type ExperiencedProfileInfo, type musicGenres, type NewProfileInfo, type ProfileInformation } from "../../utils/BandGenres"
 import "./BandProfile.css"
 
 
@@ -8,6 +8,10 @@ export default function BandProfile(props: ProfileInformation) {
     const isNew = props.profileType === "new";
     const newInfo = props as NewProfileInfo;
     const expInfo = props as ExperiencedProfileInfo;
+
+    const dateMakeNeat = (date: string) => {
+        
+    }
 
     return (
         <div
@@ -33,7 +37,7 @@ export default function BandProfile(props: ProfileInformation) {
                     </div>
                     <div className="HitSongArea">
                         <div className="PlayableSongLogo"></div>
-                        <span>{mostPlayedSong}</span>
+                        <div>{mostPlayedSong}</div>
                     </div>
                 </div>
             </div>
@@ -46,7 +50,7 @@ export default function BandProfile(props: ProfileInformation) {
                             {newInfo.newBandSongs?.length ? (
                                 <ul className="SongList">
                                     {newInfo.newBandSongs.map((title, idx) => (
-                                        <li key={`${title}-${idx}`}>{title}</li>
+                                        <li key={`song ${title}-${idx}`}>{title}</li>
                                     ))}
                                 </ul>
                             ) : (
@@ -55,7 +59,7 @@ export default function BandProfile(props: ProfileInformation) {
                         </div>
                         <div className="DescriptionSection">
                             <h1>A little about us</h1>
-                            <span className="AboutContent">{aboutUs}</span>
+                            <div className="AboutContent">{aboutUs}</div>
                         </div>
                     </div>
                 )}
@@ -86,8 +90,8 @@ export default function BandProfile(props: ProfileInformation) {
                                     {expInfo.latestAlbum?.album_name}
                                 </div>
                                 <div className="AlbumInformation">
-                                    <p>Ranked {expInfo.latestAlbum?.chart_ranking} on the charts</p>
-                                    <p>Generated {expInfo.latestAlbum?.revenue_generated} dollars.</p>
+                                    <p>Chart Ranking: {expInfo.latestAlbum?.chart_ranking}</p>
+                                    <p>Generated a total of {expInfo.latestAlbum?.revenue_generated} dollars.</p>
                                 </div>
                             </div>
                         </div>
@@ -96,7 +100,7 @@ export default function BandProfile(props: ProfileInformation) {
                 {isNew && (
                     <div className="NewUserFooter">
                         <div className="FutureGoalsSection">
-                            <div className="GroupPhoto"></div>
+                            <div className="GroupPhoto" style={{ backgroundImage: `url(${groupPhotoMap[genreKey].backgroundImage})` }}></div>
                             <div className="DescriptorArea">
                                 <h1 className="GoalsTitle">Our Goals</h1>
                                 <p className="ElevatorPitch">{newInfo.elevatorPitch}</p>

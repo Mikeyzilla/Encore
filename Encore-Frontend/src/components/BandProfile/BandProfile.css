@@ -56,7 +56,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 10%;
+    width: auto; 
     justify-content: center;
     cursor: pointer;
 }
@@ -165,12 +165,16 @@
 }
 
 .GroupPhoto {
-    background-image: url("../../assets/GroupPhoto-Metal.png");
     background-repeat: no-repeat;
     background-size: contain;
     width: 175px;
     height: 175px;
-    margin-left: 50px;
+    margin-left: auto;  
+    margin-right: auto;
+}
+
+.GroupPhoto {
+    transform: scale(1.8);
 }
 
 .NewUserFooter {
@@ -213,4 +217,23 @@
   grid-template-columns: 1fr 1fr;
   gap: 24px;
   align-items: start;
+}
+
+.AboutContent {
+    width: 400px;   
+    margin-left: auto;  
+    margin-right: auto; 
+    line-height: 1.4;
+}
+
+.PerformancesSection {
+    margin-left: 40px;
+}
+
+.AlbumInformation {
+    font-size: 30px;
+}
+
+.SongList {
+    font-size: 32px;
 }

@@ -162,14 +162,14 @@ export const musicProfileMap = {
   "metal": {
     backgroundImage: metalProfile,
     fontFamily: "Metal Mania, system-ui",
-    color: "red",
+    color: "crimson",
     WebkitTextStroke: "white"
   },
   "country": {
     backgroundImage: countryProfile,
     fontFamily: "Ewert, serif",
-    color: "gold",
-    WebkitTextStroke: "silver"
+    color: "white",
+    WebkitTextStroke: "gold"
   },
   "grunge": {
     backgroundImage: grungeProfile,
@@ -226,7 +226,7 @@ export const musicMap = {
   "country": {
     backgroundImage: countryFestival,
     fontFamily: "Ewert, serif",
-    color: "silver",
+    color: "white",
     WebkitTextStroke: "gold"
   },
   "grunge": {
@@ -238,13 +238,13 @@ export const musicMap = {
   "pop": {
     backgroundImage: popFestival,
     fontFamily: "Fredoka, sans-serif",
-    color: "#FF69B4",
+    color: "white",
     WebkitTextStroke: "aqua"
   },
   "alternative": {
     backgroundImage: altFestival,
     fontFamily: "Staatliches, sans-serif",
-    color: "teal",
+    color: "white",
     WebkitTextStroke: "black"
   },
   "gospel": {
