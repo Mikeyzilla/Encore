@@ -691,5 +691,81 @@
 }
 
 .genre-gospel .BandSubmit {
-  margin-top: -80px;
+  margin-top: 20px;
+}
+
+.genre-country .BandSubmit {
+  margin-top: 15px;
+}
+
+.RequiredEntries {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.genre-rock .ReturningLand {
+  margin-top: -20px;
+}
+
+.RequiredEntries input {
+  text-align: center;
+  border: none;
+  outline: none;
+  background: transparent;
+  border-bottom: 2px solid black;
+  padding: 4px 0;
+  width: 240px;
+  font-family: inherit;
+  font-size: 24px;
+}
+
+.RequiredEntries input::placeholder {
+  color: inherit;
+}
+
+.fillOutableBandProfile {
+  margin-top: -40px;
+}
+
+.genre-punk .TopOfBandArea {
+  margin-top: -120px;
+}
+
+.genre-punk .AlbumLand {
+  margin-top: -140px;
+}
+
+.genre-country .AlbumsLand input {
+  font-size: 24px;
+}
+
+.genre-country .BandSubmit {
+  margin-top: 10px;
+}
+
+.genre-country .ReturningLand {
+  margin-top: -24px;
+}
+
+.genre-alternative .AlbumsLand input {
+  font-size: 24px;
+  text-align: center;
+}
+
+.genre-alternative input {
+  border-bottom: 2px solid black;
+}
+
+.genre-gospel .ReturningLand {
+  margin-top: -24px;
+}
+
+.genre-gospel .BandSubmit {
+  margin-top: 10px;
+}
+
+.genre-latin .PhotoOfTheGroup {
+  transform: scale(2.2);
 }

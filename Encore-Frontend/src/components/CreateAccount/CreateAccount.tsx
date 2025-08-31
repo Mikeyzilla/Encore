@@ -126,8 +126,10 @@ export default function CreateAccount() {
               <p className="UsefulTidBit">If you don't have any albums or past performances, no worries! Click here to change the layout.</p>
               <input type="checkbox" className="NewBandCheckbox" onChange={(e) => setNewBand(e.target.checked)} />
             </div>
-            <input type="text" placeholder="Username" required></input>
-             <input type="password" placeholder="Password" required></input>
+            <div className="RequiredEntries">
+            <input type="text" placeholder="Username" style={{ fontFamily: musicProfileMap[genreKey].fontFamily, color: musicProfileMap[genreKey].color }}></input>
+            <input type="password" placeholder="Password" style={{ fontFamily: musicProfileMap[genreKey].fontFamily, color: musicProfileMap[genreKey].color }}></input>
+            </div>
             <div
               className={`fillOutableBandProfile genre-${genreKey}`}
               style={{
@@ -137,7 +139,7 @@ export default function CreateAccount() {
             >
               <div className="TopOfBandArea">
                 <div className="StyleDiv">
-                  <input type="text" placeholder="Name of your Band" className="BandNameGoesHere" value={nameOfTheBand} onChange={(e) => setNameOfTheBand(e.currentTarget.value)} required></input>
+                  <input type="text" placeholder="Your Band Name" className="BandNameGoesHere" value={nameOfTheBand} onChange={(e) => setNameOfTheBand(e.currentTarget.value)} required></input>
                   <input type="text" placeholder="Where are you from?" className="OriginGoesHere" value={origin} onChange={(e) => setOrigin(e.currentTarget.value)} required></input>
                 </div>
                 <div className="LineOfSocials">
