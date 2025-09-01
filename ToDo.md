@@ -4,7 +4,7 @@ CURRENT GOAL: Implement account creation and role based auth.
                 C) Create a users entity in the backend.
                 D) Create a user repo in the backend.
                 E) Add a way to add / remove songs in Band Account Creation. Do this by implementing a post to song controller that posts a singular song to the DB every time add is clicked, and every time delete is clicked, it removes the latest song (the song that just got added to the DB)
-                F) Create a user-centric controller that features both account creation and login.
+                F) Create a user-centric controller that features both account creation and login. (if you create your account, skip login)
                 G) Hook those services up to the frontend pages.
                 H) Protect routes using role-based auth. In app.routes, make sure only managers can use the three routes that currently exist which are not account creation nor login by the use of JWTs.
                 I) Test it out.
