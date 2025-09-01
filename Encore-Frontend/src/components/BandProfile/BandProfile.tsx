@@ -1,4 +1,4 @@
-import { groupPhotoMap, musicProfileMap, type ExperiencedProfileInfo, type musicGenres, type NewProfileInfo, type ProfileInformation } from "../../utils/BandGenres"
+import { groupPhotoMap, musicProfileMap, numberToMonthMap, type ExperiencedProfileInfo, type musicGenres, type NewProfileInfo, type ProfileInformation } from "../../utils/BandGenres"
 import "./BandProfile.css"
 
 
@@ -10,7 +10,32 @@ export default function BandProfile(props: ProfileInformation) {
     const expInfo = props as ExperiencedProfileInfo;
 
     const dateMakeNeat = (date: string) => {
-        
+        // date will be something like 2024-08-06 00:00:00.000000
+        let YearMonthDayFormat = date.slice(0, 10);
+        //date is now 2024-08-06
+        let YearMonthDayArray = YearMonthDayFormat.split("-");
+        //the array is now [2024, 08, 06]
+        let year = YearMonthDayArray[0];
+        let month = numberToMonthMap[parseInt(YearMonthDayArray[1], 10)];
+        let day = String(parseInt(YearMonthDayArray[2], 10));
+        //day will be 06 or 01 or 11
+        let dayNum = parseInt(day, 10);
+
+        if (dayNum === 11 || dayNum === 12 || dayNum === 13) {
+            day = dayNum.toString() + "th";
+        } else {
+            let lastDigit = dayNum % 10;
+            if (lastDigit === 1) {
+                day = dayNum.toString() + "st";
+            } else if (lastDigit === 2) {
+                day = dayNum.toString() + "nd";
+            } else if (lastDigit === 3) {
+                day = dayNum.toString() + "rd";
+            } else {
+                day = dayNum.toString() + "th";
+            }
+        }
+       return " " + month + " " + day + ", " + year;
     }
 
     return (
@@ -73,7 +98,7 @@ export default function BandProfile(props: ProfileInformation) {
                                 <div className="PerformanceEntry">
                                     <div className="TourPicture"></div>
                                     <div className="PerformanceInformation">
-                                        <p>We played at {expInfo.mostRecentPerformance?.venue_name} on {expInfo.mostRecentPerformance?.date}</p>
+                                        <p>We played at {expInfo.mostRecentPerformance?.venue_name} on {dateMakeNeat(expInfo.mostRecentPerformance?.date ?? "")}</p>
                                         <p className="TourDescription">{expInfo.mostRecentPerformance?.description} and {expInfo.mostRecentPerformance?.guest_count} people showed up.</p>
                                     </div>
                                 </div>
