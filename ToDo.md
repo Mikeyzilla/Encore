@@ -1,6 +1,4 @@
 CURRENT GOAL: Implement account creation and role based auth.
-                A) Make a login page on the frontend.
-                B) Create a users table in the DB.
                 C) Create a users entity in the backend.
                 D) Create a user repo in the backend.
                 E) Add a way to add / remove songs in Band Account Creation. Do this by implementing a post to song controller that posts a singular song to the DB every time add is clicked, and every time delete is clicked, it removes the latest song (the song that just got added to the DB)
