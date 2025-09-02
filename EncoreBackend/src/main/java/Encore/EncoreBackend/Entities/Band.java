@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
@@ -36,6 +38,10 @@ public class Band {
     private String why_choose_us;
 
     private String elevator_pitch;
+
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    private Users user;
 
     public long getId() {
         return id;
@@ -99,5 +105,13 @@ public class Band {
 
     public void setElevator_pitch(String elevator_pitch) {
         this.elevator_pitch = elevator_pitch;
+    }
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
     }
 }
