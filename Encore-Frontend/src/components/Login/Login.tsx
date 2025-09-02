@@ -6,11 +6,15 @@ export default function Login() {
 
     return (
         <div className="LoginPage">
-            <h1>Encore</h1>
-            <form>
-                <input type="text" placeholder="Username"></input>
-                <input type="password" placeholder="Password"></input>
-                <div>Are you logging in as a Band, or as a Manager?</div>
+            <div className="LoginTop">
+                <h1 className="NameOfBrand">Encore</h1>
+            </div>
+            <form className="LoginForm">
+                <div className="InputArea">
+                    <input type="text" placeholder="Username" className="InputField"></input>
+                    <input type="password" placeholder="Password" className="InputField"></input>
+                </div>
+                <div className="HelpfulInformation">Are you logging in as a Band, or as a Manager?</div>
                 <div className="RadioGroup">
                     <label>
                         <input
@@ -32,7 +36,7 @@ export default function Login() {
                         Band
                     </label>
                 </div>
-                <button type="submit"></button>
+                <button type="submit" className="LoginButton">Login</button>
             </form>
         </div>
     )

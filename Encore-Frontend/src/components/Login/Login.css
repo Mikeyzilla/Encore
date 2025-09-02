@@ -7,3 +7,64 @@
     width: 100vw;
     overflow: hidden;
 }
+
+.LoginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.LoginTop {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.InputArea {
+    margin-top: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+}
+
+.InputField {
+    text-align: center;
+    border: none;
+    outline: none;
+    background: transparent;
+    border-bottom: 2px solid gold;
+    padding: 4px 0;
+    width: 240px;
+    font-family: inherit;
+    font-size: 48px;
+}
+
+.InputField::placeholder {
+    color: gray;
+}
+
+.HelpfulInformation {
+    font-size: 24px;
+    margin-top: 80px;
+}
+
+.LoginButton {
+  background: black;
+  border: 2px solid gold;
+  color: gold;
+  font-size: 18px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+  margin-top: 30px;
+}
+
+.RadioGroup label {
+    margin-top: 40px;
+}

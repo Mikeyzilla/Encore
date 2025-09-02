@@ -1,6 +1,6 @@
 package Encore.EncoreBackend.Entities;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,7 +20,7 @@ public class Performances {
     Long id;
 
     @Column(nullable = false)
-    private Date date;
+    private LocalDate date;
 
     @Column(nullable = false)
     private String description;
@@ -42,14 +42,6 @@ public class Performances {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public String getDescription() {
@@ -82,5 +74,13 @@ public class Performances {
 
     public void setBand(Band band) {
         this.band = band;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 }
