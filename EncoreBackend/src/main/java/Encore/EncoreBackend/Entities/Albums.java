@@ -18,7 +18,7 @@ public class Albums {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String album_name;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -26,10 +26,10 @@ public class Albums {
     @com.fasterxml.jackson.annotation.JsonIgnore
     private Band band;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private Long chart_ranking;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private Long revenue_generated;
 
     public Albums() {

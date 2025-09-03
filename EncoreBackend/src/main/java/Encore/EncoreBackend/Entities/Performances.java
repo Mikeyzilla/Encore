@@ -19,16 +19,16 @@ public class Performances {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private Date date;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String description;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String venue_name;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private int guest_count;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

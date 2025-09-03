@@ -18,7 +18,7 @@ public class Song {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String song_name;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
