@@ -1,5 +1,6 @@
 package Encore.EncoreBackend.DTO;
 
+import java.sql.Date;
 import java.util.List;
 
 public class BandDTO extends CreateDTO {
@@ -12,13 +13,13 @@ public class BandDTO extends CreateDTO {
     private List<String> newBandSongs;
 
     private String wherePlayed;
-    private String whenPlayed;
+    private Date whenPlayed;
     private String howItWent;
-    private String numPeople;
+    private Integer numPeople;
 
     private String albumName;
-    private String chartNum;
-    private String revenue;
+    private Long chartNum;
+    private Long revenue;
 
     private String pitch;
     private String whyWe;
@@ -87,14 +88,6 @@ public class BandDTO extends CreateDTO {
         this.wherePlayed = wherePlayed;
     }
 
-    public String getWhenPlayed() {
-        return whenPlayed;
-    }
-
-    public void setWhenPlayed(String whenPlayed) {
-        this.whenPlayed = whenPlayed;
-    }
-
     public String getHowItWent() {
         return howItWent;
     }
@@ -103,36 +96,12 @@ public class BandDTO extends CreateDTO {
         this.howItWent = howItWent;
     }
 
-    public String getNumPeople() {
-        return numPeople;
-    }
-
-    public void setNumPeople(String numPeople) {
-        this.numPeople = numPeople;
-    }
-
     public String getAlbumName() {
         return albumName;
     }
 
     public void setAlbumName(String albumName) {
         this.albumName = albumName;
-    }
-
-    public String getChartNum() {
-        return chartNum;
-    }
-
-    public void setChartNum(String chartNum) {
-        this.chartNum = chartNum;
-    }
-
-    public String getRevenue() {
-        return revenue;
-    }
-
-    public void setRevenue(String revenue) {
-        this.revenue = revenue;
     }
 
     public String getPitch() {
@@ -149,5 +118,37 @@ public class BandDTO extends CreateDTO {
 
     public void setWhyWe(String whyWe) {
         this.whyWe = whyWe;
+    }
+
+    public Integer getNumPeople() {
+        return numPeople;
+    }
+
+    public void setNumPeople(Integer numPeople) {
+        this.numPeople = numPeople;
+    }
+
+    public Long getChartNum() {
+        return chartNum;
+    }
+
+    public void setChartNum(Long chartNum) {
+        this.chartNum = chartNum;
+    }
+
+    public Long getRevenue() {
+        return revenue;
+    }
+
+    public void setRevenue(Long revenue) {
+        this.revenue = revenue;
+    }
+
+    public Date getWhenPlayed() {
+        return whenPlayed;
+    }
+
+    public void setWhenPlayed(Date whenPlayed) {
+        this.whenPlayed = whenPlayed;
     }
 }

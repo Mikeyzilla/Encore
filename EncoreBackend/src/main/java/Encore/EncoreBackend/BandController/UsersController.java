@@ -1,5 +1,8 @@
 package Encore.EncoreBackend.BandController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -12,16 +15,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import Encore.EncoreBackend.DTO.BandDTO;
 import Encore.EncoreBackend.DTO.CreateDTO;
+import Encore.EncoreBackend.DTO.LoginDTO;
 import Encore.EncoreBackend.DTO.ManagerDTO;
+import Encore.EncoreBackend.DTO.TryLoginDTO;
 import Encore.EncoreBackend.Entities.Albums;
 import Encore.EncoreBackend.Entities.Band;
 import Encore.EncoreBackend.Entities.Managers;
 import Encore.EncoreBackend.Entities.Performances;
+import Encore.EncoreBackend.Entities.Song;
 import Encore.EncoreBackend.Entities.Users;
 import Encore.EncoreBackend.Repositories.AlbumsRepository;
 import Encore.EncoreBackend.Repositories.BandRepository;
 import Encore.EncoreBackend.Repositories.ManagersRepository;
 import Encore.EncoreBackend.Repositories.PerformancesRepository;
+import Encore.EncoreBackend.Repositories.SongRepository;
 import Encore.EncoreBackend.Repositories.UsersRepository;
 import jakarta.transaction.Transactional;
 
@@ -29,30 +36,39 @@ import jakarta.transaction.Transactional;
 @RequestMapping("/api/users")
 @CrossOrigin(origins = "http://localhost:5173")
 public class UsersController {
-    public UsersRepository userRepository;
-    public BandRepository bandRepository;
-    public AlbumsRepository albumsRepository;
-    public PerformancesRepository performancesRepository;
-    public ManagersRepository managersRepository;
+    private final UsersRepository userRepository;
+    private final BandRepository bandRepository;
+    private final AlbumsRepository albumsRepository;
+    private final PerformancesRepository performancesRepository;
+    private final ManagersRepository managersRepository;
+    private final SongRepository songRepository;
 
     public UsersController(UsersRepository userRepository, BandRepository bandRepository,
             AlbumsRepository albumsRepository, PerformancesRepository performancesRepository,
-            ManagersRepository managersRepository, JwtEncoder jwtEncoder) {
+            ManagersRepository managersRepository, SongRepository songRepository, JwtEncoder jwtEncoder) {
         this.userRepository = userRepository;
         this.bandRepository = bandRepository;
         this.albumsRepository = albumsRepository;
         this.performancesRepository = performancesRepository;
         this.managersRepository = managersRepository;
+        this.songRepository = songRepository;
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(String username, String password, String role) {
+    public ResponseEntity<LoginDTO> Login(@RequestBody TryLoginDTO loginInfo) {
+        String username = loginInfo.getUsername();
+        String password = loginInfo.getPassword();
+        String role = loginInfo.getRole();
         Users attemptedUser = userRepository.findByUsernameAndRole(username, role);
-        if (attemptedUser == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+        if (attemptedUser == null || !BCrypt.checkpw(password, attemptedUser.getPassword())) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
-
-        return ResponseEntity.ok("Login successful for " + attemptedUser.getUsername());
+        // Add in JWT to this
+        LoginDTO loginSuccess = new LoginDTO();
+        loginSuccess.setRole(attemptedUser.getRole());
+        loginSuccess.setJwtToIssue("Hey");
+        loginSuccess.setUsername(attemptedUser.getUsername());
+        return ResponseEntity.ok(loginSuccess);
     }
 
     @Transactional
@@ -85,19 +101,13 @@ public class UsersController {
             bandInfo.setWhy_choose_us(bandDTO.getWhyWe());
             Albums bandAlbum = new Albums();
             Performances bandPerformance = new Performances();
-            /*
-             * Still missing:
-             * chartNum → converted with Long.valueOf(bandDTO.getChartNum())
-             * 
-             * revenue → converted with Long.valueOf(bandDTO.getRevenue())
-             * 
-             * Performance-related
-             * 
-             * whenPlayed → parsed into a Date with
-             * DateTimeFormatter.ofPattern("yyyy-MM-dd")
-             * 
-             * numPeople → converted with Integer.parseInt(bandDTO.getNumPeople())
-             */
+            bandAlbum.setChart_ranking(bandDTO.getChartNum());
+            bandAlbum.setRevenue_generated(bandDTO.getRevenue());
+            bandPerformance.setDate(bandDTO.getWhenPlayed());
+            bandPerformance.setVenue_name(bandDTO.getWherePlayed());
+            bandPerformance.setGuest_count(
+                    bandDTO.getNumPeople() != null ? bandDTO.getNumPeople() : 0);
+
             bandAlbum.setAlbum_name(bandDTO.getAlbumName());
             bandPerformance.setBand(bandInfo);
             bandPerformance.setDescription(bandDTO.getHowItWent());
@@ -106,6 +116,20 @@ public class UsersController {
             bandAlbum.setBand(bandInfo);
             albumsRepository.save(bandAlbum);
             performancesRepository.save(bandPerformance);
+            List<String> newSongs = bandDTO.getNewBandSongs();
+
+            if (newSongs != null && !newSongs.isEmpty()) {
+                List<Song> bandSongs = new ArrayList<>();
+
+                for (String songName : newSongs) {
+                    Song song = new Song();
+                    song.setSong_name(songName);
+                    song.setBand(bandInfo);
+                    bandSongs.add(song);
+                }
+
+                songRepository.saveAll(bandSongs);
+            }
             return ResponseEntity.ok("Band account created successfully");
         } else if (create instanceof ManagerDTO managerDTO) {
             Managers manager = new Managers();

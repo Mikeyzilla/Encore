@@ -1,7 +1,9 @@
 package Encore.EncoreBackend.DTO;
 
+import java.util.Date;
+
 public class PerformanceDTO {
-    public String date;
+    public Date date;
     public String description;
     public String venueName;
     public Integer guestCount;

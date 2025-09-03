@@ -1,18 +1,41 @@
 import { useState } from "react";
 import "./Login.css"
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
     const [roleType, setRoleType] = useState("");
+    const [thisUserName, setThisUserName] = useState("");
+    const [thisPassword, setThisPassword] = useState("");
+
+    const navigate = useNavigate();
+
+    const tryLoggingIn = async () => {
+        const response = await axios.post(`http://localhost:8080/api/users/createAnAccount`,
+            {
+                username: thisUserName,
+                password: thisPassword,
+                role: roleType
+            }
+        );
+        if (response.data) {
+            if (roleType === "manager") {
+                navigate("/dashboard");
+            } else {
+                navigate("/viewProfile");
+            }
+        }
+    }
 
     return (
         <div className="LoginPage">
             <div className="LoginTop">
                 <h1 className="NameOfBrand">Encore</h1>
             </div>
-            <form className="LoginForm">
+            <form className="LoginForm" onSubmit={tryLoggingIn}>
                 <div className="InputArea">
-                    <input type="text" placeholder="Username" className="InputField"></input>
-                    <input type="password" placeholder="Password" className="InputField"></input>
+                    <input type="text" placeholder="Username" className="InputField" value={thisUserName} onChange={(e) => setThisUserName(e.currentTarget.value)}></input>
+                    <input type="password" placeholder="Password" className="InputField" value={thisPassword} onChange={(e) => setThisPassword(e.currentTarget.value)}></input>
                 </div>
                 <div className="HelpfulInformation">Are you logging in as a Band, or as a Manager?</div>
                 <div className="RadioGroup">
@@ -20,7 +43,7 @@ export default function Login() {
                         <input
                             type="radio"
                             name="role"
-                            value="manager"
+                            value="Manager"
                             onChange={() => setRoleType("Manager")}
                         />
                         Manager
@@ -30,7 +53,7 @@ export default function Login() {
                         <input
                             type="radio"
                             name="role"
-                            value="band"
+                            value="Band"
                             onChange={() => setRoleType("Band")}
                         />
                         Band

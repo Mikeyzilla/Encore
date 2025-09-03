@@ -4,7 +4,10 @@ import "./CreateAccount.css";
 import managerBackground from "../../assets/ManagerCreate.png";
 import { albumCoverMap, groupPhotoMap, musicProfileMap } from "../../utils/BandGenres";
 import type { musicGenres } from "../../utils/BandGenres";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 type UIType = "normal" | "band" | "manager";
+type MusicEvent = "Concert" | "Music Festival" | "Gig"
 
 export default function CreateAccount() {
 
@@ -15,7 +18,6 @@ export default function CreateAccount() {
   const [genre, setGenre] = useState<musicGenres>("rock");
   const [isUserShowing, setIsUserShowing] = useState(true);
   const [origin, setOrigin] = useState("");
-  const [mostPlayedSong, setMostPlayedSong] = useState("");
   const [aboutUs, setAboutUs] = useState("");
   const [newBandSongs, setNewBandSongs] = useState<string[]>([]);
   const [pendingSong, setPendingSong] = useState("");
@@ -30,10 +32,25 @@ export default function CreateAccount() {
   const [revenue, setRevenue] = useState("");
   const [pitch, setPitch] = useState("");
   const [whyWe, setWhyWe] = useState("");
-
+  const [eventType, setEventType] = useState<MusicEvent>("Concert");
+  const [whereIsIt, setWhereIsIt] = useState("");
+  const [whatDate, setWhatDate] = useState("");
+  const [mostFamous, setMostFamous] = useState("");
+  const [bandFee, setBandFee] = useState("");
+  const [whatTime, setWhatTime] = useState("");
+  const [roleType, setRoleType] = useState("");
   const [nameOfInformationArea, setNameOfInformationArea] = useState("RequiredInformationArea SwipeZone");
-  const showBand = () => setWhatIsShown("band");
-  const showManager = () => setWhatIsShown("manager");
+  const navigate = useNavigate();
+
+  const showBand = () => {
+    setRoleType("band");
+    setWhatIsShown("band");
+  }
+
+  const showManager = () => {
+    setRoleType("manager");
+    setWhatIsShown("manager");
+  }
   const showNormal = () => setWhatIsShown("normal");
   const genreKey = (genre?.toLowerCase().trim() as musicGenres) || "rock";
 
@@ -66,6 +83,69 @@ export default function CreateAccount() {
 
   function deleteSong() {
     setNewBandSongs(prev => (prev.length ? prev.slice(1) : prev));
+  }
+
+  const createThatAccount = async (e?: React.FormEvent) => {
+    e?.preventDefault();
+    const role = roleType === "band" ? "Band" : roleType === "manager" ? "Manager" : "";
+    try {
+      const minimumRequiredInfo = {
+        username: username.trim(),
+        password: password,
+        role
+      };
+
+      const bandRequiredInfo = {
+        nameOfTheBand: nameOfTheBand.trim(),
+        aboutUs: aboutUs.trim(),
+        genre: (genre || "rock").trim(),
+        mostPlayedSong: mostFamous.trim(),
+        origin: origin.trim(),
+      };
+
+      const bandOptionalInfo = {
+        pitch: pitch.trim(),
+        whyWe: whyWe.trim(),
+        newBandSongs,
+        wherePlayed: wherePlayed.trim(),
+        whenPlayed: whenPlayed.trim(),
+        howItWent: howItWent.trim(),
+        numPeople: numPeople ? Number(numPeople) : undefined,
+        albumName: albumName.trim(),
+        chartNum: chartNum ? Number(chartNum) : undefined,
+        revenue: revenue ? Number(revenue) : undefined
+      }
+
+      const managerOptionalInfo = {
+        eventType,
+        venueLocation: whereIsIt.trim(),
+        timeSlot: whatTime.trim(),
+        date: whatDate.trim(),
+        bandFee: bandFee ? Number(bandFee) : undefined,
+      }
+
+      if (roleType === "band") {
+        const response = await axios.post(`http://localhost:8080/api/users/createAnAccount`,
+          {
+            ...minimumRequiredInfo, ...bandRequiredInfo, ...bandOptionalInfo
+          }
+        )
+        if (response.data) {
+          navigate("/viewProfile");
+        }
+      } else {
+        const response = await axios.post(`http://localhost:8080/api/users/createAnAccount`,
+          {
+            ...minimumRequiredInfo, ...managerOptionalInfo
+          }
+        )
+        if (response.data) {
+          navigate("/dashboard");
+        }
+      }
+    } catch (err) {
+      console.error("error with account creation: ", err);
+    }
   }
 
   return (
@@ -105,7 +185,7 @@ export default function CreateAccount() {
       )}
 
       {whatIsShown === "band" && (
-        <form className="BandView">
+        <form className="BandView" onSubmit={createThatAccount}>
           <div className="BandView">
             <div className="FillableTitleArea">
               <select className="GenreSelector" value={genre} onChange={(e) => setGenre(e.target.value as musicGenres)}>
@@ -127,8 +207,8 @@ export default function CreateAccount() {
               <input type="checkbox" className="NewBandCheckbox" onChange={(e) => setNewBand(e.target.checked)} />
             </div>
             <div className="RequiredEntries">
-            <input type="text" placeholder="Username" style={{ fontFamily: musicProfileMap[genreKey].fontFamily, color: musicProfileMap[genreKey].color }}></input>
-            <input type="password" placeholder="Password" style={{ fontFamily: musicProfileMap[genreKey].fontFamily, color: musicProfileMap[genreKey].color }}></input>
+              <input type="text" value={username} onChange={(e) => setUserName(e.target.value)} placeholder="Username" style={{ fontFamily: musicProfileMap[genreKey].fontFamily, color: musicProfileMap[genreKey].color }}></input>
+              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" style={{ fontFamily: musicProfileMap[genreKey].fontFamily, color: musicProfileMap[genreKey].color }}></input>
             </div>
             <div
               className={`fillOutableBandProfile genre-${genreKey}`}
@@ -141,15 +221,16 @@ export default function CreateAccount() {
                 <div className="StyleDiv">
                   <input type="text" placeholder="Your Band Name" className="BandNameGoesHere" value={nameOfTheBand} onChange={(e) => setNameOfTheBand(e.currentTarget.value)} required></input>
                   <input type="text" placeholder="Where are you from?" className="OriginGoesHere" value={origin} onChange={(e) => setOrigin(e.currentTarget.value)} required></input>
+                  <input type="text" placeholder="Tell us about your band!" className="AboutEntry" value={aboutUs} onChange={(e) => setAboutUs(e.currentTarget.value)} required></input>
                 </div>
                 <div className="LineOfSocials">
                   <div className="SocialInfo">
                     <div className="SocialImage"></div>
-                    <input type="text" className="SocialEntry" placeholder="What's your name on Z?" value={bandSocial} onChange={(e) => setBandSocial(e.currentTarget.value)}></input>
+                    <input type="text" className="SocialEntry" placeholder="Z name?" value={bandSocial} onChange={(e) => setBandSocial(e.currentTarget.value)}></input>
                   </div>
                   <div className="HitSongPart">
                     <div className="SongLogo"></div>
-                    <span>{mostPlayedSong}</span>
+                    <input type="text" placeholder="What's your most played song?" value={mostFamous} onChange={(e) => setMostFamous(e.currentTarget.value)} required className="MostEntry"></input>
                   </div>
                 </div>
               </div>
@@ -171,15 +252,11 @@ export default function CreateAccount() {
                     </div>
                     <div className="DescriptionLand">
                       <h1 className="AboutUsLand">A little about us</h1>
-                      <input type="text" placeholder="Tell us about your band!" className="AboutEntry" value={aboutUs} onChange={(e) => setAboutUs(e.currentTarget.value)} required></input>
                     </div>
                   </div>
                 )}
                 {!newBand && (
                   <div className="ReturningLand">
-                    <div className="DescriptionOfWe">
-                      {aboutUs}
-                    </div>
                     <div className="Glue">
                       <div className="PerformancesLand">
                         <h1 className="PerformanceTidBit">Any past gigs? You can enter them here!</h1>
@@ -235,7 +312,7 @@ export default function CreateAccount() {
 
       {
         whatIsShown === "manager" && (
-          <form>
+          <form onSubmit={createThatAccount}>
             <div className="ManagerArea">
               <div className="ManagerHeader">
                 <h1 className="ManagerNameOfBrand">Encore VIP</h1>
@@ -249,17 +326,25 @@ export default function CreateAccount() {
               <div className={nameOfInformationArea} {...entryViewHandler}>
                 {isUserShowing && (
                   <div className="AccountView">
-                    <input className="ManagerName" type="text" placeholder="Your username goes here" required></input>
-                    <input className="ManagerPass" type="password" placeholder="Your password goes here" required></input>
+                    <input className="ManagerName" type="text" placeholder="Your username goes here" required value={username} onChange={(e) => setUserName(e.currentTarget.value)}></input>
+                    <input className="ManagerPass" type="password" placeholder="Your password goes here" required value={password} onChange={(e) => setPassword(e.currentTarget.value)}></input>
                   </div>
                 )}
                 {!isUserShowing && (
                   <div className="VenueView">
-                    <input className="VenueEntry" type="text" placeholder="What type of event is it?"></input>
-                    <input className="VenueEntry" type="text" placeholder="Where is the venue?"></input>
-                    <input className="VenueEntry" type="text" placeholder="What timeslot is it for?"></input>
-                    <input className="VenueEntry" type="text" placeholder="What date is it for?"></input>
-                    <input className="VenueEntry" type="text" placeholder="What's the band's fee for the gig?"></input>
+                    <select
+                      value={eventType}
+                      onChange={(e) => setEventType(e.target.value as MusicEvent)}
+                      className="EventSelector"
+                    >
+                      <option value="Concert">Concert</option>
+                      <option value="Music Festival">Music Festival</option>
+                      <option value="Gig">Gig</option>
+                    </select>
+                    <input className="VenueEntry" type="text" placeholder="Where is the venue?" value={whereIsIt} onChange={(e) => setWhereIsIt(e.currentTarget.value)}></input>
+                    <input className="VenueEntry" type="text" placeholder="What time is it for?" value={whatTime} onChange={(e) => setWhatTime(e.currentTarget.value)}></input>
+                    <input className="VenueEntry" type="text" placeholder="What date is it for?" value={whatDate} onChange={(e) => setWhatDate(e.currentTarget.value)}></input>
+                    <input className="VenueEntry" type="text" placeholder="What's the band's fee for the gig?" value={bandFee} onChange={(e) => setBandFee(e.currentTarget.value)}></input>
                   </div>
                 )}
                 <input type="submit" className="ManagerSubmit"></input>

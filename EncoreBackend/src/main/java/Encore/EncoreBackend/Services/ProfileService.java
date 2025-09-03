@@ -72,7 +72,7 @@ public class ProfileService {
                 ourProfileData.performances = ourPerformanceData.stream()
                                 .map(p -> {
                                         PerformanceDTO d = new PerformanceDTO();
-                                        d.date = (p.getDate() == null) ? null : p.getDate().toString();
+                                        d.date = (p.getDate() == null) ? null : p.getDate();
                                         d.description = p.getDescription();
                                         d.venueName = p.getVenue_name();
                                         d.guestCount = p.getGuest_count();
