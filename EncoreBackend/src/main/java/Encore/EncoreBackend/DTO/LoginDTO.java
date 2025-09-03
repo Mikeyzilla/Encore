@@ -4,6 +4,7 @@ public class LoginDTO {
     private String username;
     private String jwtToIssue;
     private String role;
+    private Long bandId;
 
     public String getUsername() {
         return username;
@@ -27,5 +28,13 @@ public class LoginDTO {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public Long getBandId() {
+        return bandId;
+    }
+
+    public void setBandId(Long bandId) {
+        this.bandId = bandId;
     }
 }

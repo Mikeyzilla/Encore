@@ -6,6 +6,7 @@ import { albumCoverMap, groupPhotoMap, musicProfileMap } from "../../utils/BandG
 import type { musicGenres } from "../../utils/BandGenres";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { centralizeURL } from "../../utils/centralizeURL";
 type UIType = "normal" | "band" | "manager";
 type MusicEvent = "Concert" | "Music Festival" | "Gig"
 
@@ -131,7 +132,8 @@ export default function CreateAccount() {
           }
         )
         if (response.data) {
-          navigate("/viewProfile");
+          sessionStorage.setItem("bandId", String(response.data.bandId));
+          navigate(`/${encodeURIComponent(centralizeURL(genre))}/${encodeURIComponent(centralizeURL(nameOfTheBand))}`);
         }
       } else {
         const response = await axios.post(`http://localhost:8080/api/users/createAnAccount`,

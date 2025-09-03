@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import Encore.EncoreBackend.DTO.BandDTO;
+import Encore.EncoreBackend.DTO.CreateAccountResult;
 import Encore.EncoreBackend.DTO.CreateDTO;
 import Encore.EncoreBackend.DTO.LoginDTO;
 import Encore.EncoreBackend.DTO.ManagerDTO;
@@ -68,18 +69,23 @@ public class UsersController {
         loginSuccess.setRole(attemptedUser.getRole());
         loginSuccess.setJwtToIssue("Hey");
         loginSuccess.setUsername(attemptedUser.getUsername());
+        if (role.equals("band") || role.equals("Band")) {
+            Band associatedBand = bandRepository.findByUserId(attemptedUser.getId());
+            loginSuccess.setBandId(associatedBand.getId());
+        }
         return ResponseEntity.ok(loginSuccess);
     }
 
     @Transactional
     @PostMapping("/createAnAccount")
-    public ResponseEntity<String> createAnAccount(@RequestBody CreateDTO create) {
+    public ResponseEntity<CreateAccountResult> createAnAccount(@RequestBody CreateDTO create) {
         if (userRepository.findByUsernameAndRole(create.getUsername(), create.getRole()) != null) {
             return ResponseEntity.status(HttpStatus.CONFLICT)
-                    .body("User with this username and role already exists.");
+                    .body(new CreateAccountResult(null, "User with this username and role already exists."));
         }
         if (create.getRole().equals("Manager") == false && create.getRole().equals("Band") == false) {
-            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body("Role did not fit");
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED)
+                    .body(new CreateAccountResult(null, "Role did not fit"));
         }
 
         Users userToBeSignedUp = new Users();
@@ -130,7 +136,8 @@ public class UsersController {
 
                 songRepository.saveAll(bandSongs);
             }
-            return ResponseEntity.ok("Band account created successfully");
+            return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(new CreateAccountResult(bandInfo.getId(), "Band account created successfully"));
         } else if (create instanceof ManagerDTO managerDTO) {
             Managers manager = new Managers();
             manager.setEventType(managerDTO.getEventType());
@@ -141,9 +148,11 @@ public class UsersController {
             manager.setUser(userToBeSignedUp);
             managersRepository.save(manager);
 
-            return ResponseEntity.ok("Manager account created successfully");
+            return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(new CreateAccountResult(null, "Manager account created successfully"));
         } else {
-            return ResponseEntity.ok("User account created successfully (required info only)");
+            return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(new CreateAccountResult(null, "User account created successfully (required info only)"));
         }
     }
 }

@@ -10,5 +10,7 @@ import Encore.EncoreBackend.Entities.Band;
 public interface BandRepository extends JpaRepository<Band, Long> {
     Optional<Band> findByBandName(String bandName);
 
+    Band findByUserId(Long userId);
+
     List<Band> findByGenreOfMusicIgnoreCase(String genreOfMusic);
 }

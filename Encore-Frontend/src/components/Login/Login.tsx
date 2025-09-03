@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./Login.css"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { centralizeURL } from "../../utils/centralizeURL";
 
 export default function Login() {
     const [roleType, setRoleType] = useState("");
@@ -10,20 +11,30 @@ export default function Login() {
 
     const navigate = useNavigate();
 
-    const tryLoggingIn = async () => {
-        const response = await axios.post(`http://localhost:8080/api/users/createAnAccount`,
-            {
-                username: thisUserName,
-                password: thisPassword,
-                role: roleType
+    const tryLoggingIn = async (e: React.FormEvent) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post(`http://localhost:8080/api/users/login`,
+                {
+                    username: thisUserName,
+                    password: thisPassword,
+                    role: roleType
+                }
+            );
+            if (response.data) {
+                if (roleType === "Manager") {
+                    navigate("/dashboard");
+                } else {
+                    sessionStorage.setItem("bandId", String(response.data.bandId));
+                    const bandRes = await axios.get(`http://localhost:8080/api/bands/${sessionStorage.getItem("bandId")}`);
+                    const band = bandRes.data;
+                    const nameOfTheBand = (band?.bandName ?? "").trim();
+                    const genre = (band?.genreOfMusic ?? "").trim();
+                    navigate(`/${encodeURIComponent(centralizeURL(genre))}/${encodeURIComponent(centralizeURL(nameOfTheBand))}`);
+                }
             }
-        );
-        if (response.data) {
-            if (roleType === "manager") {
-                navigate("/dashboard");
-            } else {
-                navigate("/viewProfile");
-            }
+        } catch (err) {
+            console.error(err);
         }
     }
 
