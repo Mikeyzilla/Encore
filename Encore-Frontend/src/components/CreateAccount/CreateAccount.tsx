@@ -133,6 +133,7 @@ export default function CreateAccount() {
         )
         if (response.data) {
           sessionStorage.setItem("bandId", String(response.data.bandId));
+          sessionStorage.setItem("userIdentifier", response.data.userId);
           navigate(`/${encodeURIComponent(centralizeURL(genre))}/${encodeURIComponent(centralizeURL(nameOfTheBand))}`);
         }
       } else {
@@ -142,6 +143,7 @@ export default function CreateAccount() {
           }
         )
         if (response.data) {
+          sessionStorage.setItem("userIdentifier", response.data.userId);
           navigate("/dashboard");
         }
       }
@@ -159,7 +161,11 @@ export default function CreateAccount() {
     >
       {whatIsShown === "normal" && (
         <div className="OpeningHeader">
-          <h1 className="NameOfBrand">Encore</h1>
+          <div className="TitleAndLogin">
+            <div className="EmptySpace"></div>
+            <h1 className="NameOfBrand">Encore</h1>
+            <button onClick={() => navigate("/login")} className="LoginButton">LOGIN</button>
+          </div>
           <p className="OpeningLine">Bands, meet your newest tour manager. Managers, meet your newest roster HQ: Encore.</p>
           <p className="GuidanceText">Over at Casella LLC, we like to do things different. Click on either manager or band to get straight into business!</p>
           <div className="RadioGroup">

@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,6 +57,13 @@ public class UsersController {
         this.songRepository = songRepository;
     }
 
+    @GetMapping("/role/{userId}")
+    public String getRoleByUserId(@PathVariable Long userId) {
+        Users user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found with id " + userId));
+        return user.getRole();
+    }
+
     @PostMapping("/login")
     public ResponseEntity<LoginDTO> Login(@RequestBody TryLoginDTO loginInfo) {
         String username = loginInfo.getUsername();
@@ -73,6 +82,7 @@ public class UsersController {
             Band associatedBand = bandRepository.findByUserId(attemptedUser.getId());
             loginSuccess.setBandId(associatedBand.getId());
         }
+        loginSuccess.setUserId(attemptedUser.getId());
         return ResponseEntity.ok(loginSuccess);
     }
 
@@ -81,11 +91,11 @@ public class UsersController {
     public ResponseEntity<CreateAccountResult> createAnAccount(@RequestBody CreateDTO create) {
         if (userRepository.findByUsernameAndRole(create.getUsername(), create.getRole()) != null) {
             return ResponseEntity.status(HttpStatus.CONFLICT)
-                    .body(new CreateAccountResult(null, "User with this username and role already exists."));
+                    .body(new CreateAccountResult(null, null, "User with this username and role already exists."));
         }
         if (create.getRole().equals("Manager") == false && create.getRole().equals("Band") == false) {
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED)
-                    .body(new CreateAccountResult(null, "Role did not fit"));
+                    .body(new CreateAccountResult(null, null, "Role did not fit"));
         }
 
         Users userToBeSignedUp = new Users();
@@ -137,7 +147,8 @@ public class UsersController {
                 songRepository.saveAll(bandSongs);
             }
             return ResponseEntity.status(HttpStatus.CREATED)
-                    .body(new CreateAccountResult(bandInfo.getId(), "Band account created successfully"));
+                    .body(new CreateAccountResult(bandInfo.getId(), userToBeSignedUp.getId(),
+                            "Band account created successfully"));
         } else if (create instanceof ManagerDTO managerDTO) {
             Managers manager = new Managers();
             manager.setEventType(managerDTO.getEventType());
@@ -149,10 +160,13 @@ public class UsersController {
             managersRepository.save(manager);
 
             return ResponseEntity.status(HttpStatus.CREATED)
-                    .body(new CreateAccountResult(null, "Manager account created successfully"));
+                    .body(new CreateAccountResult(null, userToBeSignedUp.getId(),
+                            "Manager account created successfully"));
         } else {
             return ResponseEntity.status(HttpStatus.CREATED)
-                    .body(new CreateAccountResult(null, "User account created successfully (required info only)"));
+                    .body(new CreateAccountResult(null, userToBeSignedUp.getId(),
+                            "User account created successfully (required info only)"));
         }
     }
+
 }

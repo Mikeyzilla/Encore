@@ -838,3 +838,14 @@
   outline: none;
   border-color: white;
 }
+
+.TitleAndLogin {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.LoginButton {
+  grid-column: 3;
+  justify-self: end;
+  height: 60px
+}

@@ -23,6 +23,7 @@ export default function Login() {
             );
             if (response.data) {
                 if (roleType === "Manager") {
+                    sessionStorage.setItem("userIdentifier", response.data.userId);
                     navigate("/dashboard");
                 } else {
                     sessionStorage.setItem("bandId", String(response.data.bandId));
@@ -30,11 +31,15 @@ export default function Login() {
                     const band = bandRes.data;
                     const nameOfTheBand = (band?.bandName ?? "").trim();
                     const genre = (band?.genreOfMusic ?? "").trim();
+                    sessionStorage.setItem("userIdentifier", response.data.userId);
                     navigate(`/${encodeURIComponent(centralizeURL(genre))}/${encodeURIComponent(centralizeURL(nameOfTheBand))}`);
                 }
+            } else {
+                alert("Invalid username, password, or role supplied");
             }
         } catch (err) {
             console.error(err);
+            alert(err);
         }
     }
 
