@@ -150,5 +150,50 @@
 
 .ConcertView, .FestivalView, .GigView {
   margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.EventHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.AvailableEvent {
+  background-image: url("../../assets/EventTicket.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 400px;
+  height: 400px;
+  display: grid;
+  place-content: center;       
+  justify-items: center; 
+  color: black;
+  font-weight: bolder;
+}
+
+.EventWhereTime {
+  margin-top: -1px;
+}
+
+.EmptySpace {
+  margin-left: 280px;
+  rotate: calc(90deg);
+  margin-top: 5px;
+  color: transparent;
+}
+
+.EventPrizeMoney {
+  margin-left: 280px;
+  rotate: calc(90deg);
+  margin-top: 20px;
+}
+
+.EventManager {
+  margin-top: 40px;
 }
 

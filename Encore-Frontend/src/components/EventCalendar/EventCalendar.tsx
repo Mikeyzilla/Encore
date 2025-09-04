@@ -1,10 +1,13 @@
 import "./EventCalendar.css"
-import { numberToMonthMap, daysInMonthMap } from "../../utils/BandGenres"
+import { numberToMonthMap, daysInMonthMap, type EventManager } from "../../utils/BandGenres"
 import { useEffect, useState } from "react";
 import type { MusicEvent } from "../CreateAccount/CreateAccount";
+import axios from "axios";
 
 export default function EventCalendar() {
     let currentDate = new Date();
+
+    const [events, setEvents] = useState<EventManager[]>([]);
     const [currentMonth, setCurrentMonth] = useState(currentDate.getMonth() + 1);
     const [currentYear, setCurrentYear] = useState(currentDate.getFullYear());
     const [numberOfTheDay, setNumberOfTheDay] = useState(0);
@@ -52,9 +55,9 @@ export default function EventCalendar() {
         for (let i = 1; i <= dayNum; i++) {
             const label = determineDayOfTheWeek(i);
             divDays.push(
-                <div className="DayOfTheWeekArea">
+                <div key={i} className="DayOfTheWeekArea">
                     <label className="NameOfTheDay">{label}</label>
-                    <div key={i} className="IndividualDayNum" onClick={() => showEventsForTheDay(i)}>{i}</div>
+                    <div className="IndividualDayNum" onClick={() => showEventsForTheDay(i)}>{i}</div>
                 </div>
             );
         }
@@ -64,6 +67,12 @@ export default function EventCalendar() {
     useEffect(() => {
         grabDaysForMonth(numberToMonthMap[currentMonth]);
     }, [currentMonth]);
+
+    useEffect(() => {
+        if (inEventView && numberOfTheDay > 0) {
+            getEvents();
+        }
+    }, [inEventView, numberOfTheDay, whatEventTypeIsShown, currentMonth, currentYear]);
 
     const determineDayOfTheWeek = (dayNumber: number) => {
         if (dayNumber < 1 || dayNumber > daysInMonthMap[currentMonth] || dayNumber > 7) {
@@ -79,6 +88,17 @@ export default function EventCalendar() {
         setNumberOfTheDay(day);
         setInEventView(true);
     };
+
+    const getEvents = async () => {
+        try {
+            const url = `http://localhost:8080/api/events/${encodeURIComponent(whatEventTypeIsShown)}/${currentYear}/${currentMonth}/${numberOfTheDay}`;
+            const { data } = await axios.get<EventManager[]>(url);
+            setEvents(data);
+        } catch (err) {
+            console.error("Error fetching events for the day: ", err);
+        }
+    };
+
 
     return (
         <div className="CalendarPage">
@@ -109,35 +129,47 @@ export default function EventCalendar() {
                     </div>
                     {whatEventTypeIsShown === "Concert" && (
                         <div className="ConcertView">
-                            Inside Concert
-                            <div className="AvailableEvent">
-                                <div>State Farm Arena</div>
-                                <div>6:00PM</div>
-                                <div> 500 $ </div>
-                                <div> Manager Mike </div>
-                            </div>
+                            {events.length === 0 ? (
+                                <div className="NoEvents">No events for this day.</div>
+                            ) : (
+                                events.map(e => (
+                                    <div key={e.id} className="AvailableEvent">
+                                        <div className="EventWhereTime">{e.venueLocation} {e.timeSlot}</div>
+                                        <div className="EventPrizeMoney">{e.bandFee} $</div>
+                                        <div className="EventManager">Manager #{e.id}</div>
+                                    </div>
+                                ))
+                            )}
                         </div>
                     )}
                     {whatEventTypeIsShown === "Music Festival" && (
                         <div className="FestivalView">
-                            Inside Music
-                            <div className="AvailableEvent">
-                                <div>State Farm Arena</div>
-                                <div>6:00PM</div>
-                                <div> 500 $ </div>
-                                <div> Manager Mike </div>
-                            </div>
+                            {events.length === 0 ? (
+                                <div className="NoEvents">No events for this day.</div>
+                            ) : (
+                                events.map(e => (
+                                    <div key={e.id} className="AvailableEvent">
+                                        <div className="EventWhereTime">{e.venueLocation} {e.timeSlot}</div>
+                                        <div className="EventPrizeMoney">{e.bandFee} $</div>
+                                        <div className="EventManager">Manager #{e.id}</div>
+                                    </div>
+                                ))
+                            )}
                         </div>
                     )}
                     {whatEventTypeIsShown === "Gig" && (
                         <div className="GigView">
-                            Inside Gig
-                            <div className="AvailableEvent">
-                                <div>State Farm Arena</div>
-                                <div>6:00PM</div>
-                                <div> 500 $ </div>
-                                <div> Manager Mike </div>
-                            </div>
+                            {events.length === 0 ? (
+                                <div className="NoEvents">No events for this day.</div>
+                            ) : (
+                                events.map(e => (
+                                    <div key={e.id} className="AvailableEvent">
+                                        <div className="EventWhereTime">{e.venueLocation} {e.timeSlot}</div>
+                                        <div className="EventPrizeMoney">{e.bandFee} $</div>
+                                        <div className="EventManager">Manager #{e.id}</div>
+                                    </div>
+                                ))
+                            )}
                         </div>
                     )}
                 </div>

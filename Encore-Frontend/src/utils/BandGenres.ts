@@ -33,33 +33,33 @@ export const Music_Genres = [
 export type musicGenres = "rock" | "metal" | "country" | "grunge" | "pop" | "alternative" | "gospel" | "latin" | "punk"
 
 export const albumCoverMap = {
-    "rock": {
-      backgroundImage: rockFestival
-    },
-    "metal": {
-      backgroundImage: metalFestival
-    },
-    "country": {
-      backgroundImage: countryFestival
-    },
-    "grunge": {
-      backgroundImage: grungeFestival
-    },
-    "pop": {
-      backgroundImage: popFestival
-    },
-    "alternative": {
-      backgroundImage: altFestival
-    },
-    "gospel": {
-      backgroundImage: gospelFestival
-    },
-    "latin": {
-      backgroundImage: latinFestival
-    },
-    "punk": {
-      backgroundImage: punkFestival
-    }
+  "rock": {
+    backgroundImage: rockFestival
+  },
+  "metal": {
+    backgroundImage: metalFestival
+  },
+  "country": {
+    backgroundImage: countryFestival
+  },
+  "grunge": {
+    backgroundImage: grungeFestival
+  },
+  "pop": {
+    backgroundImage: popFestival
+  },
+  "alternative": {
+    backgroundImage: altFestival
+  },
+  "gospel": {
+    backgroundImage: gospelFestival
+  },
+  "latin": {
+    backgroundImage: latinFestival
+  },
+  "punk": {
+    backgroundImage: punkFestival
+  }
 }
 
 
@@ -105,7 +105,7 @@ export type NewProfileInfo = BaseProfileInfo & {
   profileType: "new";
   elevatorPitch: string;
   whyChooseUs: string;
-  newBandSongs?: string[];   
+  newBandSongs?: string[];
 };
 
 export type ExperiencedProfileInfo = BaseProfileInfo & {
@@ -123,33 +123,33 @@ export type bandStyles = {
 };
 
 export const groupPhotoMap = {
- "rock": {
-  backgroundImage: rockPhoto
- },
- "metal": {
-  backgroundImage: metalPhoto
- },
- "country": {
-  backgroundImage: countryPhoto
- },
- "grunge": {
-  backgroundImage: grungePhoto
- },
- "pop": {
-  backgroundImage: popPhoto
- },
- "alternative": {
-  backgroundImage: altPhoto
- },
- "gospel": {
-  backgroundImage: gospelPhoto
- },
- "latin": {
-  backgroundImage: latinPhoto
- },
- "punk": {
-  backgroundImage: punkPhoto
- }
+  "rock": {
+    backgroundImage: rockPhoto
+  },
+  "metal": {
+    backgroundImage: metalPhoto
+  },
+  "country": {
+    backgroundImage: countryPhoto
+  },
+  "grunge": {
+    backgroundImage: grungePhoto
+  },
+  "pop": {
+    backgroundImage: popPhoto
+  },
+  "alternative": {
+    backgroundImage: altPhoto
+  },
+  "gospel": {
+    backgroundImage: gospelPhoto
+  },
+  "latin": {
+    backgroundImage: latinPhoto
+  },
+  "punk": {
+    backgroundImage: punkPhoto
+  }
 }
 
 export const musicProfileMap = {
@@ -330,3 +330,12 @@ export const daysInMonthMap: { [key: string]: number } = {
   "November": 30,
   "December": 31
 }
+
+export type EventManager = {
+  id: number;
+  eventType: string;
+  venueLocation: string;
+  timeSlot: string;
+  date: string;
+  bandFee: string;
+};

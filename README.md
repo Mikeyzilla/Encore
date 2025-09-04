@@ -9,7 +9,16 @@ This app, although currently in progress (very early stages of development), wil
 As a band, your flow will be as follows: Create your band profile -> view the calendar hub that will contain all event details per day (where the event is, what type of event it is, what time slot is it for,
 who the manager is, and how much they're offering) -> if you like an offer, you can send out a message to the manager saying you're interested. If not interested, just keep searching. As bands, you can also go into your inbox to see messages sent to you by managers, who are looking to start that negotiation process.
 
-Right now, you can create your account and login as either a manager, experienced band, or inexperienced band. You can also go in (if you go directly to /genrelist as a manager) and click on a genre, find all bands by that genre, and if you are interested in a band, click on that band's sneak peek to be taken to their profile page. There is role-based auth as well! You must be a manager to view certain pages, while others (in the future) you must be a band to visit.
+
+Current Features: 
+Role-based Authentication
+    Users can create an account and log in as a Manager, Experienced Band, or Inexperienced Band. Access to certain routes is restricted based on role (e.g., managers can view specific pages, while some routes will later be exclusive to bands).
+
+    Manager Features
+    Managers can browse bands by genre. From the /genrelist route, a manager can select a genre, see all bands in that category, and click a band’s sneak peek to open the full band profile page.
+
+    Band Features
+    Logged-in bands can view the event calendar, from the /calendar route. If you're a band and click on a date (on days where events exist), you can see a list of scheduled events filtered by event type.
 
 There are a ton of features I'm going to implement for this, like JWT, location filtering (only show bands within X miles of the venue), overlap functionality for events, an inbox messaging system, and so much more. I'm going to try and make this as real of an app as possible. 
 
