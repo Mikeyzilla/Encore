@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&family=Oleo+Script:wght@400;700&display=swap');
+
+.CalendarPage {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  text-align: center;
+  background-color: black;
+}
+
+.CalendarCompanyName {
+  font-family: "Monoton", sans-serif;
+  color: gold;
+  margin: 12px 0 16px;
+}
+
+.Calendar {
+  background: white;
+  color: black;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.15);
+  padding: 16px 16px 24px;
+}
+
+.CalendarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: black;
+  color: white;
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}
+
+.MonthAndYear {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.WeekHeader {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+  margin: 12px 0 8px;
+}
+
+.WeekHeader__cell {
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.EachDay {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.DayCell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 44px;
+}
+
+.DayCell.blank .IndividualDayNum {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.IndividualDayNum {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1 / 1;
+  min-height: 44px;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease, background 120ms ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  background: #fff;
+}
+
+.IndividualDayNum:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+.Calendar {
+    transform: scale(.8);
+    margin-top: -80px;
+}
+
+.EventViewHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.EventForTitle {
+  font-size: 24px;
+  color: white;
+}
+
+.BackToCalendar {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+}
+
+.BackToCalendar {
+  grid-column: 3;   
+  justify-self: end; 
+  margin-right: 40px;
+}
+
+.RowOfEventTabs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-right: 25px;
+}
+.ConcertTab, .FestivalTab, .GigTab {
+  padding: 10px 18px;
+  border: 2px solid gold;
+  background: transparent;
+  color: gold;
+  font-weight: 600;
+  border-radius: 8px; 
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.ConcertTab:hover, .FestivalTab:hover, .GigTab:hover,
+.ConcertTab:focus, .FestivalTab:focus, .GigTab:focus {
+  background: gold;
+  color: black;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+.ConcertView, .FestivalView, .GigView {
+  margin-top: 30px;
+}
+

@@ -7,7 +7,7 @@ type AllowedTypes = "Manager" | "Band"
 
 export default function AuthorizedUserType({ expectedRole }: { expectedRole: AllowedTypes }) {
     const IdOfOurUser = sessionStorage.getItem("userIdentifier");
-
+    
     const [usersRole, setUsersRole] = useState("");
     const recognizeRole = async () => {
         try {
@@ -15,21 +15,18 @@ export default function AuthorizedUserType({ expectedRole }: { expectedRole: All
             if (response.data) {
                 setUsersRole(response.data);
             }
-        } catch (err) {
+        } catch(err) {
             console.error(err);
         }
-    }
+    } 
 
     useEffect(() => {
-        if (!IdOfOurUser || IdOfOurUser === "undefined" || IdOfOurUser === "null") return;
         recognizeRole();
     }, [IdOfOurUser]);
-    
-    if (usersRole === "") return null;
 
     if (usersRole != expectedRole) {
         return <UnauthorizedPage />
     } else {
-        return <Outlet />;
+         return <Outlet />;
     }
 }

@@ -1,14 +1,14 @@
 CURRENT GOAL: Work on the Band Calendar View.
                 A) Add in JWT to create and then login, and test them both.
-                B) Add in the band calendar view. (simple calendar for now)
-                C) If the role is band, inside BandProfile, make it so that only band users can see the calendar view button, which goes to the calendar view route. 
-                D) Make the calendar view route only authorized by bands.
-                E) Fill out the manager dashboard page where managers can look at their venue statuses (This one is still incomplete, this one got complete) and can add in new venue information.
-                F) add in overlap logic (If manager A posts an event of any type at 6pm on a friday at the location Y, manager B should not also be able to make an event at 6pm on a friday at location Y. They can make an event at 6pm on a friday at a different location, but not the same one.)
-                G) Add a way to go from the dashboard to the genre page.
-                H) For each day in the calendar, render a simple, empty list with 3 categories / tabs - Venues, Concerts, Festivals.
-                I) Change the empty list to one that renders all event information (what the managers posted to the DB in their dashboard or in account creation) regardless of the currently selected tab.
-                J) Change the "all data everywhere" list in each tab to one that correctly filters by selected tab. 
+                B) For each day in the calendar, render a simple, empty list with 3 categories / tabs - Venues, Concerts, Festivals.
+                C) Add in the suffix for day number logic.
+                D) Change the empty list to one that renders all event information (gets from the managers table in the DB) regardless of the currently selected tab.
+                E) Change the "all data everywhere" list in each tab to one that correctly filters by selected tab. 
+                F) If the role is band, inside BandProfile, make it so that only band users can see the calendar view button, which goes to the calendar view route. 
+                G) Make the calendar view route only authorized by bands.
+                H) Fill out the manager dashboard page where managers can look at their venue statuses (This one is still incomplete, this one got complete) and can add in new venue information.
+                I) add in overlap logic (If manager A posts an event of any type at 6pm on a friday at the location Y, manager B should not also be able to make an event at 6pm on a friday at location Y. They can make an event at 6pm on a friday at a different location, but not the same one.)
+                J) Add a way to go from the dashboard to the genre page.
                 K) add in a way for the bands to accept the requests (denial is ignorance) that are posted.
                 L) Have each band only able to accept one event per day. 
                 M) Add in the inbox messaging system using web sockets.

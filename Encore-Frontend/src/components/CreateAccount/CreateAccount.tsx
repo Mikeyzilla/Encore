@@ -8,7 +8,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { centralizeURL } from "../../utils/centralizeURL";
 type UIType = "normal" | "band" | "manager";
-type MusicEvent = "Concert" | "Music Festival" | "Gig"
+export type MusicEvent = "Concert" | "Music Festival" | "Gig"
 
 export default function CreateAccount() {
 

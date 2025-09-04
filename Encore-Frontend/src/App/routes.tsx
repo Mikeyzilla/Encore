@@ -6,6 +6,7 @@ import CreateAccount from "../components/CreateAccount/CreateAccount";
 import Login from "../components/Login/Login";
 import ManagerDashboard from "../components/ManagerDashboard/ManagerDashboard";
 import AuthorizedUserType from "./AuthorizedUserType";
+import EventCalendar from "../components/EventCalendar/EventCalendar";
 
 export const appRoutes: RouteObject[] = [
   { path: "/", element: <CreateAccount /> },
@@ -18,5 +19,6 @@ export const appRoutes: RouteObject[] = [
   { path: "/dashboard", element: <AuthorizedUserType expectedRole="Manager" />, children: [
     {index: true, element: <ManagerDashboard />},
   ]},
-  { path: "/login", element: <Login />}
+  { path: "/login", element: <Login />},
+  { path: "/calendar", element: <EventCalendar />}
 ];
