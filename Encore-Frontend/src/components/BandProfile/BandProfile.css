@@ -237,3 +237,12 @@
 .SongList {
     font-size: 32px;
 }
+
+.AlbumsSection {
+    margin-top: -200px;
+    margin-right: 40px;
+}
+
+.NewUserFooter {
+    margin-top: -120px;
+}

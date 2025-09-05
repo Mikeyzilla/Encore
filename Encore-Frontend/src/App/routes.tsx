@@ -20,5 +20,7 @@ export const appRoutes: RouteObject[] = [
     {index: true, element: <ManagerDashboard />},
   ]},
   { path: "/login", element: <Login />},
-  { path: "/calendar", element: <EventCalendar />}
+  { path: "/calendar", element: <AuthorizedUserType expectedRole="Band" />, children: [
+    {index: true, element: <EventCalendar />},
+  ]},
 ];

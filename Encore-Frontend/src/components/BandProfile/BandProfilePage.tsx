@@ -39,14 +39,12 @@ export default function BandProfilePage() {
           mostPlayedSong: data.mostPlayedSong,
           genreOfMusic: data.genreOfMusic,
           aboutUs: data.aboutUs,
-          mostRecentPerformance: p
-            ? {
-                date: p.date ?? "",
-                description: p.description ?? "",
-                venue_name: p.venueName ?? "",
-                guest_count: p.guestCount ?? 0,
-              }
-            : undefined,
+          performances: (data.performances ?? []).map(p => ({
+            date: p.date ?? "",
+            description: p.description ?? "",
+            venue_name: p.venueName ?? "",
+            guest_count: p.guestCount ?? 0,
+          })),
           latestAlbum: a
             ? {
                 songs: data.songs ?? [],

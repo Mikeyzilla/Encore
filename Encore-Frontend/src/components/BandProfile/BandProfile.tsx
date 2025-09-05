@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { groupPhotoMap, musicProfileMap, numberToMonthMap, type ExperiencedProfileInfo, type musicGenres, type NewProfileInfo, type ProfileInformation } from "../../utils/BandGenres"
 import "./BandProfile.css"
 
@@ -8,17 +9,13 @@ export default function BandProfile(props: ProfileInformation) {
     const isNew = props.profileType === "new";
     const newInfo = props as NewProfileInfo;
     const expInfo = props as ExperiencedProfileInfo;
-
+    const navigate = useNavigate();
     const dateMakeNeat = (date: string) => {
-        // date will be something like 2024-08-06 00:00:00.000000
         let YearMonthDayFormat = date.slice(0, 10);
-        //date is now 2024-08-06
         let YearMonthDayArray = YearMonthDayFormat.split("-");
-        //the array is now [2024, 08, 06]
         let year = YearMonthDayArray[0];
         let month = numberToMonthMap[parseInt(YearMonthDayArray[1], 10)];
         let day = String(parseInt(YearMonthDayArray[2], 10));
-        //day will be 06 or 01 or 11
         let dayNum = parseInt(day, 10);
 
         if (dayNum === 11 || dayNum === 12 || dayNum === 13) {
@@ -35,7 +32,7 @@ export default function BandProfile(props: ProfileInformation) {
                 day = dayNum.toString() + "th";
             }
         }
-       return " " + month + " " + day + ", " + year;
+        return " " + month + " " + day + ", " + year;
     }
 
     return (
@@ -51,6 +48,9 @@ export default function BandProfile(props: ProfileInformation) {
             <div className="bandHeader">
                 <h1>{bandName}</h1>
                 <p className="Origin">{origin}</p>
+                {sessionStorage.getItem("role") === "Band" && (
+                    <button onClick={() => navigate("/calendar")} className="GoToCalendar"></button>
+                )};
                 <div className="SocialsLine">
                     <div className="Social">
                         <div className="SocialLogo"></div>
@@ -95,46 +95,48 @@ export default function BandProfile(props: ProfileInformation) {
                         </div>
                         <div className="Wrapper">
                             <div className="PerformancesSection">
-                                <div className="PerformanceEntry">
-                                    <div className="TourPicture"></div>
-                                    <div className="PerformanceInformation">
-                                        <p>We played at {expInfo.mostRecentPerformance?.venue_name} on {dateMakeNeat(expInfo.mostRecentPerformance?.date ?? "")}</p>
-                                        <p className="TourDescription">{expInfo.mostRecentPerformance?.description} and {expInfo.mostRecentPerformance?.guest_count} people showed up.</p>
-                                    </div>
-                                </div>
-                                <div className="PerformanceEntry">
-                                    <div className="TourPicture"></div>
-                                    <div className="PerformanceInformation">
-                                        <p>We played at {expInfo.mostRecentPerformance?.venue_name} on {expInfo.mostRecentPerformance?.date}</p>
-                                        <p className="TourDescription">{expInfo.mostRecentPerformance?.description} and {expInfo.mostRecentPerformance?.guest_count} people showed up.</p>
-                                    </div>
-                                </div>
+                                {expInfo.performances?.length ? (
+                                    [...expInfo.performances]
+                                        .map((perf, idx) => (
+                                            <div className="PerformanceEntry" key={`${perf.venue_name}-${perf.date}-${idx}`}>
+                                                <div className="TourPicture"></div>
+                                                <div className="PerformanceInformation">
+                                                    <p>We played at {perf.venue_name} on {dateMakeNeat(perf.date)}</p>
+                                                    <p className="TourDescription">
+                                                        {perf.description} and {perf.guest_count} people showed up.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        ))
+                                ) : (
+                                    <p className="TourEmpty">No performances listed yet.</p>
+                                )}
                             </div>
-                            <div className="AlbumsSection">
-                                <div className="AlbumArt">
-                                    {expInfo.latestAlbum?.album_name}
-                                </div>
-                                <div className="AlbumInformation">
-                                    <p>Chart Ranking: {expInfo.latestAlbum?.chart_ranking}</p>
-                                    <p>Generated a total of {expInfo.latestAlbum?.revenue_generated} dollars.</p>
-                                </div>
+                        </div>
+                        <div className="AlbumsSection">
+                            <div className="AlbumArt">
+                                {expInfo.latestAlbum?.album_name}
+                            </div>
+                            <div className="AlbumInformation">
+                                <p>Chart Ranking: {expInfo.latestAlbum?.chart_ranking}</p>
+                                <p>Generated a total of {expInfo.latestAlbum?.revenue_generated} dollars.</p>
                             </div>
                         </div>
                     </div>
                 )}
-                {isNew && (
-                    <div className="NewUserFooter">
-                        <div className="FutureGoalsSection">
-                            <div className="GroupPhoto" style={{ backgroundImage: `url(${groupPhotoMap[genreKey].backgroundImage})` }}></div>
-                            <div className="DescriptorArea">
-                                <h1 className="GoalsTitle">Our Goals</h1>
-                                <p className="ElevatorPitch">{newInfo.elevatorPitch}</p>
-                                <p className="WhyChooseUs">{newInfo.whyChooseUs}</p>
-                            </div>
+            {isNew && (
+                <div className="NewUserFooter">
+                    <div className="FutureGoalsSection">
+                        <div className="GroupPhoto" style={{ backgroundImage: `url(${groupPhotoMap[genreKey].backgroundImage})` }}></div>
+                        <div className="DescriptorArea">
+                            <h1 className="GoalsTitle">Our Goals</h1>
+                            <p className="ElevatorPitch">{newInfo.elevatorPitch}</p>
+                            <p className="WhyChooseUs">{newInfo.whyChooseUs}</p>
                         </div>
                     </div>
-                )}
-            </div>
+                </div>
+            )}
+        </div>
         </div >
     )
 }

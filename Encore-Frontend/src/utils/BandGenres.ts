@@ -98,6 +98,7 @@ type BaseProfileInfo = {
   genreOfMusic: string;
   aboutUs: string;
   mostRecentPerformance?: PastEvents;
+  performances?: PastEvents[];
   latestAlbum?: Album;
 };
 
@@ -204,7 +205,7 @@ export const musicProfileMap = {
   "punk": {
     backgroundImage: punkProfile,
     fontFamily: "Rock Salt, cursive",
-    color: "hotpink",
+    color: "white",
     WebkitTextStroke: "hotpink"
   }
 } satisfies Record<musicGenres, bandStyles>

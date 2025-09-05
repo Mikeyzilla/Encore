@@ -174,6 +174,7 @@
   justify-items: center; 
   color: black;
   font-weight: bolder;
+  cursor: pointer;
 }
 
 .EventWhereTime {
@@ -183,7 +184,7 @@
 .EmptySpace {
   margin-left: 280px;
   rotate: calc(90deg);
-  margin-top: 5px;
+  margin-top: 35px;
   color: transparent;
 }
 

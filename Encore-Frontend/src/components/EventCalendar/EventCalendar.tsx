@@ -99,6 +99,17 @@ export default function EventCalendar() {
         }
     };
 
+    const determineDaySuffix = (dayNumber: number) => {
+        if (dayNumber <= 0 || dayNumber > 31) return undefined;         
+        if (dayNumber === 11 || dayNumber === 12 || dayNumber === 13) {
+            return dayNumber + "th";                                       
+        }
+        if (dayNumber % 10 === 1) return dayNumber + "st";
+        if (dayNumber % 10 === 2) return dayNumber + "nd";
+        if (dayNumber % 10 === 3) return dayNumber + "rd";
+        return dayNumber + "th";                                          
+    };
+
 
     return (
         <div className="CalendarPage">
@@ -119,7 +130,7 @@ export default function EventCalendar() {
                 <div>
                     <div className="EventViewHeader">
                         <div className="EmptySpace"></div>
-                        <h1 className="EventForTitle">Events for {numberToMonthMap[currentMonth]} {numberOfTheDay}</h1>
+                        <h1 className="EventForTitle">Events for {numberToMonthMap[currentMonth]} {determineDaySuffix(numberOfTheDay)}</h1>
                         <button onClick={() => setInEventView(false)} className="BackToCalendar">Back</button>
                     </div>
                     <div className="RowOfEventTabs">
@@ -135,6 +146,7 @@ export default function EventCalendar() {
                                 events.map(e => (
                                     <div key={e.id} className="AvailableEvent">
                                         <div className="EventWhereTime">{e.venueLocation} {e.timeSlot}</div>
+                                        <div className="EmptySpace"></div>
                                         <div className="EventPrizeMoney">{e.bandFee} $</div>
                                         <div className="EventManager">Manager #{e.id}</div>
                                     </div>
@@ -150,6 +162,7 @@ export default function EventCalendar() {
                                 events.map(e => (
                                     <div key={e.id} className="AvailableEvent">
                                         <div className="EventWhereTime">{e.venueLocation} {e.timeSlot}</div>
+                                        <div className="EmptySpace"></div>
                                         <div className="EventPrizeMoney">{e.bandFee} $</div>
                                         <div className="EventManager">Manager #{e.id}</div>
                                     </div>
@@ -165,6 +178,7 @@ export default function EventCalendar() {
                                 events.map(e => (
                                     <div key={e.id} className="AvailableEvent">
                                         <div className="EventWhereTime">{e.venueLocation} {e.timeSlot}</div>
+                                        <div className="EmptySpace"></div>
                                         <div className="EventPrizeMoney">{e.bandFee} $</div>
                                         <div className="EventManager">Manager #{e.id}</div>
                                     </div>
