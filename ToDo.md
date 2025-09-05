@@ -1,4 +1,4 @@
-CURRENT GOALS: Populate the DB and work on I K L Q and R.
+CURRENT GOALS: Populate the DB and work on I K L Q R and S.
 
                 A) Add in JWT to create and then login, and test them both.
                 B) Fill out the manager dashboard page where managers can look at their venue statuses (This one is still incomplete, this one got complete) and can add in new venue information.
@@ -19,6 +19,7 @@ CURRENT GOALS: Populate the DB and work on I K L Q and R.
                 P) Refreshing after a band account creation does not work. Make sure refreshes work
                 Q) In Calendar view, instead of just getting the Manager's id and displaying their name as Manager {id}, use that id to lookup the username, and then display that instead.
                 R) When viewing a Punk Band from genrelist, the AlbumsSection class is way too far down. Add in a special class for punk and modify it. (-100px of margin top, and -50px of margin right)
+                S) You can't view the band calendar view from BandProfile because it doesn't know where to get role / how to determine users role. Therefore, add in the call to get RoleByUserId in the users controller to determine that, using the userIdentifier from session storage.
 
 To run frontend:
 cd into Encore-Frontend and run npm run dev

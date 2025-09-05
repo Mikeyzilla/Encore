@@ -14,7 +14,6 @@ export default function AuthorizedUserType({ expectedRole }: { expectedRole: All
             const response = await axios.get(`http://localhost:8080/api/users/role/${IdOfOurUser}`);
             if (response.data) {
                 setUsersRole(response.data);
-                sessionStorage.setItem("role", usersRole);
             }
         } catch(err) {
             console.error(err);
