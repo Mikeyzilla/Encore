@@ -1,4 +1,4 @@
-CURRENT GOALS:  Style manager dashboard, then try making an event in the dashboard. 
+CURRENT GOALS:  Style manager dashboard, add in a logout button, then try making an event in the dashboard. 
 
                 A) add in overlap logic (If manager A posts an event of any type at 6pm on a friday at the location Y, manager B should not also be able to make an event at 6pm on a friday at location Y. They can make an event at 6pm on a friday at a different location, but not the same one.)
                 B) add in a way for the bands to accept the requests (denial is ignorance) that are posted.
