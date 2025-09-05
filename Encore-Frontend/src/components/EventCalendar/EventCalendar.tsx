@@ -3,6 +3,7 @@ import { numberToMonthMap, daysInMonthMap, type EventManager } from "../../utils
 import { useEffect, useState } from "react";
 import type { MusicEvent } from "../CreateAccount/CreateAccount";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function EventCalendar() {
     let currentDate = new Date();
@@ -110,10 +111,19 @@ export default function EventCalendar() {
         return dayNumber + "th";                                          
     };
 
+    const navigate = useNavigate();
+
+    const logout = () => {
+        sessionStorage.removeItem("JWT");
+        sessionStorage.removeItem("userIdentifier");
+        sessionStorage.removeItem("role");
+        navigate("/");
+    }
 
     return (
         <div className="CalendarPage">
             <h1 className="CalendarCompanyName">Encore</h1>
+            <button onClick={() => logout()}>LOGOUT</button>
             {!inEventView && (
                 <div className="Calendar">
                     <div className="CalendarHeader">

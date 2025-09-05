@@ -130,7 +130,7 @@ export default function ManagerDashboard() {
             getMyEvents();
         }
     }, [inViewEvent, role]);
-    
+
     useEffect(() => {
         if (nameOfTheVenue && dateOfTheEvent && nameOfTypeOfEvent) {
             retrieveEventLineup();
@@ -152,9 +152,17 @@ export default function ManagerDashboard() {
         }
     }, [inViewEvent]);
 
+    const logout = () => {
+        sessionStorage.removeItem("JWT");
+        sessionStorage.removeItem("userIdentifier");
+        sessionStorage.removeItem("role");
+        navigate("/");
+    }
+
     return (
         <div>
             <div className="ManagerHeader">
+                <button onClick={() => logout()}>Logout</button>
                 <h1>Encore</h1>
                 <button onClick={() => navigate("/genrelist")}>Find Bands!</button>
             </div>
