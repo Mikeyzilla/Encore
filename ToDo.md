@@ -1,4 +1,4 @@
-CURRENT GOALS: Populate the DB and work on I K L Q R and S.
+CURRENT GOALS: Work on the Manager Dashboard.
 
                 A) Add in JWT to create and then login, and test them both.
                 B) Fill out the manager dashboard page where managers can look at their venue statuses (This one is still incomplete, this one got complete) and can add in new venue information.
@@ -11,15 +11,9 @@ CURRENT GOALS: Populate the DB and work on I K L Q R and S.
                 H) In addition to the genre filters, also add in filters for how many miles away from one of the manager's closest venues a band is. (If a band is 500 miles away from the manager's festival in tennessee, but only 4 miles away from the manager's florida venue, the filter will show how far away the band is from one of the manager's closest venues possible)
                 I) Change the JPA repository methods to sort by most recent / latest / highest grossing.
                 J) In CreateAccount on the Band-Specific Profile Creation page, instead of displaying their most famous song (Which we don't know and don't want to ask directly, as they enter in their song information and view count, just take the max view counted song) - only if they're a new band. Otherwise, go and find their highest view counted song.
-                K) In CreateAccount on the band profile page, aboutentry and songentry are uneven vertically.
-                L) Revamp the Country Profile Page and Country Account Create styles.
-                M) If a band has albums, but doesn't have performances or vice versa, the UI looks off. Change the empty area to something that has info.
-                N) In Manager Account creation, make the time slot input a dropdown from 8am to 2am.
-                O) get rid of "a little about us" on band account creation for inexperienced bands since it shows up on both types of bands and replace it with something else.
-                P) Refreshing after a band account creation does not work. Make sure refreshes work
-                Q) In Calendar view, instead of just getting the Manager's id and displaying their name as Manager {id}, use that id to lookup the username, and then display that instead.
-                R) When viewing a Punk Band from genrelist, the AlbumsSection class is way too far down. Add in a special class for punk and modify it. (-100px of margin top, and -50px of margin right)
-                S) You can't view the band calendar view from BandProfile because it doesn't know where to get role / how to determine users role. Therefore, add in the call to get RoleByUserId in the users controller to determine that, using the userIdentifier from session storage.
+                K) Refreshing after a band account creation does not work. Make sure refreshes work
+                L) In Calendar view, instead of just getting the Manager's id and displaying their name as Manager {id}, use that id to lookup the username, and then display that instead.
+                M) You can't view the band calendar view from BandProfile because it doesn't know where to get role / how to determine users role. Therefore, add in the call to get RoleByUserId in the users controller to determine that, using the userIdentifier from session storage.
 
 To run frontend:
 cd into Encore-Frontend and run npm run dev

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Monoton&family=Oleo+Script:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rye&display=swap');
 
 .AccountCreationPage {
   background-repeat: no-repeat;
@@ -261,7 +262,7 @@
   margin-left: 30px;
 }
 
-.SocialEntry {
+.SocialEntry, .FunFact {
   text-align: center;
   border: none;
   outline: none;
@@ -270,6 +271,10 @@
   font-size: 24px;
   padding: 4px 0;
   width: 135px;
+}
+
+.FunFact {
+  width: 350px;
 }
 
 .BandNameGoesHere::placeholder,
@@ -848,4 +853,49 @@
   grid-column: 3;
   justify-self: end;
   height: 60px
+}
+
+.DescriptionLand {
+  margin-top: -88px;
+}
+
+.genre-punk .DescriptionLand {
+  margin-top: -150px;
+}
+
+.genre-rock .MostEntry {
+  width: 400px;
+}
+
+.genre-punk .MostEntry,
+.genre-grunge .MostEntry,
+.genre-gospel .MostEntry {
+  width: 450px;
+}
+
+.genre-metal .MostEntry,
+.genre-country .MostEntry,
+.genre-alternative .MostEntry,
+.genre-latin .MostEntry {
+  width: 375px;
+}
+
+.genre-punk .SocialEntry,
+.genre-grunge .SocialEntry,
+.genre-country .SocialEntry,
+.genre-gospel .SocialEntry {
+  width: 250px
+}
+
+.genre-punk .FunFact {
+  width: 450px;
+}
+
+.genre-punk .OriginGoesHere {
+  width: 450px
+}
+
+.VenueEntry option {
+  color: black;
+  background-color: white;
 }

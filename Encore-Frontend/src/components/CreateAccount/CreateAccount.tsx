@@ -259,7 +259,8 @@ export default function CreateAccount() {
                       </div>
                     </div>
                     <div className="DescriptionLand">
-                      <h1 className="AboutUsLand">A little about us</h1>
+                      <h1 className="AboutUsLand">Fun Facts</h1>
+                      <input type="text" placeholder="A fun fact about your band" className="FunFact" />
                     </div>
                   </div>
                 )}
@@ -350,7 +351,27 @@ export default function CreateAccount() {
                       <option value="Gig">Gig</option>
                     </select>
                     <input className="VenueEntry" type="text" placeholder="Where is the venue?" value={whereIsIt} onChange={(e) => setWhereIsIt(e.currentTarget.value)}></input>
-                    <input className="VenueEntry" type="text" placeholder="What time is it for?" value={whatTime} onChange={(e) => setWhatTime(e.currentTarget.value)}></input>
+                    <select className="VenueEntry" value={whatTime} onChange={(e) => setWhatTime(e.currentTarget.value)}>
+                      <option value="8:00AM">8:00AM</option>
+                      <option value="9:00AM">9:00AM</option>
+                      <option value="10:00AM">10:00AM</option>
+                      <option value="11:00AM">11:00AM</option>
+                      <option value="12:00AM">12:00AM</option>
+                      <option value="1:00PM">1:00PM</option>
+                      <option value="2:00PM">2:00PM</option>
+                      <option value="3:00PM">3:00PM</option>
+                      <option value="4:00PM">4:00PM</option>
+                      <option value="5:00PM">5:00PM</option>
+                      <option value="6:00PM">6:00PM</option>
+                      <option value="7:00PM">7:00PM</option>
+                      <option value="8:00PM">8:00PM</option>
+                      <option value="9:00PM">9:00PM</option>
+                      <option value="10:00PM">10:00PM</option>
+                      <option value="11:00PM">11:00PM</option>
+                      <option value="12:00PM">12:00PM</option>
+                      <option value="1:00AM">1:00AM</option>
+                      <option value="2:00AM">2:00AM</option>
+                    </select>
                     <input className="VenueEntry" type="text" placeholder="What date is it for?" value={whatDate} onChange={(e) => setWhatDate(e.currentTarget.value)}></input>
                     <input className="VenueEntry" type="text" placeholder="What's the band's fee for the gig?" value={bandFee} onChange={(e) => setBandFee(e.currentTarget.value)}></input>
                   </div>

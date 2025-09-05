@@ -246,3 +246,13 @@
 .NewUserFooter {
     margin-top: -120px;
 }
+
+.AlbumsSection.punk-rock {
+  margin-top: -400px;
+  margin-right: 0px;
+}
+
+.PerformanceInformation,
+.TourDescription {
+    font-size: 20px;
+}

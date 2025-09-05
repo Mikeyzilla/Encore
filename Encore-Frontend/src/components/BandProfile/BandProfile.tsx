@@ -113,7 +113,7 @@ export default function BandProfile(props: ProfileInformation) {
                                 )}
                             </div>
                         </div>
-                        <div className="AlbumsSection">
+                        <div className={`AlbumsSection ${genreKey}-rock`}>
                             <div className="AlbumArt">
                                 {expInfo.latestAlbum?.album_name}
                             </div>

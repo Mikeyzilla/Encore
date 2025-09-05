@@ -168,8 +168,8 @@ export const musicProfileMap = {
   },
   "country": {
     backgroundImage: countryProfile,
-    fontFamily: "Ewert, serif",
-    color: "white",
+    fontFamily: "Rye, serif",
+    color: "gold",
     WebkitTextStroke: "gold"
   },
   "grunge": {
@@ -226,7 +226,7 @@ export const musicMap = {
   },
   "country": {
     backgroundImage: countryFestival,
-    fontFamily: "Ewert, serif",
+    fontFamily: "Rye, serif",
     color: "white",
     WebkitTextStroke: "gold"
   },
