@@ -340,3 +340,19 @@ export type EventManager = {
   date: string;
   bandFee: string;
 };
+
+export type EventInformationDTO = {
+  id: number;
+  eventType: string;
+  venueLocation: string;
+  timeSlot: string;
+  date: string;      
+  bandFee: string;   
+  bandName: string | null;
+};
+
+export type EventLineupDTO = {
+  bandName: string | null;
+  timeSlot: string;
+  bandFee: string;
+};

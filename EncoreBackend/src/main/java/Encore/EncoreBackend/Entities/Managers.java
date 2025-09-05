@@ -37,6 +37,10 @@ public class Managers {
     @JoinColumn(name = "user_id", nullable = false)
     private Users user;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "band_id", nullable = true)
+    private Band bandSignedUp;
+
     public long getId() {
         return id;
     }
@@ -91,5 +95,13 @@ public class Managers {
 
     public void setUser(Users user) {
         this.user = user;
+    }
+
+    public Band getBandSignedUp() {
+        return bandSignedUp;
+    }
+
+    public void setBandSignedUp(Band bandSignedUp) {
+        this.bandSignedUp = bandSignedUp;
     }
 }

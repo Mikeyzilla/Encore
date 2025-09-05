@@ -24,6 +24,7 @@ export default function Login() {
             if (response.data) {
                 if (roleType === "Manager") {
                     sessionStorage.setItem("userIdentifier", response.data.userId);
+                    sessionStorage.setItem("JWT", response.data.jwtToIssue);
                     navigate("/dashboard");
                 } else {
                     sessionStorage.setItem("bandId", String(response.data.bandId));
@@ -32,6 +33,7 @@ export default function Login() {
                     const nameOfTheBand = (band?.bandName ?? "").trim();
                     const genre = (band?.genreOfMusic ?? "").trim();
                     sessionStorage.setItem("userIdentifier", response.data.userId);
+                    sessionStorage.setItem("JWT", response.data.jwtToIssue);
                     navigate(`/${encodeURIComponent(centralizeURL(genre))}/${encodeURIComponent(centralizeURL(nameOfTheBand))}`);
                 }
             } else {

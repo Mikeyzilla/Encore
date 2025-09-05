@@ -144,6 +144,7 @@ export default function CreateAccount() {
         )
         if (response.data) {
           sessionStorage.setItem("userIdentifier", response.data.userId);
+          sessionStorage.setItem("JWT", response.data.token);
           navigate("/dashboard");
         }
       }

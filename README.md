@@ -20,7 +20,7 @@ Role-based Authentication
     Band Features
     Logged-in bands can view the event calendar, from the /calendar route. If you're a band and click on a date (on days where events exist), you can see a list of scheduled events filtered by event type.
 
-There are a ton of features I'm going to implement for this, like JWT, location filtering (only show bands within X miles of the venue), overlap functionality for events, an inbox messaging system, and so much more. I'm going to try and make this as real of an app as possible. 
+There are a ton of features I'm going to implement for this, like location filtering (only show bands within X miles of the venue), overlap functionality for events, an inbox messaging system, and so much more. I'm going to try and make this as real of an app as possible. 
 
 Thanks for reading,
 Mike
