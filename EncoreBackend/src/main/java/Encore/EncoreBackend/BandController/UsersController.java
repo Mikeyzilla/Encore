@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
 import org.springframework.security.oauth2.jwt.JwsHeader;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
@@ -176,9 +177,8 @@ public class UsersController {
                                         .claim("role", userToBeSignedUp.getRole())
                                         .build();
 
-                        String token = jwtEncoder.encode(JwtEncoderParameters.from(claims))
-                                        .getTokenValue();
-
+                        var header = JwsHeader.with(MacAlgorithm.HS256).build();
+                        String token = jwtEncoder.encode(JwtEncoderParameters.from(header, claims)).getTokenValue();
                         return ResponseEntity.status(HttpStatus.CREATED)
                                         .body(new CreateAccountResult(bandInfo.getId(), userToBeSignedUp.getId(), token,
                                                         "Band account created successfully"));
@@ -200,8 +200,8 @@ public class UsersController {
                                         .claim("role", userToBeSignedUp.getRole())
                                         .build();
 
-                        String token = jwtEncoder.encode(JwtEncoderParameters.from(claims))
-                                        .getTokenValue();
+                        var header = JwsHeader.with(MacAlgorithm.HS256).build();
+                        String token = jwtEncoder.encode(JwtEncoderParameters.from(header, claims)).getTokenValue();
                         return ResponseEntity.status(HttpStatus.CREATED)
                                         .body(new CreateAccountResult(null, userToBeSignedUp.getId(), token,
                                                         "Manager account created successfully"));
@@ -215,8 +215,8 @@ public class UsersController {
                                         .claim("role", userToBeSignedUp.getRole())
                                         .build();
 
-                        String token = jwtEncoder.encode(JwtEncoderParameters.from(claims))
-                                        .getTokenValue();
+                        var header = JwsHeader.with(MacAlgorithm.HS256).build();
+                        String token = jwtEncoder.encode(JwtEncoderParameters.from(header, claims)).getTokenValue();
                         return ResponseEntity.status(HttpStatus.CREATED)
                                         .body(new CreateAccountResult(null, userToBeSignedUp.getId(), token,
                                                         "User account created successfully (required info only)"));

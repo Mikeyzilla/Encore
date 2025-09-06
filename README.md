@@ -12,7 +12,7 @@ who the manager is, and how much they're offering) -> if you like an offer, you 
 
 Current Features: 
 Role-based Authentication
-    Users can create an account and log in as a Manager, Experienced Band, or Inexperienced Band. Access to certain routes is restricted based on role (e.g., managers can view specific pages, while some routes will later be exclusive to bands).
+    Users can create an account and log in as a Manager, Experienced Band, or Inexperienced Band. Access to certain routes is restricted based on role (e.g., managers can view specific pages that are not associated with bands, while bands can view other specific pages (that are not associated with managers)).
 
     Manager Features
     Managers can browse bands by genre, view their own in progress events, and can create their own events for bands to see. When clicking on the "Find Bands!" button, a manager can select a genre, see all bands in that category, and click a band’s sneak peek to open the full band profile page.

@@ -1,10 +1,9 @@
-CURRENT GOALS:  Style manager dashboard, style the logout button in both calendar and dashboard view, and style the calendar button in band profile.
+CURRENT GOALS:  Style manager dashboard, style the logout button in both calendar and dashboard view, re-test account creation for all 3 types of users, and style the calendar button in band profile.
 
                 A) add in a way for the bands to accept the requests (denial is ignorance) that are posted (on click, show popup of ACCEPT and IGNORE).
                 B) Add in a button on each band profile page, so that if you're a manager, you see "Send Request" to initiate the negotiation process using the Web Socket messaging system below.
                 C) Add in the inbox messaging system using web sockets + a way for both parties to see the chat.
                 D) if a band accepts a request, they start a chat with the manager who posted the event using web sockets, while if a manager clicks Send Request on the band profile, they start a chat with that band.
-    
                 
 Future Goals (Post MVP):
                 A) When a manager looks at an open timeslot in their dashboard, they should be able to click on that timeslot and view all available bands that are looking to perform on that timeslot, allowing the manager to fill the slots up easier.
@@ -14,6 +13,8 @@ Future Goals (Post MVP):
                 E) Change the JPA repository methods to sort by most recent performance / latest album.
                 F) Make sure if you're logged in, you can't go "Log in again" - right now, you can still visit the login page, even if logged in (and still login).
                 G) In Band Profile, use the route in song controller to get the song with the highest view count, and set that as the mostFamousSong. In the Account Creation Page for Bands, display the most famous song as the highest view count as well, except you can't grab the view counts from the DB (because they haven't stored anything to the DB yet) so, instead, as they add in songs + view counts, keep track of the highest view counted song (add in a state).
+                H) Have and enforce username / password strength requirements in account creation
+                I) In Manager and Band account creation change the input of "when is it" / when did you play to a date instead of text
 
 To run frontend:
 cd into Encore-Frontend and run npm run dev
