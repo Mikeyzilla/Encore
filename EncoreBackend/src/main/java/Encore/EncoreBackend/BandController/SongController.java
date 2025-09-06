@@ -59,4 +59,13 @@ public class SongController {
         return ResponseEntity.status(200).body("Successful Deletion of Song");
     }
 
+    @GetMapping("/bands/{bandId}/popularSong")
+    public ResponseEntity<String> getSongWithTheHighestViews(@PathVariable Long bandId) {
+        Song topSong = songRepository.findTopByBand_IdOrderByViewCountDesc(bandId);
+        if (topSong == null) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(topSong.getSong_name());
+    }
+
 }

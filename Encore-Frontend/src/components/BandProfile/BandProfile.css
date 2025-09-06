@@ -256,3 +256,14 @@
 .TourDescription {
     font-size: 20px;
 }
+
+.GoToCalendar {
+  min-width: 120px;
+  height: 40px;
+  background-color: aqua;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}

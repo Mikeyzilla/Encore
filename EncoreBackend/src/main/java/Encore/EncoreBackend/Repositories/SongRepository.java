@@ -13,4 +13,7 @@ public interface SongRepository extends JpaRepository<Song, Long> {
     List<Song> findByBand_Id(Long bandId);
 
     Song findTopByBandOrderByIdDesc(Band band);
+
+    Song findTopByBand_IdOrderByViewCountDesc(Long bandId);
+
 }

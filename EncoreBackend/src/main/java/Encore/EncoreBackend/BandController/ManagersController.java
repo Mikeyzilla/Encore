@@ -3,6 +3,7 @@ package Encore.EncoreBackend.BandController;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,14 +19,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import Encore.EncoreBackend.DTO.CreateEventDTO;
 import Encore.EncoreBackend.DTO.EventInformationDTO;
 import Encore.EncoreBackend.DTO.EventLineupDTO;
 import Encore.EncoreBackend.DTO.EventManagerView;
-import Encore.EncoreBackend.DTO.ManagerDTO;
 import Encore.EncoreBackend.Entities.Managers;
 import Encore.EncoreBackend.Entities.Users;
 import Encore.EncoreBackend.Repositories.ManagersRepository;
 import Encore.EncoreBackend.Repositories.UsersRepository;
+import jakarta.transaction.Transactional;
 
 @RestController
 @RequestMapping("/api/events")
@@ -38,6 +40,18 @@ public class ManagersController {
             UsersRepository usersRepository) {
         this.managerRepository = managerRepository;
         this.usersRepository = usersRepository;
+    }
+
+    @Transactional
+    @GetMapping("/lookup/{managerId}")
+    public String getUserNameByManagerId(@PathVariable Long managerId) {
+        Optional<Managers> lookupManager = managerRepository.findById(managerId);
+        if (!lookupManager.isPresent()) {
+            return null;
+        }
+        Managers ourManager = lookupManager.get();
+        Users associatedUser = ourManager.getUser();
+        return associatedUser.getUsername();
     }
 
     @GetMapping("/{type}/{year}/{month}/{day}")
@@ -70,7 +84,7 @@ public class ManagersController {
     }
 
     @PostMapping("/uploadEvent")
-    public ResponseEntity<String> createANewEvent(@RequestBody ManagerDTO managerEventInfo,
+    public ResponseEntity<String> createANewEvent(@RequestBody CreateEventDTO managerEventInfo,
             @AuthenticationPrincipal Jwt jwt) {
         Managers createdEvent = new Managers();
         createdEvent.setBandFee(managerEventInfo.getBandFee());
@@ -78,8 +92,11 @@ public class ManagersController {
         createdEvent.setEventType(managerEventInfo.getEventType());
         createdEvent.setTimeSlot(managerEventInfo.getTimeSlot());
         createdEvent.setVenueLocation(managerEventInfo.getVenueLocation());
-        String ourUser = jwt.getSubject();
-        String roleOfOurUser = jwt.getClaimAsString("role");
+        String ourUserId = managerEventInfo.getUserId();
+        Optional<Users> thatUser = usersRepository.findById(Long.parseLong(ourUserId));
+        Users thatUserCorrect = thatUser.get();
+        String ourUser = thatUserCorrect.getUsername();
+        String roleOfOurUser = managerEventInfo.getRole();
         Users userTryingToAdd = usersRepository.findByUsernameAndRole(ourUser, roleOfOurUser);
         if (userTryingToAdd == null) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("We didn't find a user with that name and role");

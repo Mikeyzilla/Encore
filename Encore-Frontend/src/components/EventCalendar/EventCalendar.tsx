@@ -15,6 +15,9 @@ export default function EventCalendar() {
     const [numberOfDays, setNumberOfDays] = useState(0);
     const [inEventView, setInEventView] = useState(false);
     const [whatEventTypeIsShown, setWhatEventTypeIsShown] = useState<MusicEvent>("Concert")
+    const [managerNames, setManagerNames] = useState<Record<number, string>>({});
+
+
     const findKeyAssociatedWithValue = (value: String, index: number): number => {
         if (value === undefined && index === 13) return 13;
         if (value === undefined && index === 1) return 0;
@@ -101,14 +104,14 @@ export default function EventCalendar() {
     };
 
     const determineDaySuffix = (dayNumber: number) => {
-        if (dayNumber <= 0 || dayNumber > 31) return undefined;         
+        if (dayNumber <= 0 || dayNumber > 31) return undefined;
         if (dayNumber === 11 || dayNumber === 12 || dayNumber === 13) {
-            return dayNumber + "th";                                       
+            return dayNumber + "th";
         }
         if (dayNumber % 10 === 1) return dayNumber + "st";
         if (dayNumber % 10 === 2) return dayNumber + "nd";
         if (dayNumber % 10 === 3) return dayNumber + "rd";
-        return dayNumber + "th";                                          
+        return dayNumber + "th";
     };
 
     const navigate = useNavigate();
@@ -119,6 +122,18 @@ export default function EventCalendar() {
         sessionStorage.removeItem("role");
         navigate("/");
     }
+
+    useEffect(() => {
+        if (events.length === 0) return;
+        (async () => {
+            const results: Record<number, string> = {};
+            for (const e of events) {
+                const { data } = await axios.get(`http://localhost:8080/api/events/lookup/${e.id}`);
+                results[e.id] = data;
+            }
+            setManagerNames(results);
+        })();
+    }, [events]);
 
     return (
         <div className="CalendarPage">
@@ -158,7 +173,7 @@ export default function EventCalendar() {
                                         <div className="EventWhereTime">{e.venueLocation} {e.timeSlot}</div>
                                         <div className="EmptySpace"></div>
                                         <div className="EventPrizeMoney">{e.bandFee} $</div>
-                                        <div className="EventManager">Manager #{e.id}</div>
+                                        <div className="EventManager">{"Manager " + managerNames[e.id]}</div>
                                     </div>
                                 ))
                             )}
@@ -174,7 +189,7 @@ export default function EventCalendar() {
                                         <div className="EventWhereTime">{e.venueLocation} {e.timeSlot}</div>
                                         <div className="EmptySpace"></div>
                                         <div className="EventPrizeMoney">{e.bandFee} $</div>
-                                        <div className="EventManager">Manager #{e.id}</div>
+                                        <div className="EventManager">{"Manager " + managerNames[e.id]}</div>
                                     </div>
                                 ))
                             )}
@@ -190,7 +205,7 @@ export default function EventCalendar() {
                                         <div className="EventWhereTime">{e.venueLocation} {e.timeSlot}</div>
                                         <div className="EmptySpace"></div>
                                         <div className="EventPrizeMoney">{e.bandFee} $</div>
-                                        <div className="EventManager">Manager #{e.id}</div>
+                                        <div className="EventManager">{"Manager " + managerNames[e.id]}</div>
                                     </div>
                                 ))
                             )}

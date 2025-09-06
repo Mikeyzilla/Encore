@@ -26,6 +26,9 @@ public class Song {
     @com.fasterxml.jackson.annotation.JsonIgnore
     private Band band;
 
+    @Column(name = "view_count", nullable = true)
+    private int viewCount;
+
     public Long getId() {
         return id;
     }
@@ -49,5 +52,13 @@ public class Song {
 
     public void setBand(Band band) {
         this.band = band;
+    }
+
+    public int getViewCount() {
+        return viewCount;
+    }
+
+    public void setViewCount(int viewCount) {
+        this.viewCount = viewCount;
     }
 }

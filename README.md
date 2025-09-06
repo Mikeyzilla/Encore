@@ -15,12 +15,12 @@ Role-based Authentication
     Users can create an account and log in as a Manager, Experienced Band, or Inexperienced Band. Access to certain routes is restricted based on role (e.g., managers can view specific pages, while some routes will later be exclusive to bands).
 
     Manager Features
-    Managers can browse bands by genre, view their own in progress events, and (need to test, but has been implemented) can create their own events for bands to see. When clicking on the "Find Bands!" button, a manager can select a genre, see all bands in that category, and click a band’s sneak peek to open the full band profile page.
+    Managers can browse bands by genre, view their own in progress events, and can create their own events for bands to see. When clicking on the "Find Bands!" button, a manager can select a genre, see all bands in that category, and click a band’s sneak peek to open the full band profile page.
 
     Band Features
     Logged-in bands can view the event calendar, from the /calendar route. If you're a band and click on a date (on days where events exist), you can see a list of scheduled events filtered by event type.
 
-There are a ton of features I'm going to implement for this, like location filtering (only show bands within X miles of the venue), overlap functionality for events, an inbox messaging system, and so much more. I'm going to try and make this as real of an app as possible. 
+There are a ton of features I'm going to implement for this: location filtering (only show bands within X miles of the venue), an inbox messaging system, and so much more. I'm going to try and make this as real of an app as possible. 
 
 Thanks for reading,
 Mike

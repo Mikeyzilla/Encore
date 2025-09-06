@@ -19,12 +19,12 @@ export default function ManagerDashboard() {
     const [nameOfTypeOfEvent, setNameOfTypeOfEvent] = useState<MusicEvent>("Concert");
     const [myEvents, setMyEvents] = useState<EventInformationDTO[]>([]);
     const [selectedEventId, setSelectedEventId] = useState<number | null>(null);
-    const userId = sessionStorage.getItem("userIdentifier");
+    const userIdent = sessionStorage.getItem("userIdentifier");
     const [role, setRole] = useState("");
 
     const findRole = async () => {
         try {
-            const response = await axios.get(`http://localhost:8080/api/users/role/${userId}`);
+            const response = await axios.get(`http://localhost:8080/api/users/role/${userIdent}`);
             if (response.data) {
                 setRole(response.data);
             }
@@ -34,17 +34,19 @@ export default function ManagerDashboard() {
     }
 
     useEffect(() => {
-        if (userId) {
+        if (userIdent) {
             findRole();
         }
-    }, [userId]);
+    }, [userIdent]);
 
     const managerDTO = {
         bandFee: bandMoney,
         venueLocation: nameOfTheVenue,
         timeSlot: timeOfTheEvent,
         date: dateOfTheEvent,
-        eventType: nameOfTypeOfEvent
+        eventType: nameOfTypeOfEvent,
+        role: "Manager",
+        userId: userIdent
     };
 
     const selectEvent = (evt: EventInformationDTO) => {
@@ -117,7 +119,7 @@ export default function ManagerDashboard() {
     const getMyEvents = async () => {
         try {
             const response = await axios.get<EventInformationDTO[]>(
-                `http://localhost:8080/api/events/viewAllEvents/${role}/${userId}`,
+                `http://localhost:8080/api/events/viewAllEvents/${role}/${userIdent}`,
                 { headers: { Authorization: `Bearer ${authorization}` } }
             ); setMyEvents(response.data ?? []);
         } catch (err: any) {

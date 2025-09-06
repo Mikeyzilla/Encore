@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { groupPhotoMap, musicProfileMap, numberToMonthMap, type ExperiencedProfileInfo, type musicGenres, type NewProfileInfo, type ProfileInformation } from "../../utils/BandGenres"
 import "./BandProfile.css"
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 
 export default function BandProfile(props: ProfileInformation) {
@@ -9,6 +11,8 @@ export default function BandProfile(props: ProfileInformation) {
     const isNew = props.profileType === "new";
     const newInfo = props as NewProfileInfo;
     const expInfo = props as ExperiencedProfileInfo;
+    const userID = sessionStorage.getItem("userIdentifier");
+    const [ourRole, setOurRole] = useState("");
     const navigate = useNavigate();
     const dateMakeNeat = (date: string) => {
         let YearMonthDayFormat = date.slice(0, 10);
@@ -35,6 +39,21 @@ export default function BandProfile(props: ProfileInformation) {
         return " " + month + " " + day + ", " + year;
     }
 
+    const getUserRole = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8080/api/users/role/${userID}`);
+            if (response.data) {
+                setOurRole(response.data);
+            }
+        } catch (err) {
+            console.error("Error getting user's role: " + err);
+        }
+    }
+
+    useEffect(() => {
+        getUserRole();
+    }, [userID]);
+
     return (
         <div
             className="bandProfile"
@@ -48,9 +67,9 @@ export default function BandProfile(props: ProfileInformation) {
             <div className="bandHeader">
                 <h1>{bandName}</h1>
                 <p className="Origin">{origin}</p>
-                {sessionStorage.getItem("role") === "Band" && (
-                    <button onClick={() => navigate("/calendar")} className="GoToCalendar"></button>
-                )};
+                {ourRole === "Band" && (
+                    <button onClick={() => navigate("/calendar")} className="GoToCalendar">CALENDAR</button>
+                )}
                 <div className="SocialsLine">
                     <div className="Social">
                         <div className="SocialLogo"></div>
@@ -124,19 +143,19 @@ export default function BandProfile(props: ProfileInformation) {
                         </div>
                     </div>
                 )}
-            {isNew && (
-                <div className="NewUserFooter">
-                    <div className="FutureGoalsSection">
-                        <div className="GroupPhoto" style={{ backgroundImage: `url(${groupPhotoMap[genreKey].backgroundImage})` }}></div>
-                        <div className="DescriptorArea">
-                            <h1 className="GoalsTitle">Our Goals</h1>
-                            <p className="ElevatorPitch">{newInfo.elevatorPitch}</p>
-                            <p className="WhyChooseUs">{newInfo.whyChooseUs}</p>
+                {isNew && (
+                    <div className="NewUserFooter">
+                        <div className="FutureGoalsSection">
+                            <div className="GroupPhoto" style={{ backgroundImage: `url(${groupPhotoMap[genreKey].backgroundImage})` }}></div>
+                            <div className="DescriptorArea">
+                                <h1 className="GoalsTitle">Our Goals</h1>
+                                <p className="ElevatorPitch">{newInfo.elevatorPitch}</p>
+                                <p className="WhyChooseUs">{newInfo.whyChooseUs}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}
-        </div>
+                )}
+            </div>
         </div >
     )
 }
