@@ -1,0 +1,230 @@
+.ManagerPage {
+    height: 100vh;
+    width: 100vw;
+    color: gold;
+    overflow: auto;
+    font-family: Fredoka;
+}
+
+.ManagerHeader {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.LogButton {
+    width: fit-content;
+    background: black;
+    border: 2px solid gold;
+    color: gold;
+    font-size: 18px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    margin-left: 30px;
+}
+
+.Encore {
+    text-align: center;
+    font-family: "Monoton", sans-serif;
+    color: gold;
+}
+
+.FindButton {
+    width: fit-content;
+    background: black;
+    border: 2px solid gold;
+    color: gold;
+    font-size: 18px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    justify-self: end;
+    margin-right: 30px;
+}
+
+.ManagerTidBits {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: -30px;
+}
+
+.TitleOfPage {
+    font-size: 24px;
+    color: gold;
+    margin-top: 20px;
+}
+
+.PartOne,
+.PartTwo {
+    margin-top: -20px;
+}
+
+.PartOne {
+    font-size: 16px;
+}
+
+.PartTwo {
+    margin-top: -10px;
+}
+
+.ManagerTabs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.CreateEventButton,
+.ViewEventButton {
+    width: fit-content;
+    background: black;
+    border: 2px solid black;
+    color: gold;
+    font-size: 18px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    gap: 12px;
+}
+
+.CreateEventButton:hover,
+.ViewEventButton:hover {
+    background: gold;
+    color: black;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.CreateForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.CreateTidBit {
+    font-size: 32px;
+    text-align: center;
+}
+
+.CreateFormI {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.EventTypeLabel {
+    font-size: 32px;
+}
+
+.ChooseEventTypeArea {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.EventTypeChooser {
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: 3px solid gold;
+    background: black;
+    color: gold;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    justify-self: start;
+    text-align: center;
+    margin-left: 50px;
+}
+
+.EventTypeChooser:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px gold;
+}
+
+.EventTypeChooser:focus {
+    outline: none;
+    border-color: white;
+}
+
+.TimeSlotLabel {
+    margin-top: 20px;
+    max-width: 500px;
+}
+
+.InputLocation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.InputLocation input {
+    font-size: 32px;
+    text-align: center;
+    border: none;
+    outline: none;
+    background: transparent;
+    border-bottom: 2px solid black;
+    color: gold;
+    padding: 4px 0;
+    width: 450px;
+}
+
+.InputLocation input::placeholder {
+    color: gold;
+}
+
+.CreateEventSubmitter {
+    width: fit-content;
+    background: black;
+    border: 2px solid black;
+    color: gold;
+    font-size: 18px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    margin-top: 30px;
+}
+
+.TimeChooser {
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: 3px solid gold;
+    background: black;
+    color: gold;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    justify-self: start;
+    text-align: center;
+}
+
+.ViewEventHeader {
+    text-align: center;
+}
+
+.NoEvent {
+    text-align: center;
+    font-size: 48px;
+    margin-top: 50px;
+}

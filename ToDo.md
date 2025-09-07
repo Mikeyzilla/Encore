@@ -1,4 +1,4 @@
-CURRENT GOALS:  Style manager dashboard, style the logout button in both calendar and dashboard view, re-test account creation for all 3 types of users, and style the calendar button in band profile.
+CURRENT GOALS:  Style manager dashboard's view events area and the calendar button in band profile.
 
                 A) add in a way for the bands to accept the requests (denial is ignorance) that are posted (on click, show popup of ACCEPT and IGNORE).
                 B) Add in a button on each band profile page, so that if you're a manager, you see "Send Request" to initiate the negotiation process using the Web Socket messaging system below.

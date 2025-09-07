@@ -1,6 +1,8 @@
+import "./UnauthorizedPage.css"
+
 export default function UnauthorizedPage() {
     return (
-        <div>
+        <div className="UnAuthorized">
             You're unauthorized!
         </div>
     )

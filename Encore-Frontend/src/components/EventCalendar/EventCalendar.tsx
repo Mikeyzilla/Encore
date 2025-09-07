@@ -137,8 +137,11 @@ export default function EventCalendar() {
 
     return (
         <div className="CalendarPage">
-            <h1 className="CalendarCompanyName">Encore</h1>
-            <button onClick={() => logout()}>LOGOUT</button>
+            <div className="CalendarPageHeader">
+                <div></div>
+                <h1 className="CalendarCompanyName">Encore</h1>
+                <button onClick={() => logout()} className="LeaveButton">LOGOUT</button>
+            </div>
             {!inEventView && (
                 <div className="Calendar">
                     <div className="CalendarHeader">

@@ -162,39 +162,43 @@ export default function ManagerDashboard() {
     }
 
     return (
-        <div>
+        <div className="ManagerPage">
             <div className="ManagerHeader">
-                <button onClick={() => logout()}>Logout</button>
-                <h1>Encore</h1>
-                <button onClick={() => navigate("/genrelist")}>Find Bands!</button>
+                <button onClick={() => logout()} className="LogButton">Logout</button>
+                <h1 className="Encore">Encore</h1>
+                <button onClick={() => navigate("/genrelist")} className="FindButton">Find Bands!</button>
             </div>
             <div className="ManagerTidBits">
-                <h4>Manager Dashboard</h4>
-                <p>Below, you can add the events you want to fill and see them once they're created!</p>
-                <p>This way, you know which events are filled - and which still need working on.</p>
+                <h4 className="TitleOfPage">Manager Dashboard</h4>
+                <p className="PartOne">Below, you can add the events you want to fill and see them once they're created!</p>
+                <p className="PartTwo">This way, you know which events are filled - and which still need working on.</p>
             </div>
             <div className="ViewAndAddArea">
                 <div className="ManagerTabs">
-                    <div onClick={() => setInViewEvent(true)}>Create a new Event!</div>
-                    <div onClick={() => setInViewEvent(false)}>View your In-Progress Events!</div>
+                    <div onClick={() => setInViewEvent(true)} className="CreateEventButton">Create a new Event!</div>
+                    <div onClick={() => setInViewEvent(false)} className="ViewEventButton">View your In-Progress Events!</div>
                 </div>
                 {inViewEvent && (
-                    <div>
-                        <h1>Fill out this form with the details of your event, and we'll make sure our Bands can see it!</h1>
-                        <form onSubmit={(e) => { e.preventDefault(); makeEvent(); }}>
-                            <label>What type of event is it?</label>
+                    <div className="CreateForm">
+                        <h1 className="CreateTidBit">Fill out this form with the details of your event, and we'll make sure our Bands can see it!</h1>
+                        <form className="CreateFormI" onSubmit={(e) => { e.preventDefault(); makeEvent(); }}>
+                            <div className="ChooseEventTypeArea">
+                            <label className="EventTypeLabel">What type of event is it?</label>
                             <select
                                 required
                                 value={nameOfTypeOfEvent}
                                 onChange={(e) => setNameOfTypeOfEvent(e.currentTarget.value as MusicEvent)}
+                                className="EventTypeChooser"
                             >
                                 <option value="Concert">Concert</option>
                                 <option value="Music Festival">Music Festival</option>
                                 <option value="Gig">Gig</option>
                             </select>
-
-                            <label>What timeslot did you need to fill for this event? If you need more than one time slot filled, you'll need to submit the form multiple times.</label>
-                            <select className="VenueEntry" value={timeOfTheEvent} onChange={(e) => setTimeOfTheEvent(e.currentTarget.value)}>
+                        </div>
+                            <label className="TimeSlotLabel">What timeslot did you need to fill for this event?</label>
+                            <label>If you need more than one time slot filled, you'll need to submit the form multiple times.</label>
+                            <div className="InputLocation">
+                            <select className="TimeChooser" value={timeOfTheEvent} onChange={(e) => setTimeOfTheEvent(e.currentTarget.value)}>
                                 <option value="8:00AM">8:00AM</option>
                                 <option value="9:00AM">9:00AM</option>
                                 <option value="10:00AM">10:00AM</option>
@@ -224,15 +228,16 @@ export default function ManagerDashboard() {
                                 required
                             />
                             <input type="text" placeholder="How much will you offer a Band for this event?" required value={bandMoney} onChange={(e) => setBandMoney(e.currentTarget.value)}></input>
-                            <button type="submit">Create Event</button>
+                            </div>
+                            <button type="submit" className="CreateEventSubmitter">Create Event</button>
                         </form>
                     </div>
                 )}
                 {!inViewEvent && (
                     <div className="ViewEventArea">
                         <div className="EventsList">
-                            <h2>Your events</h2>
-                            {myEvents.length === 0 && <p>No events yet.</p>}
+                            <h2 className="ViewEventHeader">Your events</h2>
+                            {myEvents.length === 0 && <p className="NoEvent">No events yet.</p>}
                             {myEvents.map(e => (
                                 <button
                                     key={e.id}
