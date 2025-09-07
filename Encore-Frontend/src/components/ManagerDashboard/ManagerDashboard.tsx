@@ -67,8 +67,8 @@ export default function ManagerDashboard() {
         for (let i = 0; i < count; i++) {
             array.push(
                 <div className="EventBandDetailsArea" key={i}>
+                    <div className="BandSlotTime">{timeSlotsForBands[i]}</div>
                     <h1>{namesOfBandsSignedUp[i]}</h1>
-                    <div>{timeSlotsForBands[i]}</div>
                 </div>
             );
         }
@@ -183,51 +183,51 @@ export default function ManagerDashboard() {
                         <h1 className="CreateTidBit">Fill out this form with the details of your event, and we'll make sure our Bands can see it!</h1>
                         <form className="CreateFormI" onSubmit={(e) => { e.preventDefault(); makeEvent(); }}>
                             <div className="ChooseEventTypeArea">
-                            <label className="EventTypeLabel">What type of event is it?</label>
-                            <select
-                                required
-                                value={nameOfTypeOfEvent}
-                                onChange={(e) => setNameOfTypeOfEvent(e.currentTarget.value as MusicEvent)}
-                                className="EventTypeChooser"
-                            >
-                                <option value="Concert">Concert</option>
-                                <option value="Music Festival">Music Festival</option>
-                                <option value="Gig">Gig</option>
-                            </select>
-                        </div>
+                                <label className="EventTypeLabel">What type of event is it?</label>
+                                <select
+                                    required
+                                    value={nameOfTypeOfEvent}
+                                    onChange={(e) => setNameOfTypeOfEvent(e.currentTarget.value as MusicEvent)}
+                                    className="EventTypeChooser"
+                                >
+                                    <option value="Concert">Concert</option>
+                                    <option value="Music Festival">Music Festival</option>
+                                    <option value="Gig">Gig</option>
+                                </select>
+                            </div>
                             <label className="TimeSlotLabel">What timeslot did you need to fill for this event?</label>
                             <label>If you need more than one time slot filled, you'll need to submit the form multiple times.</label>
                             <div className="InputLocation">
-                            <select className="TimeChooser" value={timeOfTheEvent} onChange={(e) => setTimeOfTheEvent(e.currentTarget.value)}>
-                                <option value="8:00AM">8:00AM</option>
-                                <option value="9:00AM">9:00AM</option>
-                                <option value="10:00AM">10:00AM</option>
-                                <option value="11:00AM">11:00AM</option>
-                                <option value="12:00AM">12:00AM</option>
-                                <option value="1:00PM">1:00PM</option>
-                                <option value="2:00PM">2:00PM</option>
-                                <option value="3:00PM">3:00PM</option>
-                                <option value="4:00PM">4:00PM</option>
-                                <option value="5:00PM">5:00PM</option>
-                                <option value="6:00PM">6:00PM</option>
-                                <option value="7:00PM">7:00PM</option>
-                                <option value="8:00PM">8:00PM</option>
-                                <option value="9:00PM">9:00PM</option>
-                                <option value="10:00PM">10:00PM</option>
-                                <option value="11:00PM">11:00PM</option>
-                                <option value="12:00PM">12:00PM</option>
-                                <option value="1:00AM">1:00AM</option>
-                                <option value="2:00AM">2:00AM</option>
-                            </select>
-                            <input type="text" placeholder="What's the name of the venue?" required value={nameOfTheVenue} onChange={(e) => setNameOfTheVenue(e.currentTarget.value)}></input>
-                            <input
-                                type="date"
-                                placeholder="What day is the venue for? Enter it in YYYY-MM-DD format"
-                                value={dateOfTheEvent}
-                                onChange={(e) => setDateOfTheEvent(e.currentTarget.value)}
-                                required
-                            />
-                            <input type="text" placeholder="How much will you offer a Band for this event?" required value={bandMoney} onChange={(e) => setBandMoney(e.currentTarget.value)}></input>
+                                <select className="TimeChooser" value={timeOfTheEvent} onChange={(e) => setTimeOfTheEvent(e.currentTarget.value)}>
+                                    <option value="8:00AM">8:00AM</option>
+                                    <option value="9:00AM">9:00AM</option>
+                                    <option value="10:00AM">10:00AM</option>
+                                    <option value="11:00AM">11:00AM</option>
+                                    <option value="12:00AM">12:00AM</option>
+                                    <option value="1:00PM">1:00PM</option>
+                                    <option value="2:00PM">2:00PM</option>
+                                    <option value="3:00PM">3:00PM</option>
+                                    <option value="4:00PM">4:00PM</option>
+                                    <option value="5:00PM">5:00PM</option>
+                                    <option value="6:00PM">6:00PM</option>
+                                    <option value="7:00PM">7:00PM</option>
+                                    <option value="8:00PM">8:00PM</option>
+                                    <option value="9:00PM">9:00PM</option>
+                                    <option value="10:00PM">10:00PM</option>
+                                    <option value="11:00PM">11:00PM</option>
+                                    <option value="12:00PM">12:00PM</option>
+                                    <option value="1:00AM">1:00AM</option>
+                                    <option value="2:00AM">2:00AM</option>
+                                </select>
+                                <input type="text" placeholder="What's the name of the venue?" required value={nameOfTheVenue} onChange={(e) => setNameOfTheVenue(e.currentTarget.value)}></input>
+                                <input
+                                    type="date"
+                                    placeholder="What day is the venue for? Enter it in YYYY-MM-DD format"
+                                    value={dateOfTheEvent}
+                                    onChange={(e) => setDateOfTheEvent(e.currentTarget.value)}
+                                    required
+                                />
+                                <input type="text" placeholder="How much will you offer a Band for this event?" required value={bandMoney} onChange={(e) => setBandMoney(e.currentTarget.value)}></input>
                             </div>
                             <button type="submit" className="CreateEventSubmitter">Create Event</button>
                         </form>
@@ -238,22 +238,24 @@ export default function ManagerDashboard() {
                         <div className="EventsList">
                             <h2 className="ViewEventHeader">Your events</h2>
                             {myEvents.length === 0 && <p className="NoEvent">No events yet.</p>}
-                            {myEvents.map(e => (
-                                <button
-                                    key={e.id}
-                                    type="button"
-                                    className={`EventCard ${selectedEventId === e.id ? "selected" : ""}`}
-                                    onClick={() => selectEvent(e)}
-                                >
-                                    <strong>{e.eventType}</strong> — {e.venueLocation}
-                                    <div>{e.date} @ {e.timeSlot}</div>
-                                    <div>Offer: {e.bandFee}</div>
-                                </button>
-                            ))}
+                            <div className="IndividualEventSlots">
+                                {myEvents.map(e => (
+                                    <button
+                                        key={e.id}
+                                        type="button"
+                                        className={`EventCard ${selectedEventId === e.id ? "selected" : ""}`}
+                                        onClick={() => selectEvent(e)}
+                                    >
+                                        <strong>{e.eventType}</strong> — {e.venueLocation}
+                                        <div>{e.date} @ {e.timeSlot}</div>
+                                        <div>Offer: {e.bandFee}</div>
+                                    </button>
+                                ))}
+                            </div>
                         </div>
 
                         <div className="InProgressEventViewer">
-                            <h1>{nameOfTheVenue} {timeOfTheEvent}</h1>
+                            <h1>{nameOfTheVenue}</h1>
                             {loadBandsSignedUpDetails()}
                         </div>
                     </div>

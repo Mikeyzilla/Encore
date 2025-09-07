@@ -13,7 +13,6 @@
 
 .Origin {
     font-size: 32px;
-    margin-top: -40px;
 }
 
 .middleProfile {
@@ -258,7 +257,7 @@
 }
 
 .GoToCalendar {
-  min-width: 120px;
+  width: fit-content;
   height: 40px;
   background-color: aqua;
   color: white;
@@ -266,4 +265,12 @@
   border-radius: 6px;
   cursor: pointer;
   font-size: 16px;
+  justify-self: end;
+  margin-right: 70px;
+}
+
+.SecondLine {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: -60px;
 }

@@ -221,10 +221,36 @@
 
 .ViewEventHeader {
     text-align: center;
+    font-size: 32px;
 }
 
 .NoEvent {
     text-align: center;
     font-size: 48px;
     margin-top: 50px;
+}
+
+.IndividualEventSlots {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 50px;
+}
+
+.EventCard {
+    color: gold;
+    background: black;
+}
+
+.InProgressEventViewer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.BandSlotTime {
+    text-align: center;
+    font-size: 32px;
 }

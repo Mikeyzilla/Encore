@@ -66,10 +66,13 @@ export default function BandProfile(props: ProfileInformation) {
         >
             <div className="bandHeader">
                 <h1>{bandName}</h1>
-                <p className="Origin">{origin}</p>
-                {ourRole === "Band" && (
-                    <button onClick={() => navigate("/calendar")} className="GoToCalendar">CALENDAR</button>
-                )}
+                <div className="SecondLine">
+                    <div></div>
+                    <p className="Origin">{origin}</p>
+                    {ourRole === "Band" && (
+                        <button onClick={() => navigate("/calendar")} className="GoToCalendar">CALENDAR</button>
+                    )}
+                </div>
                 <div className="SocialsLine">
                     <div className="Social">
                         <div className="SocialLogo"></div>
