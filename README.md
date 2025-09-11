@@ -2,7 +2,7 @@ Hello everyone who's reading my Encore README!
 This app was made by me, Mike.
 
 I wanted to go above and beyond for this project. Add in all sorts of features and gizmos to my core idea of a two-way marketplace app but for music. 
-This app, although currently in progress (very early stages of development), will be based around the core idea of "Managers looking for bands to hire for their shows / concerts / festivals" and 
+This app, is based around the core idea of "Managers looking for bands to hire for their shows / concerts / festivals" and 
 "Bands looking for venues / events they can be a part of". As a manager, your flow will be as follows: Click on a genre -> see the bands that make music in that genre -> click on a band you're interested in 
 -> Find out more info about the band, with the option to send them a message and start the negotiation process.
 
